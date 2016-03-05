@@ -1,7 +1,7 @@
 // REQUIREMENTS
 var mongoose = require('mongoose');
 
-// SETTING UP PROJECTS SCHEMA
+// SETTING UP PROJECT SCHEMA
 var projectSchema = mongoose.Schema({
   name: String,
   tasks: [],
