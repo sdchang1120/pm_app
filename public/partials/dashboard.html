@@ -1,4 +1,4 @@
-<!-- <link rel="stylesheet" href="../css/style.css" media="screen" title="no title" charset="utf-8"> -->
+<!-- <link rel="stylesheet" href="../css/dashboard.css" media="screen" title="no title" charset="utf-8"> -->
 
 <nav>
   <li><a href="#">About</a></li>
@@ -7,6 +7,6 @@
   <li><a href="#">Stats</a></li>
   <div class="right-nav-box" ng-if="mainCtrl.isAuthenticated">
     <li>Welcome, <a href="#">{{mainCtrl.user.username}}</a></li>
-    <li><a ng-click="mainCtrl.logout()">Logout</a></li>
+    <li><a id="logout" ng-click="mainCtrl.logout()">Logout</a></li>
   </div>
 </nav>

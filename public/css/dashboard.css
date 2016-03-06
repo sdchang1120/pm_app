@@ -1,7 +1,6 @@
 body {
   margin: 0;
   padding: 0;
-  background: white;
 }
 
 nav {
@@ -22,10 +21,16 @@ li a {
 
 li a:hover {
   color: black;
+  padding-bottom: 13px;
+  border-bottom: 2px solid black;
 }
 
 .right-nav-box {
   position: absolute;
   right: 10px;
   top: 10px;
+}
+
+#logout {
+  cursor: pointer;
 }
