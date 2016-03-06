@@ -1,0 +1,152 @@
+* {
+	padding: 0;
+	margin: 0;
+	font-family: "Helvetica";
+	box-sizing: border-box;
+}
+
+#container-wrapper {
+	width: 100%;
+	/*background-color: green;*/
+	min-height: 600px;
+}
+
+#sidebar-container {
+	display: none;
+}
+
+#content-container {
+	width: 100%;
+	/*background-color: blue;*/
+	background-color: #f6f8f9;
+	min-height: 100%;
+	display: inline-block;
+}
+
+.use-sidebar#content-container {
+	width: 82%;
+}
+
+.use-sidebar#sidebar-container {
+	width: 18%;
+	float: left;
+	background-color: #2b3546;
+	border-right: 1px solid #626e84;
+	min-height: 100%;
+	display: inline-block;
+}
+
+h1 {
+	color: #646b76;	
+	padding: 0.5em;
+	/*margin-top: 0.5em;*/
+	text-align: center;
+}
+
+.sidebar-links ul {
+	list-style-type: none;
+}
+
+.sidebar-links li {
+	font-size: 0.8em;
+	padding: 0.5em 1em;
+	
+}
+
+.sidebar-links li a {
+	color: #818999;
+	text-decoration: none;
+}
+
+.sidebar-links li:hover {
+	background-color: #222e44;
+}
+
+#dashboard {
+	width: 100%;
+	padding: 0.75em;
+	background-color: #0684e8;
+}
+
+#task-container {
+	width: 90%;
+	margin: 1em auto;
+}
+
+#tasklists-container {
+	width: 80%;
+	display: inline-block;
+}
+
+.task-list {
+	width: 20%;
+	margin-right: 1em;
+	display: inline-block;
+	vertical-align: top;
+}
+
+/*h2 {
+	padding: 0.5em;
+	color: #ffffff;
+	text-align: center;
+}*/
+
+.task-list h2 {
+	background-color: #47dff5;
+	padding: 0.5em;
+	color: #ffffff;
+	text-align: center;
+}
+
+.task-list2 {
+	width: 20%;
+	margin-right: 1em;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.task-list2 h2 {
+	color: #23282e;
+	padding-bottom: 0.3em;
+	/*border-bottom: 1px solid #d2d2d2;*/
+}
+
+
+.task {
+	font-size: 0.9em;
+	padding: 0.8em;
+	background-color: #ffffff;
+	border: 1px solid #d2d2d2;
+	border-top: 0px;
+}
+
+.alternate {
+	background-color: #f5f5f5;
+}
+
+.tag-a {
+	border-left: 3px solid #ff5e91;
+}
+
+.completed {
+	width: 20%;
+	display: inline-block;
+	min-height: 200px;
+}
+
+.completed h2 {
+	background-color: #f54a58;
+	padding: 0.5em;
+	color: #ffffff;
+	text-align: center;
+}
+
+form {
+	margin: 0;
+	padding: 0;
+}
+
+input {
+	padding: 0.3em;
+	border: 0;
+}
