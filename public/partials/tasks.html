@@ -1,0 +1,33 @@
+<section>
+
+<!-- show all tasks in project -->
+<ul ng-repeat="task in taskCtrl.tasks">
+	<li>{{task.name}}</li>
+	<button ng-click="taskCtrl.showUpdate(task)">Update</button>
+
+	<!-- {{$index}} {{taskCtrl.updateIndex}} -->
+
+	<form ng-show="taskCtrl.updateIndex == $index" ng-submit="taskCtrl.updateTask()">
+		<!-- {{taskCtrl.updateForm}} -->
+		<input type="text" ng-model="taskCtrl.updateTaskObject.name">
+	</form>
+
+
+	<button ng-click="taskCtrl.deleteTask(task)">Delete</button>
+	
+</ul>
+
+
+
+<!-- create a new task -->
+<form ng-submit="taskCtrl.addTask()">
+
+	<input type="text" ng-model="taskCtrl.newTask.name">
+
+	<!-- {{createTaskCtrl.newTask.name}} -->
+
+</form>
+
+
+
+</section>

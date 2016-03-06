@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background: #eaeaea;
+  padding: 10px;
+}
+
+li {
+  display: inline-block;
+  margin: 5px;
+}
+
+li a {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: grey;
+}
+
+li a:hover {
+  color: black;
+  padding-bottom: 13px;
+  border-bottom: 2px solid black;
+}
+
+.right-nav-box {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+#logout {
+  cursor: pointer;
+}

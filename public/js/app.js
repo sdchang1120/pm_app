@@ -1,4 +1,4 @@
-var app = angular.module("PMApp", []);
+var app = angular.module("PMApp", ["task-directives"]);
 
 
 app.controller("MainController", ["$scope", "$http", function($scope, $http) {
