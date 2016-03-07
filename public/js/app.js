@@ -12,14 +12,18 @@ app.directive('projectsDirective', function() {
 
 // PROJECTS CONTROLLER
 app.controller('ProjectsController', ['$http', '$scope', function($http, $scope) {
-  // $http.get('/users').then(
-  //   function(result) {
-  //     console.log(result);
-  //   },
-  //   function() {
-  //     console.log(err);
-  //   }
-  // )
+
+  var ctrl = this;
+
+  $http.get('/users/projects').then(
+    function(result) {
+      console.log('GET PROJECTS: ', result.data);
+        ctrl.projects = result.data;
+    },
+    function(err) {
+      console.log(err);
+    }
+  )
 
   this.name = null;
 
@@ -29,7 +33,6 @@ app.controller('ProjectsController', ['$http', '$scope', function($http, $scope)
     // completed: false
   };
 
-  var ctrl = this;
   this.addProject = function(data) {
     $http.post('/users/postproject', data).then(
       function(result) {
@@ -48,7 +51,6 @@ app.controller('ProjectsController', ['$http', '$scope', function($http, $scope)
 
 
 app.controller("MainController", ["$scope", "$http", function($scope, $http) {
-  // $scope.user = {};
   var controller = this;
   this.user = {};
   this.isAuthenticated = false;

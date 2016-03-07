@@ -19,6 +19,12 @@ router.get('/users', function(req, res) {
 
 })
 
+router.get('/projects', function(req, res) {
+  Project.find({}, function(err, projects) {
+    res.send(projects);
+  })
+})
+
 router.post('/postproject', function(req, res) {
   console.log('REQ.BODY:', req.body);
   Project.create(req.body, function(err, project) {

@@ -8,12 +8,12 @@ nav {
   padding: 10px;
 }
 
-li {
+nav li {
   display: inline-block;
   margin: 5px;
 }
 
-li a {
+nav li a {
   text-transform: uppercase;
   text-decoration: none;
   color: grey;

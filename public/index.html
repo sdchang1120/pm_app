@@ -30,7 +30,7 @@
 		</form>
 	</div>
 
-	<projects-directive></projects-directive>
+	<projects-directive ng-if="mainCtrl.isAuthenticated"></projects-directive>
 
 	<!-- show this if logged in-->
 	<!-- <div ng-controller="AnotherController as anotherCtrl">
