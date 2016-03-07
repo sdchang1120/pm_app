@@ -119,6 +119,11 @@ app.controller("TaskController", ["$http", "$scope", function($http, $scope) {
 
   }
 
+}]);
+
+
+// SCRAP
+
   // this.updateFormData = null;
 
   // // update a task
@@ -147,7 +152,3 @@ app.controller("TaskController", ["$http", "$scope", function($http, $scope) {
 
 
   // }
-
-
-
-}]);
