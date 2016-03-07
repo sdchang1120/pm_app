@@ -1,10 +1,24 @@
 var app = angular.module("PMApp", []);
 
+app.directive('projectsDirective', function() {
+  return {
+    restrict: 'E',
+    templateUrl: 'partials/projects.html',
+    controller: 'ProjectsController',
+    controllerAs: 'projectsCtrl'
+  }
+});
+
+app.controller('ProjectsController', function() {
+  this.hello = 'hello';
+});
+
+
 
 app.controller("MainController", ["$scope", "$http", function($scope, $http) {
 
   var controller = this;
-  this.user = {}; 
+  this.user = {};
   this.isAuthenticated = false;
 
   // listen for user-login event. when logged in, save user data to controller
@@ -61,10 +75,10 @@ app.controller("SignupController", ["$scope", "$http", function($scope, $http) {
           console.log(response);
 
           // emit user data to parent controllers
-          $scope.$emit("user-login", response.data); 
+          $scope.$emit("user-login", response.data);
             // I don't know if it will be a problem later to use the same event listener for login and signup
             // I think it will be ok because the user is essentially logging in immediately after signing up
-          
+
         // error function
         }, function(error) {
           console.log(error);
@@ -88,7 +102,7 @@ app.controller("LoginController", ["$scope", "$http", function($scope, $http){
 
   this.login = function() {
     console.log(this.credentials); // confirms object returns
-    
+
     $http({
       method: "POST",
       url: "users/login",
