@@ -55,6 +55,21 @@ router.put("/project/:project_id", function(req, res) {
 });
 
 
+router.delete("/project/:project_id", function(req, res) {
+  console.log('PROJECT DELETE REQ.BODY');
+
+  Project.findByIdAndRemove(req.params.project_id, function(err, data) {
+
+    User.update({_id: req.user._id}, {$pull: {"projects": {_id: req.params.project_id}}}, function(err, data) {
+      res.send("deleted");
+
+    })
+
+  })
+
+});
+
+
 
 
 

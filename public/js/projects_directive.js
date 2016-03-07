@@ -87,14 +87,15 @@ app.controller("ProjectsController", ["$scope", "$http", function($scope, $http)
     // delete request to server
     $http({
       method: "DELETE",
-      url: "/projects/" + project._id
-    }).then(then(
+      url: "/projects/project/" + project._id
+    }).then(
       function(response) {
-        console.log(response)
+        console.log(response);
+        controller.getProjects();
 
       }, function(error) {
         console.log(error)
-      }))
+      })
   }
 
 
