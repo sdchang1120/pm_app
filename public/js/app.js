@@ -1,5 +1,6 @@
 var app = angular.module("PMApp", []);
 
+// PROJECTS DIRECTIVE
 app.directive('projectsDirective', function() {
   return {
     restrict: 'E',
@@ -9,17 +10,45 @@ app.directive('projectsDirective', function() {
   }
 });
 
-app.controller('ProjectsController', ['$http', function($http) {
+// PROJECTS CONTROLLER
+app.controller('ProjectsController', ['$http', '$scope', function($http, $scope) {
+  // $http.get('/users').then(
+  //   function(result) {
+  //     console.log(result);
+  //   },
+  //   function() {
+  //     console.log(err);
+  //   }
+  // )
+
   this.name = null;
-  this.addProject = function() {
-    $http.put()
+
+  this.newProject = {
+    // name: '',
+    // tasks: [],
+    // completed: false
+  };
+
+  var ctrl = this;
+  this.addProject = function(data) {
+    $http.post('/users/postproject', data).then(
+      function(result) {
+        console.log('RESULT: ', result.data);
+        // clears form
+        ctrl.newProject = {}
+      },
+      function(err) {
+        // console.log(data);
+        console.log('ERROR: ', err);
+      }
+    )
   }
-});
+}]);
 
 
 
 app.controller("MainController", ["$scope", "$http", function($scope, $http) {
-
+  // $scope.user = {};
   var controller = this;
   this.user = {};
   this.isAuthenticated = false;

@@ -1,6 +1,7 @@
 // REQUIREMENTS
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
+var projectSchema = require('./projects.js').schema;
 
 // SETTING UP USER SCHEMA
 var userSchema = mongoose.Schema({
@@ -9,7 +10,7 @@ var userSchema = mongoose.Schema({
   last_name: String,
   email: String,
   password: {type: String, required: true},
-  projects: []
+  projects: [projectSchema]
 })
 
 // hasing password

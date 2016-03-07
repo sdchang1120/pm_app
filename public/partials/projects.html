@@ -1,7 +1,7 @@
 <button ng-click="addProject = !addProject">Add Project</button>
 
-<form ng-if="addProject" ng-submit="projectsCtrl.addProject()">
+<form ng-if="addProject" ng-submit="projectsCtrl.addProject(projectsCtrl.newProject)">
   <h3>Add Project</h3>
-  <input type="text" placeholder="Project Name" ng-model="projectsCtrl.name">
-  {{projectsCtrl.name}}<button>Add</button>
+  <input type="text" placeholder="Project Name" ng-model="projectsCtrl.newProject.name">
+  <button>Add</button>
 </form>

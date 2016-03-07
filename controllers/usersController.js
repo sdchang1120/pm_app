@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 var User = require("../models/users.js");
+var Project = require('../models/projects.js')
 
 
 // router.get("/", function(req, res) {
@@ -13,6 +14,17 @@ router.get('/json', function(req, res) {
     res.json(users);
   })
 })
+
+router.get('/users', function(req, res) {
+
+})
+
+router.post('/postproject', function(req, res) {
+  console.log('REQ.BODY:', req.body);
+  Project.create(req.body, function(err, project) {
+    res.send(project);
+  })
+});
 
 router.post("/posttest", function(req, res) {
   console.log(req.body)
@@ -32,7 +44,7 @@ router.get("/logout", function(req, res) {
 }); // end logout route
 
 // // LOGIN-- access an existing account
-// router.post("/login", passport.authenticate("local-login", { 
+// router.post("/login", passport.authenticate("local-login", {
 //   failureRedirect: "/users/failed"}), function(req, res) {
 //   res.send("success!");
 // }); // end login route
