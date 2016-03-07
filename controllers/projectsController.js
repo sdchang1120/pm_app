@@ -113,34 +113,59 @@ router.get("/tasks/:pid", function(req, res) {
 
 // update
 router.put("/tasks/:pid/:tid", function(req, res) {
-  console.log("project id, ", req.params.pid);
-  console.log("task id, ", req.params.tid);
+  console.log("PROJECT ID: ", req.params.pid);
+  console.log("TASK ID: ", req.params.tid);
   console.log(req.body);
+
+  var project_id = req.params.pid;
+  var task_id = req.params.tid;
+  var task_data = req.body;
 
   // update task in task model
   Task.findByIdAndUpdate(req.params.tid, req.body, function(err, task) {
     console.log(task);
 
     // update task in project model
-    Project.update({_id: req.params.pid, "tasks._id": req.params.tid}, {$set: {"tasks.$.name": req.body.name}}, {new: true}, function(err, project) {
-      
-      console.log(project)
+    Project.update({_id: req.params.pid, "tasks._id": req.params.tid}, {$set: {"tasks.$.name": req.body.name}}, {new: true}, function(err, data) {
+
+      // grab project
+      Project.findById(req.params.pid, function(err, project) {
+        console.log("PROJECT?: ", project);
+
+        var updatedUser = project;
+
+        // User.findByIdAndUpdate(req.user._id, updatedUser, function(err, user) {
+
+        // })
+        User.update({_id: req.user._id, 'projects._id': updatedUser._id}, {$set: {'projects.$': updatedUser}}, {new: true}, function(err, user) {
+          res.send(user);
+        })
+
+
+
+      })
+      // console.log('PROJECTASDFJKL;', project)
+
 
       // update project in user model
-      User.update({_id: req.user._id, "projects._id": req.params.pid, "projects.tasks._id": req.params.tid}, {$set: {"projects.0.tasks.$.name": req.body.name}}, function(err, user) {
-        res.send("it worked?")
-      })
+      // User.update({_id: req.user._id, "projects._id": req.params.pid, "projects.tasks._id": req.params.tid}, {$set: {"projects.tasks.$.name": req.body.name}}, function(err, user) {
+      
+      // User.update({_id: req.user._id, "projects._id": req.params.pid, "projects.tasks._id": req.params.tid}, {$set: {"projects.tasks.$.name": req.body.name}}, function(err, user) {
+      //   console.log("USER ID: ", req.user._id);
+      //   console.log("PROJECT ID: ", req.params.pid);
+      //   console.log("TASK ID: ", req.params.tid);
+      //   console.log(err)
+      //   res.send(user);
 
-    })
+      // });
 
-  })
+    });
+
+  });
 
 
 });
 
-
-// User.update({_id: req.params.id, 'playlist._id': req.params.list}, {$set: {'playlist.$.playlist_name': req.body.playlist_name}}, function(err) {
-//   });
 
 
 

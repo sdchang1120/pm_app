@@ -87,7 +87,9 @@ app.controller("TaskController", ["$http", "$scope", function($http, $scope) {
     });
   }
 
-  this.formData = null;
+  // this.formData = {
+  //   name: task.name
+  // };
 
   // update task
   this.updateTask = function(task) {
@@ -97,13 +99,14 @@ app.controller("TaskController", ["$http", "$scope", function($http, $scope) {
     console.log("index: ", index);
     var taskId = controller.project.tasks[index]._id;
     console.log("taskId: ", taskId);
-    console.log(controller.formData)
+    // console.log(controller.formData)
+    console.log("task?: ", task.name)
 
 
     $http({
       method: "PUT",
       url: "/projects/tasks/" + controller.projId + "/" + taskId,
-      data: controller.formData
+      data: task
       }).then(
         function(response) {
           console.log(response);
