@@ -19,18 +19,31 @@ router.get('/users', function(req, res) {
 
 })
 
+// =============
+// PROJECTS PAGE
+// =============
+
+// PROJECTS ROUTE
 router.get('/projects', function(req, res) {
   Project.find({}, function(err, projects) {
     res.send(projects);
   })
 })
 
+// POST PROJECT ROUTE
 router.post('/postproject', function(req, res) {
   console.log('REQ.BODY:', req.body);
   Project.create(req.body, function(err, project) {
     res.send(project);
   })
 });
+
+router.delete('/project/:id', function(req, res) {
+  console.log('PROJECT ID: ', req.params.id);
+  Project.findByIdAndRemove(req.params.id, function() {
+    res.send('deleted');
+  })
+})
 
 router.post("/posttest", function(req, res) {
   console.log(req.body)

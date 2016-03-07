@@ -1,5 +1,5 @@
 <ul>
-  <li ng-repeat="project in projectsCtrl.projects">{{project.name}}</li>
+  <li ng-repeat="project in projectsCtrl.projects">{{project.name}} <button ng-click="projectsCtrl.deleteProject(project)">Delete</button></li>
 </ul>
 
 <button ng-click="addProject = !addProject">Add Project</button>

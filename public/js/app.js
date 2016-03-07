@@ -23,7 +23,7 @@ app.controller('ProjectsController', ['$http', '$scope', function($http, $scope)
     function(err) {
       console.log(err);
     }
-  )
+  );
 
   this.name = null;
 
@@ -43,6 +43,19 @@ app.controller('ProjectsController', ['$http', '$scope', function($http, $scope)
       function(err) {
         // console.log(data);
         console.log('ERROR: ', err);
+      }
+    )
+  };
+
+  this.deleteProject = function(data) {
+    console.log(data);
+    console.log(data._id);
+    $http.delete('/users/project/'+data._id).then(
+      function(result) {
+        console.log(result);
+      },
+      function(err) {
+        console.log(err);
       }
     )
   }
