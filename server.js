@@ -33,6 +33,12 @@ app.use(passport.session());
 var usersController = require("./controllers/usersController.js");
 app.use("/users", usersController);
 
+var projectsController = require("./controllers/projectsController.js");
+app.use("/projects", projectsController);
+
+// var testController = require("./controllers/testController.js");
+// app.use("/test", testController);
+
 
 // LISTEN
 app.listen(port, function() {

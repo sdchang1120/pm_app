@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 var User = require("../models/users.js");
-var Project = require('../models/projects.js')
+var Project = require('../models/projects.js');
 
 
 // router.get("/", function(req, res) {
@@ -24,53 +24,53 @@ router.get('/users', function(req, res) {
 // =======================================
 
 // POST PROJECT ROUTE
-router.post('/:uid', function(req, res) {
-  console.log('USER ID: ', req.params.uid);
-  console.log('REQ.BODY: ', req.body);
-  User.findByIdAndUpdate(req.params.uid, {$push: {projects: req.body}}, {new: true}, function(err) {
-  });
-  Project.create(req.body, function(err, project) {
-    res.send(project);
-  })
-});
+// router.post('/:uid', function(req, res) {
+//   console.log('POST USER ID: ', req.params.uid);
+//   console.log('POST REQ.BODY: ', req.body);
+//   User.findByIdAndUpdate(req.params.uid, {$push: {projects: req.body}}, {new: true}, function(err) {
+//   });
+//   Project.create(req.body, function(err, project) {
+//     res.send(project);
+//   })
+// });
 
-// SHOW USER'S PROJECTS
-router.get('/:uid', function(req, res) {
-  console.log('USER ID: ', req.params.uid);
-  // User.findById(req.params.uid, function(err, data) {
-  //   console.log('DATA: ', data);
-  //   res.send(data);
-  // });
-  Project.find({}, function(err, projects) {
-    res.send(projects);
-  })
-})
+// // SHOW USER'S PROJECTS
+// router.get('/:uid', function(req, res) {
+//   console.log('USER ID: ', req.params.uid);
+//   // User.findById(req.params.uid, function(err, data) {
+//   //   console.log('DATA: ', data);
+//   //   res.send(data);
+//   // });
+//   Project.find({}, function(err, projects) {
+//     res.send(projects);
+//   })
+// })
 
-// UPDATE PROJECT ROUTE
-router.put('/:uid/:pid', function(req, res) {
-  console.log(req.body);
-  console.log('USER ID: ', req.params.uid);
-  console.log('PROJECT ID: ', req.params.pid);
-  // User.update({_id: req.params.uid, 'projects'})
-  Project.findByIdAndUpdate(req.params.pid, req.body, function() {
-    res.send('updated');
-  })
-})
+// // UPDATE PROJECT ROUTE
+// router.put('/:uid/:pid', function(req, res) {
+//   console.log(req.body);
+//   console.log('USER ID: ', req.params.uid);
+//   console.log('PROJECT ID: ', req.params.pid);
+//   // User.update({_id: req.params.uid, 'projects'})
+//   Project.findByIdAndUpdate(req.params.pid, req.body, function() {
+//     res.send('updated');
+//   })
+// })
 
-// DELETE PROJECT ROUTE
-router.delete('/project/:id', function(req, res) {
-  console.log('PROJECT ID: ', req.params.id);
-  Project.findByIdAndRemove(req.params.id, function() {
-    res.send('deleted');
-  })
-})
+// // DELETE PROJECT ROUTE
+// router.delete('/project/:id', function(req, res) {
+//   console.log('PROJECT ID: ', req.params.id);
+//   Project.findByIdAndRemove(req.params.id, function() {
+//     res.send('deleted');
+//   })
+// })
 
 // =======================================
 //          END PROJECTS ROUTES
 // =======================================
 
 router.post("/posttest", function(req, res) {
-  console.log(req.body)
+  // console.log(req.body)
     res.send(req.body);
 });
 

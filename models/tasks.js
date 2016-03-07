@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 // SETTING UP TASK SCHEMA
 var taskSchema = mongoose.Schema({
   name: String,
+  deadline: {type: Date},
   completed: false
 })
 

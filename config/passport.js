@@ -79,7 +79,7 @@ module.exports = function(passport) {
   function(req, username, password, done) {
 
     // console.log("req.body:"); 
-    console.log(req.body); // confirming that info is being grabbed
+    console.log('PASSPORT REQ.BODY', req.body); // confirming that info is being grabbed
 
     // find user with username that matches the username in form
     // checking if user trying to login already exists

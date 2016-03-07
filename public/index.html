@@ -3,6 +3,7 @@
 	<title>angular_passport</title>
 	<link rel="stylesheet" href="css/dashboard.css" media="screen" title="no title" charset="utf-8">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+	<script type="text/javascript" src="js/projects_directive.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
 </head>
 <body ng-controller="MainController as mainCtrl">
@@ -29,6 +30,8 @@
 		<input type="submit">
 		</form>
 	</div>
+
+	<!-- <test-directive ng-if="mainCtrl.isAuthenticated"></test-directive> -->
 
 	<projects-directive ng-if="mainCtrl.isAuthenticated"></projects-directive>
 
