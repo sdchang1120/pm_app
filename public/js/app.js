@@ -47,6 +47,19 @@ app.controller('ProjectsController', ['$http', '$scope', function($http, $scope)
     )
   };
 
+  this.updateProject = function(data) {
+    console.log(data);
+    console.log(data._id);
+    $http.put('/users/project/'+data._id, data).then(
+      function(result) {
+        console.log(result);
+      },
+      function(err) {
+        console.log(err);
+      }
+    )
+  }
+
   this.deleteProject = function(data) {
     console.log(data);
     console.log(data._id);

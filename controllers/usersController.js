@@ -38,6 +38,16 @@ router.post('/postproject', function(req, res) {
   })
 });
 
+// UPDATE PROJECT ROUTE
+router.put('/project/:id', function(req, res) {
+  console.log(req.body);
+  console.log('PROJECT ID: ', req.params.id);
+  Project.findByIdAndUpdate(req.params.id, req.body, function() {
+    res.send('updated');
+  })
+})
+
+// DELETE PROJECT ROUTE
 router.delete('/project/:id', function(req, res) {
   console.log('PROJECT ID: ', req.params.id);
   Project.findByIdAndRemove(req.params.id, function() {
