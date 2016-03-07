@@ -16,13 +16,15 @@ app.controller("TaskController", ["$http", "$scope", function($http, $scope) {
   var controller = this;
   this.test = "task controller";
 
-  $scope.$on("project-data", function(eventObject, project) {
-    console.log("task controller, ", project);
+  // console.log('$SCOPE', $scope);
 
-    controller.project = project;
-
-
-  })
+  // $scope.$on("project-data", function(eventObject, project) {
+  //   console.log("task controller, ", project);
+  //
+  //   controller.project = project;
+  //
+  //
+  // })
 
 
 

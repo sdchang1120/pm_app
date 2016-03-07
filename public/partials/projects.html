@@ -11,8 +11,8 @@
 
 
 <ul>
-  <li ng-repeat="project in projectsCtrl.projects" ng-click="projectsCtrl.thisProject(project)">
-    {{project.name}}
+  <li ng-repeat="project in projectsCtrl.projects" ng-click="projectsCtrl.thisProject(project, $index)">
+    <span>{{project.name}}</span>
     <button ng-click="editProject = !editProject">Edit</button>
     <div ng-show="editProject">
       <form ng-submit="projectsCtrl.updateProject(project)">
@@ -34,5 +34,3 @@
   <input type="text" placeholder="Project Name" ng-model="projectsCtrl.newProject.name">
   <button>Add</button>
 </form> -->
-
-

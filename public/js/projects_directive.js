@@ -19,8 +19,20 @@ app.controller("ProjectsController", ["$scope", "$http", function($scope, $http)
   var controller = this;
 
 
-  this.thisProject = function(project) {
-    // console.log(project);
+  this.thisProject = function(project, index) {
+    console.log('THISPROJECT(project): ', project);
+    console.log('THISPROJECT(index): ', index);
+    $http.get('/projects/get').then(
+      function(result) {
+        console.log('THISPROJECT RESULT: ', result.data);
+      },
+      function(err) {
+        console.log(err);
+      }
+    )
+
+
+
 
     $scope.$broadcast("project-data", project);
   }
@@ -108,5 +120,5 @@ app.controller("ProjectsController", ["$scope", "$http", function($scope, $http)
 
 
 
-  
+
 }]);
