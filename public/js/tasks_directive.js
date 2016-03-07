@@ -48,7 +48,6 @@ app.controller("TaskController", ["$http", "$scope", function($http, $scope) {
     name: null
   }
 
-
   this.addTask = function() {
     console.log("PROJECT ID", controller.projId)
     $http({
@@ -69,6 +68,82 @@ app.controller("TaskController", ["$http", "$scope", function($http, $scope) {
   };
 
 
+  // delete an existing task
+  this.deleteTask = function(task) {
+    console.log("delete ", task);
+    var index = controller.project.tasks.indexOf(task);
+    console.log(index);
+    var taskId = controller.project.tasks[index]._id;
+    console.log(taskId);
+
+    $http({
+      method: "DELETE",
+      url: "/projects/tasks/" + controller.projId + "/" + taskId
+    }).then(
+    function(response) {
+      console.log(response)
+    }, function(error) {
+      console.log(error)
+    });
+  }
+
+  this.formData = null;
+
+  // update task
+  this.updateTask = function(task) {
+    console.log(task);
+
+    var index = controller.project.tasks.indexOf(task);
+    console.log("index: ", index);
+    var taskId = controller.project.tasks[index]._id;
+    console.log("taskId: ", taskId);
+    console.log(controller.formData)
+
+
+    $http({
+      method: "PUT",
+      url: "/projects/tasks/" + controller.projId + "/" + taskId,
+      data: controller.formData
+      }).then(
+        function(response) {
+          console.log(response);
+        }, function(error) {
+          console.log(error);
+    })
+
+
+
+
+  }
+
+  // this.updateFormData = null;
+
+  // // update a task
+  // this.updateTask = function(task) {
+  //   console.log("update task: ", task);
+
+  //   var index = controller.project.tasks.indexOf(task);
+  //   console.log("update task, index: ", index);
+  //   var taskId = controller.project.tasks[index]._id;
+  //   console.log("update task, id: ", taskId);
+
+  //   console.log('update form data: ', controller.updateFormData);
+
+  //   $http({
+  //     method: "PUT",
+  //     url: "/projects/tasks/" + controller.projId + "/" + taskId,
+  //     data: controller.updateFormData
+  //     }).then(
+  //       function(response) {
+  //         console.log(response);
+
+  //       }, function(error) {
+  //         console.log(error);
+
+  //   })
+
+
+  // }
 
 
 

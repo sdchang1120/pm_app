@@ -88,24 +88,17 @@ router.post("/tasks/:pid", function(req, res) {
       project.save(function(err, data) {
         console.log("task saved");
 
-
         // update the project in user's task array
-        // User.findById(req.user._id, function(err, user) {
-        //   user.update({})
-
-        //   console.log("user, ", user);
-        // })
-
         User.update({_id: req.user._id, "projects._id": req.params.pid}, {$push: {"projects.$.tasks": task}}, function(err, data) {
           console.log("user update data: ", data);
-
-          res.send("created task")
+          res.send("created task");
 
         })
       })
     })
   })
 })
+
 
 // get
 router.get("/tasks/:pid", function(req, res) {
@@ -114,7 +107,62 @@ router.get("/tasks/:pid", function(req, res) {
     console.log(project);
     res.send(project);
   })
+})
 
+
+
+// update
+router.put("/tasks/:pid/:tid", function(req, res) {
+  console.log("project id, ", req.params.pid);
+  console.log("task id, ", req.params.tid);
+  console.log(req.body);
+
+  // update task in task model
+  Task.findByIdAndUpdate(req.params.tid, req.body, function(err, task) {
+    console.log(task);
+
+    // update task in project model
+    Project.update({_id: req.params.pid, "tasks._id": req.params.tid}, {$set: {"tasks.$.name": req.body.name}}, {new: true}, function(err, project) {
+      
+      console.log(project)
+
+      // update project in user model
+      User.update({_id: req.user._id, "projects._id": req.params.pid, "projects.tasks._id": req.params.tid}, {$set: {"projects.0.tasks.$.name": req.body.name}}, function(err, user) {
+        res.send("it worked?")
+      })
+
+    })
+
+  })
+
+
+});
+
+
+// User.update({_id: req.params.id, 'playlist._id': req.params.list}, {$set: {'playlist.$.playlist_name': req.body.playlist_name}}, function(err) {
+//   });
+
+
+
+// delete
+router.delete("/tasks/:pid/:tid", function(req, res) {
+  console.log("project id, ", req.params.pid);
+  console.log("task id, ", req.params.tid);
+
+  // delete task
+  Task.findByIdAndRemove(req.params.tid, function(err, data) {
+
+    // pull the task from the projects model
+    Project.update({_id: req.params.pid}, {$pull: {"tasks": {_id: req.params.tid}}}, function(err, data) {
+
+
+      // update the project in the users model
+      User.update({_id: req.user._id, "projects._id": req.params.pid}, {$pull: {"projects.$.tasks": {_id: req.params.tid}}}, function(err, data) {
+
+        res.send("deleted")
+      })
+    })
+  })
 })
 
 
