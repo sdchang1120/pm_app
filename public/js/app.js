@@ -12,6 +12,8 @@ app.directive('projectsDirective', function() {
 
 // PROJECTS CONTROLLER
 app.controller('ProjectsController', ['$http', '$scope', function($http, $scope) {
+  var userId = $scope.userId;
+  console.log('USER ID: ', userId);
 
   var ctrl = this;
 
@@ -50,6 +52,7 @@ app.controller('ProjectsController', ['$http', '$scope', function($http, $scope)
   this.updateProject = function(data) {
     console.log(data);
     console.log(data._id);
+    console.log('UID: ', userId);
     $http.put('/users/project/'+data._id, data).then(
       function(result) {
         console.log(result);
@@ -83,7 +86,10 @@ app.controller("MainController", ["$scope", "$http", function($scope, $http) {
 
   // listen for user-login event. when logged in, save user data to controller
   $scope.$on("user-login", function(eventObject, userData) {
-    console.log(userData);
+    console.log('MAINCTRL USER DATA: ', userData);
+
+    // sets userId as global variable
+    $scope.userId = userData._id;
 
     // save user data to controller
     controller.user = userData;
@@ -171,7 +177,7 @@ app.controller("LoginController", ["$scope", "$http", function($scope, $http){
         // success function
         function(response) {
           // console.log(response);
-          console.log(response.data); // user object
+          console.log('LOGIN USER DATA: ', response.data); // user object
 
           // emit user data to parent controller(s)
           $scope.$emit("user-login", response.data);

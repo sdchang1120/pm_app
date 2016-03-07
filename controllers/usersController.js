@@ -32,7 +32,7 @@ router.get('/projects', function(req, res) {
 
 // POST PROJECT ROUTE
 router.post('/postproject', function(req, res) {
-  console.log('REQ.BODY:', req.body);
+  console.log('REQ.BODY: ', req.body);
   Project.create(req.body, function(err, project) {
     res.send(project);
   })
