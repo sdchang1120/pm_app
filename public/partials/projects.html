@@ -11,7 +11,7 @@
 
 
 <ul>
-  <li ng-repeat="project in projectsCtrl.projects">
+  <li ng-repeat="project in projectsCtrl.projects" ng-click="projectsCtrl.thisProject(project)">
     {{project.name}}
     <button ng-click="editProject = !editProject">Edit</button>
     <div ng-show="editProject">
@@ -20,6 +20,9 @@
         <button>Update</button>
       </form>
       <button ng-click="projectsCtrl.deleteProject(project)">Delete</button>
+
+      <tasks-directive></tasks-directive>
+
     </div>
   </li>
 </ul>
@@ -31,3 +34,5 @@
   <input type="text" placeholder="Project Name" ng-model="projectsCtrl.newProject.name">
   <button>Add</button>
 </form> -->
+
+

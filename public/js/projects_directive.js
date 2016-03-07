@@ -1,5 +1,5 @@
 // PROJECTS DIRECTIVE
-var app = angular.module("projects-directive", []);
+var app = angular.module("projects-directive", ["tasks-directive"]);
 
 
 app.directive('projectsDirective', function() {
@@ -13,9 +13,17 @@ app.directive('projectsDirective', function() {
 
 
 app.controller("ProjectsController", ["$scope", "$http", function($scope, $http) {
+
   this.test = "project controller";
 
   var controller = this;
+
+
+  this.thisProject = function(project) {
+    // console.log(project);
+
+    $scope.$broadcast("project-data", project);
+  }
 
   // console.log($scope.mainCtrl.user.projects);
 

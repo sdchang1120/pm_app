@@ -1,4 +1,4 @@
-var app = angular.module("PMApp", ["projects-directive"]);
+var app = angular.module("PMApp", ["projects-directive", "tasks-directive"]);
 
 // END PROJECT STUFF
 
