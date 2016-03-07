@@ -1,3 +1,4 @@
+// CANNOT INCLUDE THIS IN APP.JS AS A DEPENDENCY. WHY?
 var app = angular.module('projects-directive', []);
 
 app.directive('projectsDirective', function() {
