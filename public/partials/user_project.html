@@ -2,7 +2,9 @@
 
 {{taskCtrl.project}}
 
+<b ng-click="taskCtrl.getTasks()"> Tasks: </b> 
 
-<form>
-	<input type="text">
+<h2>Add task</h2>
+<form ng-submit="taskCtrl.addTask()">
+	<input type="text" ng-model="taskCtrl.newTask.name">
 </form>
