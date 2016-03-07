@@ -17,7 +17,7 @@ app.controller('ProjectsController', ['$http', '$scope', function($http, $scope)
 
   var ctrl = this;
 
-  $http.get('/users/projects').then(
+  $http.get('/users/'+userId).then(
     function(result) {
       console.log('GET PROJECTS: ', result.data);
         ctrl.projects = result.data;
@@ -36,7 +36,8 @@ app.controller('ProjectsController', ['$http', '$scope', function($http, $scope)
   };
 
   this.addProject = function(data) {
-    $http.post('/users/postproject', data).then(
+
+    $http.post('/users/'+userId, data).then(
       function(result) {
         console.log('RESULT: ', result.data);
         // clears form
@@ -53,7 +54,7 @@ app.controller('ProjectsController', ['$http', '$scope', function($http, $scope)
     console.log(data);
     console.log(data._id);
     console.log('UID: ', userId);
-    $http.put('/users/project/'+data._id, data).then(
+    $http.put('/users/'+userId+'/'+data._id, data).then(
       function(result) {
         console.log(result);
       },

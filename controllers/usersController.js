@@ -19,30 +19,40 @@ router.get('/users', function(req, res) {
 
 })
 
-// =============
-// PROJECTS PAGE
-// =============
-
-// PROJECTS ROUTE
-router.get('/projects', function(req, res) {
-  Project.find({}, function(err, projects) {
-    res.send(projects);
-  })
-})
+// =======================================
+//            PROJECTS ROUTES
+// =======================================
 
 // POST PROJECT ROUTE
-router.post('/postproject', function(req, res) {
+router.post('/:uid', function(req, res) {
+  console.log('USER ID: ', req.params.uid);
   console.log('REQ.BODY: ', req.body);
+  User.findByIdAndUpdate(req.params.uid, {$push: {projects: req.body}}, {new: true}, function(err) {
+  });
   Project.create(req.body, function(err, project) {
     res.send(project);
   })
 });
 
+// SHOW USER'S PROJECTS
+router.get('/:uid', function(req, res) {
+  console.log('USER ID: ', req.params.uid);
+  // User.findById(req.params.uid, function(err, data) {
+  //   console.log('DATA: ', data);
+  //   res.send(data);
+  // });
+  Project.find({}, function(err, projects) {
+    res.send(projects);
+  })
+})
+
 // UPDATE PROJECT ROUTE
-router.put('/project/:id', function(req, res) {
+router.put('/:uid/:pid', function(req, res) {
   console.log(req.body);
-  console.log('PROJECT ID: ', req.params.id);
-  Project.findByIdAndUpdate(req.params.id, req.body, function() {
+  console.log('USER ID: ', req.params.uid);
+  console.log('PROJECT ID: ', req.params.pid);
+  // User.update({_id: req.params.uid, 'projects'})
+  Project.findByIdAndUpdate(req.params.pid, req.body, function() {
     res.send('updated');
   })
 })
@@ -54,6 +64,10 @@ router.delete('/project/:id', function(req, res) {
     res.send('deleted');
   })
 })
+
+// =======================================
+//          END PROJECTS ROUTES
+// =======================================
 
 router.post("/posttest", function(req, res) {
   console.log(req.body)
