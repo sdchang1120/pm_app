@@ -9,8 +9,11 @@ app.directive('projectsDirective', function() {
   }
 });
 
-app.controller('ProjectsController', function() {
-  this.hello = 'hello';
+app.controller('ProjectsController', ['$http', function($http) {
+  this.name = null;
+  this.addProject = function() {
+    $http.put()
+  }
 });
 
 
