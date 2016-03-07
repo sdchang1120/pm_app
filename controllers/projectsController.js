@@ -144,20 +144,6 @@ router.put("/tasks/:pid/:tid", function(req, res) {
 
 
       })
-      // console.log('PROJECTASDFJKL;', project)
-
-
-      // update project in user model
-      // User.update({_id: req.user._id, "projects._id": req.params.pid, "projects.tasks._id": req.params.tid}, {$set: {"projects.tasks.$.name": req.body.name}}, function(err, user) {
-      
-      // User.update({_id: req.user._id, "projects._id": req.params.pid, "projects.tasks._id": req.params.tid}, {$set: {"projects.tasks.$.name": req.body.name}}, function(err, user) {
-      //   console.log("USER ID: ", req.user._id);
-      //   console.log("PROJECT ID: ", req.params.pid);
-      //   console.log("TASK ID: ", req.params.tid);
-      //   console.log(err)
-      //   res.send(user);
-
-      // });
 
     });
 
@@ -192,10 +178,23 @@ router.delete("/tasks/:pid/:tid", function(req, res) {
 
 
 
-
-
-
-
-
-
 module.exports = router;
+
+
+
+
+// SCRAP
+      // console.log('PROJECTASDFJKL;', project)
+
+
+      // update project in user model
+      // User.update({_id: req.user._id, "projects._id": req.params.pid, "projects.tasks._id": req.params.tid}, {$set: {"projects.tasks.$.name": req.body.name}}, function(err, user) {
+      
+      // User.update({_id: req.user._id, "projects._id": req.params.pid, "projects.tasks._id": req.params.tid}, {$set: {"projects.tasks.$.name": req.body.name}}, function(err, user) {
+      //   console.log("USER ID: ", req.user._id);
+      //   console.log("PROJECT ID: ", req.params.pid);
+      //   console.log("TASK ID: ", req.params.tid);
+      //   console.log(err)
+      //   res.send(user);
+
+      // });
