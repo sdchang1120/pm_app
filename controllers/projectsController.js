@@ -40,6 +40,23 @@ router.get("/get", function(req, res) {
 })
 
 
+router.put("/project/:project_id", function(req, res) {
+  console.log('project put req.body, ', req.body);
+  console.log('PROJECT PUT REQ.BODY.NAME: ', req.body.name);
+
+  Project.findByIdAndUpdate(req.params.project_id, req.body, function(err, project) {
+
+    User.update({_id: req.user._id, "projects._id": req.params.project_id}, {$set: {"projects.$.name": req.body.name}}, function(err, user) {
+      console.log('PROJECT PUT USER: ', user);
+
+      res.send(user);
+    })
+  })
+});
+
+
+
+
 
 
 

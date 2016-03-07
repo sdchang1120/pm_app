@@ -40,7 +40,7 @@ app.controller("ProjectsController", ["$scope", "$http", function($scope, $http)
   this.addProject = function(data) {
     console.log('addProject, ', data);
 
-    // post new project
+    // post request to server
     $http({
       method: "POST",
       url: "/projects/new",
@@ -58,6 +58,44 @@ app.controller("ProjectsController", ["$scope", "$http", function($scope, $http)
 
 
   // update project
+  this.updateProject = function(project) {
+    console.log(project);
+    // var projectId = project._id;
+
+    // put request to server
+    $http({
+      method: "PUT",
+      url: "/projects/project/" + project._id,
+      data: project
+      }).then(
+        function(response) {
+          console.log(response);
+          controller.getProjects();
+
+        }, function(error) {
+          console.log(error)
+
+      })
+
+  }
+
+
+  // delete project
+  this.deleteProject = function(project) {
+    console.log(project);
+
+    // delete request to server
+    $http({
+      method: "DELETE",
+      url: "/projects/" + project._id
+    }).then(then(
+      function(response) {
+        console.log(response)
+
+      }, function(error) {
+        console.log(error)
+      }))
+  }
 
 
 
