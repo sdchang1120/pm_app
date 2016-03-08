@@ -53,9 +53,47 @@ app.controller("StatsController", ["$http", "$scope", function($http, $scope) {
     } // closes i loop 
 
     console.log("completed: ", completed);
-    console.log("remaining: ", remaining)
+    console.log("remaining: ", remaining);
+
+    // controller.renderChart();
+
+    // var chart = document.getElementById("userStats");
+    // console.log(chart)
+
+    var data = [
+      {
+        value: completed,
+        color: "blue",
+        label: "completed"
+      },
+      {
+        value: remaining,
+        color: "red",
+        label: "remaining"
+      }
+    ]
+
+    var context = document.getElementById("userStats").getContext("2d");
+    var userChart = new Chart(context).Doughnut(data);
 
   }; // closes parseUserStats function
+
+  this.renderChart = function() {
+
+    var context = document.getElementById("userStats").getContext("2d");
+    var userChart = new Chart(context).Doughnut(data);
+
+    var data = [
+      {
+        value: completed,
+        color: "blue"
+      },
+      {
+        value: remaining,
+        color: "red"
+      }
+    ]
+  }
 
   $http({
     method: "GET",
