@@ -1,3 +1,9 @@
-{{statsCtrl.test}}
-
 <canvas id="userStats" width="400" height="400"></canvas>
+
+<!-- <button ng-click="statsCtrl.getUser()">sdfdf</button> -->
+
+<!-- orderBy: '-created_at' | limitTo: 1" -->
+
+<p ng-repeat="activity in statsCtrl.userActivityArray | orderBy: '-date' | limitTo: 5">
+{{mainCtrl.user.username}} {{activity.message}} on {{activity.date | date: 'short' : timezone}} 
+</p>

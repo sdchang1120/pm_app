@@ -119,8 +119,12 @@ router.put("/userlog/", function(req, res) {
 
 
 // get user
-router.get("/getuserinfo", function(req, res) {
-  res.json(req.user);
+router.get("/getuserlog", function(req, res) {
+  User.findById(req.user, function(err, user) {
+    console.log(user);
+    res.json(user);
+  })
+
 })
 
 
