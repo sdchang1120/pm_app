@@ -157,6 +157,14 @@ app.controller("TaskController", ["$http", "$scope", "updateLog", function($http
 
   }
 
+  this.undoComplete = function(task) {
+    console.log(task); // confirm task
+    task.completed = false; // toggle completed value false
+
+    // save the change to the database
+    controller.updateTask(task);
+  }
+
 }]);
 
 

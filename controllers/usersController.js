@@ -4,11 +4,11 @@ var passport = require("passport");
 var User = require("../models/users.js");
 var Project = require('../models/projects.js');
 
-// router.get('/json', function(req, res) {
-//   User.find({}, function(err, users) {
-//     res.json(users);
-//   })
-// })
+router.get('/json', function(req, res) {
+  User.find({}, function(err, users) {
+    res.json(users);
+  })
+})
 
 // AUTHENTICATION ROUTES
 

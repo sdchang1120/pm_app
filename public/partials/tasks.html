@@ -10,9 +10,13 @@
 		</tr>
 		<tr ng-repeat="task in taskCtrl.project.tasks">
 			<td>
-				<input type="checkbox" ng-model="task.completed" ng-click="taskCtrl.updateTask(task)">
-				{{task.completed}}
-				<span>{{task.name}}<span>
+				<!-- {{task.completed}} -->
+
+				<!-- show if the task is NOT completed -->
+				<!-- condition must be on input AND task span because both are created for every task object in the array -->
+				<input ng-if="!task.completed" type="checkbox" ng-model="task.completed" ng-click="taskCtrl.updateTask(task)">
+				<span ng-if="!task.completed">{{task.name}}<span>
+
 				<form ng-submit="taskCtrl.updateTask(task)">
 			  	<input type="text" ng-model="task.name">
 			    <button>Update</button>
@@ -28,11 +32,15 @@
 		<tr>
 			<td>Completed</td>
 		</tr>
-		<tr>
-			<td>blah</td>
+
+		<tr ng-repeat="task in taskCtrl.project.tasks">
+			<td>
+				<!-- show if the task is completed -->
+				<span ng-if="task.completed">{{task.name}}<span> <button ng-click="taskCtrl.undoComplete(task)">Undo</button>
+			</td>
 		</tr>
 		<tr>
-			<td>blah</td>
+			<!-- <td>blah</td> -->
 		</tr>
 
 	</table>
