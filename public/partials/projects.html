@@ -11,7 +11,9 @@
 
 
   <li class="project-box" ng-repeat="project in projectsCtrl.projects" ng-click="projectsCtrl.thisProject(project, $index)">
-    <h3>{{project.name}}</h3>
+
+
+
     <button ng-click="editProject = !editProject">Edit</button>
     <div ng-show="editProject">
       <form ng-submit="projectsCtrl.updateProject(project)">
@@ -20,10 +22,16 @@
       </form>
       <button ng-click="projectsCtrl.deleteProject(project)">Delete</button>
 
+
+
+
+
       <tasks-directive></tasks-directive>
 
     </div>
   </li>
+
+  <!-- <tasks-directive></tasks-directive> -->
 
 
 <!-- <button ng-click="addProject = !addProject">Add Project</button>
