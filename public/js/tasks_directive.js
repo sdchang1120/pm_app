@@ -93,6 +93,7 @@ app.controller("TaskController", ["$http", "$scope", "updateLog", function($http
     var taskId = controller.project.tasks[index]._id;
     // console.log(taskId);
 
+    // delete request to server
     $http({
       method: "DELETE",
       url: "/projects/tasks/" + controller.projId + "/" + taskId
@@ -134,7 +135,7 @@ app.controller("TaskController", ["$http", "$scope", "updateLog", function($http
     // console.log(controller.formData)
     // console.log("task?: ", task.name)
 
-
+    // put request to server
     $http({
       method: "PUT",
       url: "/projects/tasks/" + controller.projId + "/" + taskId,
