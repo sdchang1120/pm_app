@@ -1,4 +1,4 @@
-{{projectsCtrl.test}}
+<!-- {{projectsCtrl.test}} -->
 
 <form ng-submit="projectsCtrl.addProject(projectsCtrl.newProject)">
   <h3>Add Project</h3>
@@ -10,9 +10,8 @@
 
 
 
-<ul>
-  <li ng-repeat="project in projectsCtrl.projects" ng-click="projectsCtrl.thisProject(project, $index)">
-    <span>{{project.name}}</span>
+  <li class="project-box" ng-repeat="project in projectsCtrl.projects" ng-click="projectsCtrl.thisProject(project, $index)">
+    <h3>{{project.name}}</h3>
     <button ng-click="editProject = !editProject">Edit</button>
     <div ng-show="editProject">
       <form ng-submit="projectsCtrl.updateProject(project)">
@@ -25,11 +24,10 @@
 
     </div>
   </li>
-</ul>
 
-<button ng-click="addProject = !addProject">Add Project</button>
+<!-- <button ng-click="addProject = !addProject">Add Project</button>
 
-<!-- <form ng-if="addProject" ng-submit="projectsCtrl.addProject(projectsCtrl.newProject)">
+<form ng-if="addProject" ng-submit="projectsCtrl.addProject(projectsCtrl.newProject)">
   <h3>Add Project</h3>
   <input type="text" placeholder="Project Name" ng-model="projectsCtrl.newProject.name">
   <button>Add</button>

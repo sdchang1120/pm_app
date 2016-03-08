@@ -1,6 +1,6 @@
 <br><br>
 <hr>
-{{taskCtrl.test}}
+<!-- {{taskCtrl.test}} -->
 
 <h2>{{taskCtrl.project.name}}</h2>
 
@@ -11,18 +11,19 @@
 	<button ng-click="taskCtrl.deleteTask(task)">Delete</button>
 
 
-	<b>Update:</b><br>
+	<!-- <b>Update:</b><br> -->
 
 
 	<form ng-submit="taskCtrl.updateTask(task)">
-    	<input type="text" ng-model="task.name">
-        <button>Update</button>
-     </form>
+  	<input type="text" ng-model="task.name">
+    <button>Update</button>
+   </form>
 
 </ul>
 
 
-<h2>Add task</h2>
+<!-- <h2>Add task</h2> -->
 <form ng-submit="taskCtrl.addTask()">
 	<input type="text" ng-model="taskCtrl.newTask.name">
+	<button>Add Task</button>
 </form>

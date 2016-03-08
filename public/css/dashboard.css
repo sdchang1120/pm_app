@@ -4,7 +4,7 @@ body {
 }
 
 nav {
-  background: #eaeaea;
+  background: #28D0DC;
   padding: 10px;
 }
 
@@ -16,13 +16,13 @@ nav li {
 nav li a {
   text-transform: uppercase;
   text-decoration: none;
-  color: grey;
+  color: #eaeaea;
 }
 
 li a:hover {
-  color: black;
+  color: white;
   padding-bottom: 13px;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid white;
 }
 
 .right-nav-box {

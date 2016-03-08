@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background: #f7f9fa;
+  color: black;
+}
+
+.project-box {
+  display: inline-block;
+  width: 200px;
+  background: #eaeaea;
+  margin: 10px;
+  vertical-align: top;
+  padding: 10px;
+}
+
+a {
+  color: white;
+}
