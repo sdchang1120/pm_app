@@ -106,6 +106,9 @@ app.controller("TaskController", ["$http", "$scope", function($http, $scope) {
   //   name: task.name
   // };
 
+  // toggle checkbox (complete boolean)
+  this.complete = null;
+
   // update task
   this.updateTask = function(task) {
     // console.log(task);
@@ -129,10 +132,8 @@ app.controller("TaskController", ["$http", "$scope", function($http, $scope) {
           console.log(error);
     })
 
-
-
-
   }
+
 
 }]);
 
@@ -165,5 +166,22 @@ app.controller("TaskController", ["$http", "$scope", function($http, $scope) {
 
   //   })
 
+
+  // }
+
+
+  // // toggle checkbox (complete boolean)
+
+
+
+  // this.taskComplete = function(task) {
+  //   console.log(task);
+
+  //   var index = controller.project.tasks.indexOf(task);
+  //   var taskId = controller.project.tasks[index]._id;
+
+  //   console.log(taskId);
+
+  //   console.log(controller.project)
 
   // }

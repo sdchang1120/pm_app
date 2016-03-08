@@ -10,7 +10,8 @@ var userSchema = mongoose.Schema({
   last_name: String,
   email: String,
   password: {type: String, required: true},
-  projects: [projectSchema]
+  projects: [projectSchema],
+  activity: []
 })
 
 // hasing password

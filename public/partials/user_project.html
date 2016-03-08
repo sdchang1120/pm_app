@@ -7,6 +7,12 @@
 <b ng-click="taskCtrl.getTasks()"> Tasks: </b>
 
 <ul ng-repeat="task in taskCtrl.project.tasks">
+
+
+	<input type="checkbox" ng-model="task.completed" ng-click="taskCtrl.updateTask(task)">
+
+	{{task.completed}}
+
 	<li>{{task.name}}</li>
 	<button ng-click="taskCtrl.deleteTask(task)">Delete</button>
 
