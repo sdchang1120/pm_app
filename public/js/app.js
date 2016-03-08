@@ -1,6 +1,4 @@
-var app = angular.module("PMApp", ["projects-directive", "tasks-directive"]);
-
-// END PROJECT STUFF
+var app = angular.module("PMApp", ["projects-directive", "tasks-directive", "stats-directive"]);
 
 
 // MAIN CONTROLLER
@@ -41,7 +39,22 @@ app.controller("MainController", ["$scope", "$http", function($scope, $http) {
     });
   }
 
+  this.showStats = false;
+
+  // show stats
+  this.showStatsFn = function() {
+    controller.showStats = !controller.showStats;
+
+    // console.log(controller.showStats);
+
+    // event for stats controller to listen for
+    $scope.$broadcast("show-stats", {message: "test"});
+  };
+
 }]);
+
+
+
 
 
 // SIGNUP CONTROLLER

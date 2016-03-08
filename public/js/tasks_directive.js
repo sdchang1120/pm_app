@@ -17,11 +17,11 @@ app.controller("TaskController", ["$http", "$scope", function($http, $scope) {
   this.test = "task controller";
 
   // get project object
-  // $scope.$on("project-data", function(eventObject, project) {
-  //   // console.log("task controller, ", project);
-  //   controller.project = project;
-  //   controller.projId = project._id;
-  // });
+  $scope.$on("project-data", function(eventObject, project) {
+    // console.log("task controller, ", project);
+    controller.project = project;
+    controller.projId = project._id;
+  });
 
   // ==============================
   //           GET TASKS
