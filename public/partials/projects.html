@@ -12,8 +12,9 @@
 
   <li class="project-box" ng-repeat="project in projectsCtrl.projects" ng-click="projectsCtrl.thisProject(project, $index)">
     <h3>{{project.name}}</h3>
-    <button ng-click="editProject = !editProject">Edit</button>
-    <div ng-show="editProject">
+    <p ng-repeat="blah in project.tasks">{{blah.name}}</p>
+    <button ng-click="viewProject = !viewProject">View</button>
+    <div ng-show="viewProject">
       <form ng-submit="projectsCtrl.updateProject(project)">
         <input type="text" ng-model="project.name"><br>
         <button>Update</button>

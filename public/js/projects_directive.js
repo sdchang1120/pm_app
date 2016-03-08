@@ -22,7 +22,7 @@ app.controller("ProjectsController", ["$scope", "$http", function($scope, $http)
   this.thisProject = function(project) {
     // console.log(project);
 
-    // $scope.$broadcast("project-data", project);
+    $scope.$broadcast("project-data", project);
   }
 
   // console.log($scope.mainCtrl.user.projects);
