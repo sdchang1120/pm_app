@@ -10,6 +10,8 @@
 </head>
 <body ng-controller="MainController as mainCtrl">
 
+	<!-- <div ng-if="mainCtrl.isAuthenticated" class="sidebar" ng-include=" 'partials/sidebar.html' "></div> -->
+
 	<!-- include dashboard partial -->
 	<header ng-if="mainCtrl.isAuthenticated" ng-include=" 'partials/dashboard.html' "></header>
 

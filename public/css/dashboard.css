@@ -13,13 +13,13 @@ nav li {
   margin: 5px;
 }
 
-nav li a {
+.dashboard nav li a {
   text-transform: uppercase;
   text-decoration: none;
   color: #eaeaea;
 }
 
-li a:hover {
+.dashboard li a:hover {
   color: white;
   padding-bottom: 13px;
   border-bottom: 2px solid white;

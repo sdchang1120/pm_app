@@ -1,9 +1,15 @@
+@font-face {
+  font-family: 'Open Sans';
+  src: url('/font/OpenSans-Light.ttf');
+}
+
 body {
   margin: 0;
   padding: 0;
   text-align: center;
   background: #f7f9fa;
   color: black;
+  font-family: 'Open Sans';
 }
 
 .project-box {
@@ -17,4 +23,13 @@ body {
 
 a {
   color: white;
+  text-decoration: none;
+}
+
+.sidebar {
+  background: #4CDAE4;
+  height: 100%;
+  width: 100px;
+  position: absolute;
+  left: 0;
 }
