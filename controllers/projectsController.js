@@ -126,7 +126,7 @@ router.put("/tasks/:pid/:tid", function(req, res) {
     // console.log(task);
 
     // update task in project model
-    Project.update({_id: req.params.pid, "tasks._id": req.params.tid}, {$set: {"tasks.$.name": req.body.name}}, {new: true}, function(err, data) {
+    Project.update({_id: req.params.pid, "tasks._id": req.params.tid}, {$set: {"tasks.$": req.body}}, {new: true}, function(err, data) {
 
       // grab project
       Project.findById(req.params.pid, function(err, project) {
@@ -141,14 +141,11 @@ router.put("/tasks/:pid/:tid", function(req, res) {
           res.send(user);
         })
 
-
-
       })
 
     });
 
   });
-
 
 });
 

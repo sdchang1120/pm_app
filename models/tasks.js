@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var taskSchema = mongoose.Schema({
   name: String,
   deadline: {type: Date},
-  completed: false
+  completed: {type: Boolean, default: false} // default to false
 })
 
 // EXPORT USER

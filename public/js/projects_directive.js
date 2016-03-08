@@ -20,7 +20,7 @@ app.controller("ProjectsController", ["$scope", "$http", function($scope, $http)
 
 
   this.thisProject = function(project) {
-    // console.log(project);
+    console.log(project);
 
     $scope.$broadcast("project-data", project);
   }

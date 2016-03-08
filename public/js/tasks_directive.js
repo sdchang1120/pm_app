@@ -90,10 +90,11 @@ app.controller("TaskController", ["$http", "$scope", function($http, $scope) {
       method: "DELETE",
       url: "/projects/tasks/" + controller.projId + "/" + taskId
     }).then(
-    function(response) {
-      console.log(response)
-    }, function(error) {
-      console.log(error)
+      function(response) {
+        console.log(response)
+
+      }, function(error) {
+        console.log(error)
     });
   }
 
