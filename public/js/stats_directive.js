@@ -98,6 +98,29 @@ app.controller("StatsController", ["$http", "$scope", function($http, $scope) {
 
   });
 
+  // store user activities
+  this.userActivityArray = null;
+
+  // get all user info
+  // this.getUser = function() {
+    $http({
+      method: "GET",
+      url: "/users/getuserlog"
+      }).then(
+        // success function
+        function(response) {
+          // console.log(response.data);
+          controller.userActivityArray = response.data.activity;
+          // console.log(controller.userActivityArray)
+
+        // error function
+        }, function(error) {
+          console.log(error);
+    });
+
+    
+
+  // }
 
 
   // $scope.$on("show-stats", function(eventObject, data) {

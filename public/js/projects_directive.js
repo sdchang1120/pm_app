@@ -69,7 +69,7 @@ app.controller("ProjectsController", ["$scope", "$http", "updateLog", function($
         console.log(response.data);
 
         // update the user log
-        var updateData = {message: "user has added a new project: " + project.name};
+        var updateData = {message: "added a new project: " + project.name};
         updateLog.method(updateData)
 
         // refresh projects
@@ -99,7 +99,7 @@ app.controller("ProjectsController", ["$scope", "$http", "updateLog", function($
           console.log(response);
 
           // update the user log
-          var updateData = {message: "user has updated a project: " + project.name};
+          var updateData = {message: "updated a project: " + project.name};
           updateLog.method(updateData);
 
           // refresh projects
@@ -129,7 +129,7 @@ app.controller("ProjectsController", ["$scope", "$http", "updateLog", function($
         console.log(response);
 
         // update the user log
-        var updateData = {message: "user has deleted a project: " + project.name};
+        var updateData = {message: "deleted a project: " + project.name};
         updateLog.method(updateData);
 
         // refresh projects

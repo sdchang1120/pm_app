@@ -1,3 +1,6 @@
-{{statsCtrl.test}}
-
 <canvas id="userStats" width="400" height="400"></canvas>
+
+
+<p ng-repeat="activity in statsCtrl.userActivityArray | orderBy: '-date' | limitTo: 5">
+{{mainCtrl.user.username}} {{activity.message}} on {{activity.date | date: 'short' : timezone}} 
+</p>

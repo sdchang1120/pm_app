@@ -68,7 +68,7 @@ app.controller("TaskController", ["$http", "$scope", "updateLog", function($http
         console.log(response);
 
         // update the user log
-        var updateData = {message: "user has added a new task (" + controller.newTask.name + ") to " + controller.project.name};
+        var updateData = {message: "added a new task (" + controller.newTask.name + ") to " + controller.project.name};
         updateLog.method(updateData);
 
         // refresh tasks
@@ -101,7 +101,7 @@ app.controller("TaskController", ["$http", "$scope", "updateLog", function($http
         console.log(response);
 
         // update user log
-        var updateData = {message: "user has deleted a task (" + task.name + ") from " + controller.project.name};
+        var updateData = {message: "deleted a task (" + task.name + ") from " + controller.project.name};
         updateLog.method(updateData);
 
         // refresh tasks
@@ -145,7 +145,7 @@ app.controller("TaskController", ["$http", "$scope", "updateLog", function($http
           console.log(response);
 
           // update user log
-          var updateData = {message: "user has updated a task in " + controller.project.name};
+          var updateData = {message: "updated a task in " + controller.project.name};
           updateLog.method(updateData);
 
 
