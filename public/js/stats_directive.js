@@ -27,7 +27,7 @@ app.controller("StatsController", ["$http", "$scope", function($http, $scope) {
   var completed = 0;
   var remaining = 0;
 
-  // function to parse through the users stats
+  // function to parse through the users stats and render the chart
   this.parseUserStats = function(userProjects) {
 
     // iterate through each project in the array
@@ -52,14 +52,11 @@ app.controller("StatsController", ["$http", "$scope", function($http, $scope) {
 
     } // closes i loop 
 
+    // confirming variables
     console.log("completed: ", completed);
     console.log("remaining: ", remaining);
 
-    // controller.renderChart();
-
-    // var chart = document.getElementById("userStats");
-    // console.log(chart)
-
+    // data for the chart-- uses the parsed info
     var data = [
       {
         value: completed,
@@ -73,49 +70,35 @@ app.controller("StatsController", ["$http", "$scope", function($http, $scope) {
       }
     ]
 
+    // grab and fill the chart
     var context = document.getElementById("userStats").getContext("2d");
     var userChart = new Chart(context).Doughnut(data);
 
   }; // closes parseUserStats function
 
-  this.renderChart = function() {
 
-    var context = document.getElementById("userStats").getContext("2d");
-    var userChart = new Chart(context).Doughnut(data);
-
-    var data = [
-      {
-        value: completed,
-        color: "blue"
-      },
-      {
-        value: remaining,
-        color: "red"
-      }
-    ]
-  }
-
+  // get the user's project info
   $http({
     method: "GET",
     url: "/projects/get"
     }).then(
+      // success function
       function(response) {
         // console.log(response.data);
         userProjects = response.data;
+        // console.log(userProjects); // confirm variable
 
-        console.log(userProjects);
-
+        // parse user stats with the received data
         controller.parseUserStats(userProjects)
 
+
+      // error function
       }, function(error) {
         console.log(error);
+
   });
 
 
-
-
-
-  
 
   // $scope.$on("show-stats", function(eventObject, data) {
   //   console.log(eventObject);

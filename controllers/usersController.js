@@ -15,9 +15,9 @@ router.get('/json', function(req, res) {
   })
 })
 
-router.get('/users', function(req, res) {
+// router.get('/users', function(req, res) {
 
-})
+// })
 
 // =======================================
 //            PROJECTS ROUTES
@@ -69,10 +69,10 @@ router.get('/users', function(req, res) {
 //          END PROJECTS ROUTES
 // =======================================
 
-router.post("/posttest", function(req, res) {
-  // console.log(req.body)
-    res.send(req.body);
-});
+// router.post("/posttest", function(req, res) {
+//   // console.log(req.body)
+//     res.send(req.body);
+// });
 
 // SIGNUP-- create a new account
 router.post("/signup", passport.authenticate("local-signup"), function(req, res) {
@@ -115,6 +115,12 @@ router.put("/userlog/", function(req, res) {
     })
   })
 
+})
+
+
+// get user
+router.get("/getuserinfo", function(req, res) {
+  res.json(req.user);
 })
 
 

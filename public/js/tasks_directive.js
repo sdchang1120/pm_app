@@ -152,12 +152,13 @@ app.controller("TaskController", ["$http", "$scope", "updateLog", function($http
         // error function
         }, function(error) {
           console.log(error);
-    })
+    });
 
   }
 
-
 }]);
+
+
 
 
 // SCRAP
