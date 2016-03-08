@@ -11,7 +11,7 @@ app.controller("MainController", ["$scope", "$http", function($scope, $http) {
 
   // listen for user-login event. when logged in, save user data to controller
   $scope.$on("user-login", function(eventObject, userData) {
-    console.log('MAINCTRL USER DATA: ', userData);
+    // console.log('MAINCTRL USER DATA: ', userData);
 
     // sets userId as global variable
     $scope.userId = userData._id;
@@ -58,7 +58,7 @@ app.controller("SignupController", ["$scope", "$http", function($scope, $http) {
 
   this.signup = function() {
 
-    console.log(this.credentials); // confirms object returns
+    // console.log(this.credentials); // confirms object returns
 
     $http.post('/users/signup', this.credentials).then(
         // success function
@@ -92,7 +92,7 @@ app.controller("LoginController", ["$scope", "$http", function($scope, $http){
   }
 
   this.login = function() {
-    console.log(this.credentials); // confirms object returns
+    // console.log(this.credentials); // confirms object returns
 
     $http({
       method: "POST",
@@ -102,7 +102,7 @@ app.controller("LoginController", ["$scope", "$http", function($scope, $http){
         // success function
         function(response) {
           // console.log(response);
-          console.log('LOGIN USER DATA: ', response.data); // user object
+          // console.log('LOGIN USER DATA: ', response.data); // user object
 
           // emit user data to parent controller(s)
           $scope.$emit("user-login", response.data);

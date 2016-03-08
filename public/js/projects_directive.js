@@ -19,20 +19,8 @@ app.controller("ProjectsController", ["$scope", "$http", function($scope, $http)
   var controller = this;
 
 
-  this.thisProject = function(project, index) {
-    console.log('THISPROJECT(project): ', project);
-    console.log('THISPROJECT(index): ', index);
-    $http.get('/projects/get').then(
-      function(result) {
-        console.log('THISPROJECT RESULT: ', result.data);
-      },
-      function(err) {
-        console.log(err);
-      }
-    )
-
-
-
+  this.thisProject = function(project) {
+    // console.log(project);
 
     $scope.$broadcast("project-data", project);
   }
@@ -46,7 +34,7 @@ app.controller("ProjectsController", ["$scope", "$http", function($scope, $http)
     url: "/projects/get"
     }).then(
       function(response) {
-        console.log(response.data);
+        // console.log(response.data);
         controller.projects = response.data;
 
       }, function(error) {
@@ -58,7 +46,7 @@ app.controller("ProjectsController", ["$scope", "$http", function($scope, $http)
 
   // add a new project
   this.addProject = function(data) {
-    console.log('addProject, ', data);
+    // console.log('addProject, ', data);
 
     // post request to server
     $http({
@@ -79,7 +67,7 @@ app.controller("ProjectsController", ["$scope", "$http", function($scope, $http)
 
   // update project
   this.updateProject = function(project) {
-    console.log(project);
+    // console.log(project);
     // var projectId = project._id;
 
     // put request to server
@@ -102,7 +90,7 @@ app.controller("ProjectsController", ["$scope", "$http", function($scope, $http)
 
   // delete project
   this.deleteProject = function(project) {
-    console.log(project);
+    // console.log(project);
 
     // delete request to server
     $http({

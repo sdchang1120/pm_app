@@ -18,7 +18,7 @@ app.controller("TaskController", ["$http", "$scope", function($http, $scope) {
 
   // get project object
   $scope.$on("project-data", function(eventObject, project) {
-    console.log("task controller, ", project);
+    // console.log("task controller, ", project);
     controller.project = project;
     controller.projId = project._id;
   });
@@ -49,7 +49,7 @@ app.controller("TaskController", ["$http", "$scope", function($http, $scope) {
   }
 
   this.addTask = function() {
-    console.log("PROJECT ID", controller.projId)
+    // console.log("PROJECT ID", controller.projId)
     $http({
     method: "POST",
     url: "/projects/tasks/" + controller.projId,
@@ -70,11 +70,11 @@ app.controller("TaskController", ["$http", "$scope", function($http, $scope) {
 
   // delete an existing task
   this.deleteTask = function(task) {
-    console.log("delete ", task);
+    // console.log("delete ", task);
     var index = controller.project.tasks.indexOf(task);
-    console.log(index);
+    // console.log(index);
     var taskId = controller.project.tasks[index]._id;
-    console.log(taskId);
+    // console.log(taskId);
 
     $http({
       method: "DELETE",
@@ -93,14 +93,14 @@ app.controller("TaskController", ["$http", "$scope", function($http, $scope) {
 
   // update task
   this.updateTask = function(task) {
-    console.log(task);
+    // console.log(task);
 
     var index = controller.project.tasks.indexOf(task);
-    console.log("index: ", index);
+    // console.log("index: ", index);
     var taskId = controller.project.tasks[index]._id;
-    console.log("taskId: ", taskId);
+    // console.log("taskId: ", taskId);
     // console.log(controller.formData)
-    console.log("task?: ", task.name)
+    // console.log("task?: ", task.name)
 
 
     $http({

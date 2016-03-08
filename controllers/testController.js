@@ -10,8 +10,8 @@ router.get("/", function(req, res) {
 })
 
 router.get("/get", function(req, res) {
-  console.log('TEST GET REQ.USER', req.user);
-  console.log("/get");
+  // console.log('TEST GET REQ.USER', req.user);
+  // console.log("/get");
   res.send("get");
 })
 
