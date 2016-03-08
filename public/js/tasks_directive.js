@@ -10,19 +10,22 @@ app.directive("tasksDirective", [function() {
   }
 }]);
 
-
+// TASKS CONTROLLER
 app.controller("TaskController", ["$http", "$scope", function($http, $scope) {
 
   var controller = this;
   this.test = "task controller";
 
   // get project object
-  $scope.$on("project-data", function(eventObject, project) {
-    // console.log("task controller, ", project);
-    controller.project = project;
-    controller.projId = project._id;
-  });
+  // $scope.$on("project-data", function(eventObject, project) {
+  //   // console.log("task controller, ", project);
+  //   controller.project = project;
+  //   controller.projId = project._id;
+  // });
 
+  // ==============================
+  //           GET TASKS
+  // ==============================
 
   // fetch and load all the tasks
   this.getTasks = function() {
@@ -41,7 +44,11 @@ app.controller("TaskController", ["$http", "$scope", function($http, $scope) {
     });
   }
 
-  // this.getTasks();
+  this.getTasks();
+
+  // ==============================
+  //      CREATE/POST NEW TASK
+  // ==============================
 
   // create new task
   this.newTask = {
@@ -67,6 +74,9 @@ app.controller("TaskController", ["$http", "$scope", function($http, $scope) {
     });
   };
 
+  // ==============================
+  //          DELETE TASK
+  // ==============================
 
   // delete an existing task
   this.deleteTask = function(task) {
@@ -86,6 +96,10 @@ app.controller("TaskController", ["$http", "$scope", function($http, $scope) {
       console.log(error)
     });
   }
+
+  // ==============================
+  //          UPDATE TASK
+  // ==============================
 
   // this.formData = {
   //   name: task.name

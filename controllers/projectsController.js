@@ -41,13 +41,13 @@ router.get("/get", function(req, res) {
 })
 
 
-router.put("/project/:project_id", function(req, res) {
+router.put("/project/:pid", function(req, res) {
   // console.log('project put req.body, ', req.body);
   // console.log('PROJECT PUT REQ.BODY.NAME: ', req.body.name);
 
-  Project.findByIdAndUpdate(req.params.project_id, req.body, function(err, project) {
+  Project.findByIdAndUpdate(req.params.pid, req.body, function(err, project) {
 
-    User.update({_id: req.user._id, "projects._id": req.params.project_id}, {$set: {"projects.$.name": req.body.name}}, function(err, user) {
+    User.update({_id: req.user._id, "projects._id": req.params.pid}, {$set: {"projects.$.name": req.body.name}}, function(err, user) {
       // console.log('PROJECT PUT USER: ', user);
 
       res.send(user);
@@ -56,12 +56,12 @@ router.put("/project/:project_id", function(req, res) {
 });
 
 
-router.delete("/project/:project_id", function(req, res) {
+router.delete("/project/:pid", function(req, res) {
   // console.log('PROJECT DELETE REQ.BODY');
 
-  Project.findByIdAndRemove(req.params.project_id, function(err, data) {
+  Project.findByIdAndRemove(req.params.pid, function(err, data) {
 
-    User.update({_id: req.user._id}, {$pull: {"projects": {_id: req.params.project_id}}}, function(err, data) {
+    User.update({_id: req.user._id}, {$pull: {"projects": {_id: req.params.pid}}}, function(err, data) {
       res.send("deleted");
 
     })
@@ -117,8 +117,8 @@ router.put("/tasks/:pid/:tid", function(req, res) {
   // console.log("TASK ID: ", req.params.tid);
   // console.log(req.body);
 
-  var project_id = req.params.pid;
-  var task_id = req.params.tid;
+  var pid = req.params.pid;
+  var tid = req.params.tid;
   var task_data = req.body;
 
   // update task in task model
