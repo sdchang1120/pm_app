@@ -5,7 +5,7 @@ app.directive("tasksDirective", [function() {
   return {
     restrict: "E",
     controller: "TaskController",
-    templateUrl: "partials/user_project.html",
+    templateUrl: "partials/tasks.html",
     controllerAs: "taskCtrl"
   }
 }]);
