@@ -1,7 +1,7 @@
 // PROJECTS DIRECTIVE
 var app = angular.module("projects-directive", ["tasks-directive"]);
 
-
+// PROJECTS DIRECTIVE
 app.directive('projectsDirective', function() {
   return {
     restrict: 'E',
@@ -11,7 +11,7 @@ app.directive('projectsDirective', function() {
   }
 });
 
-
+// PROJECTS CONTORLLER
 app.controller("ProjectsController", ["$scope", "$http", function($scope, $http) {
 
   this.test = "project controller";
@@ -26,6 +26,10 @@ app.controller("ProjectsController", ["$scope", "$http", function($scope, $http)
   }
 
   // console.log($scope.mainCtrl.user.projects);
+
+  // ==============================
+  //      GET UERS'S PROJECTS
+  // ==============================
 
   // get all of user's projects
   this.getProjects = function() {
@@ -43,6 +47,10 @@ app.controller("ProjectsController", ["$scope", "$http", function($scope, $http)
   };
 
   this.getProjects();
+
+  // ==============================
+  //    CREATE/POST NEW PROJECT
+  // ==============================
 
   // add a new project
   this.addProject = function(data) {
@@ -64,6 +72,9 @@ app.controller("ProjectsController", ["$scope", "$http", function($scope, $http)
     });
   };
 
+  // ==============================
+  //         UPDATE PROJECT
+  // ==============================
 
   // update project
   this.updateProject = function(project) {
@@ -87,6 +98,9 @@ app.controller("ProjectsController", ["$scope", "$http", function($scope, $http)
 
   }
 
+  // ==============================
+  //         DELETE PROJECT
+  // ==============================
 
   // delete project
   this.deleteProject = function(project) {

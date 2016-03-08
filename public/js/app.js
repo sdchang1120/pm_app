@@ -3,7 +3,7 @@ var app = angular.module("PMApp", ["projects-directive", "tasks-directive"]);
 // END PROJECT STUFF
 
 
-
+// MAIN CONTROLLER
 app.controller("MainController", ["$scope", "$http", function($scope, $http) {
   var controller = this;
   this.user = {};
@@ -44,7 +44,7 @@ app.controller("MainController", ["$scope", "$http", function($scope, $http) {
 }]);
 
 
-
+// SIGNUP CONTROLLER
 app.controller("SignupController", ["$scope", "$http", function($scope, $http) {
 
   var controller = this;
@@ -80,7 +80,7 @@ app.controller("SignupController", ["$scope", "$http", function($scope, $http) {
 }]);
 
 
-
+// LOGIN CONTROLLER
 app.controller("LoginController", ["$scope", "$http", function($scope, $http){
 
   var controller = this;
@@ -118,10 +118,10 @@ app.controller("LoginController", ["$scope", "$http", function($scope, $http){
 }]);
 
 
-
-app.controller("AnotherController", ["$scope", "$http", function($scope, $http) {
-  this.test = "another controller";
-}]);
+// // ANOTHER CONTROLLER
+// app.controller("AnotherController", ["$scope", "$http", function($scope, $http) {
+//   this.test = "another controller";
+// }]);
 
 
 // 200 is authorized, 401 is error
