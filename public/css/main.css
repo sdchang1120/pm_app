@@ -3,6 +3,31 @@
   src: url('/font/OpenSans-Light.ttf');
 }
 
+@font-face {
+  font-family: 'Fontello';
+  src: url('/font/cart.ttf');
+}
+
+i {
+  font-family: 'Fontello';
+  font-style: normal;
+}
+
+/*
+800 - black trash
+801 - white trash
+802 - export
+803 - share
+804 - small x
+805 - plus
+806 - edit
+807 - big X
+*/
+
+#edit-icon {
+  cursor: pointer;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -15,7 +40,7 @@ body {
 .project-box {
   display: inline-block;
   width: 200px;
-  background: #eaeaea;
+  /*background: #eaeaea;*/
   margin: 10px;
   vertical-align: top;
   padding: 10px;
@@ -48,7 +73,7 @@ tr:nth-child(even) {
 }
 
 tr:nth-child(odd) {
-  background: rgba(250, 250, 250, 1);
+  background: rgba(253, 253, 253, 1);
   width: 100%;
   padding: 0;
   margin: 0;
@@ -60,8 +85,8 @@ tr:nth-child(1) {
   padding: 0;
   margin: 0;
   color: white;
+  text-align: center;
 }
-
 
 td {
   /*border: 3px solid rgba(0, 0, 0, 0.5);*/
@@ -71,4 +96,14 @@ td {
   width: 100%;
   margin: 0;
   /*width: calc(100%/tr.length);*/
+}
+
+table {
+  display: inline-block;
+}
+
+.todo-list, .completed-list {
+  width: 40%;
+  margin: auto;
+  margin: 20px;
 }

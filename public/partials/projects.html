@@ -1,39 +1,44 @@
 <!-- {{projectsCtrl.test}} -->
+<div ng-if="!projectsCtrl.hideProjects">
 
-<form ng-submit="projectsCtrl.addProject(projectsCtrl.newProject)">
-  <h3>Add Project</h3>
-  <input type="text" placeholder="Project Name" ng-model="projectsCtrl.newProject.name">
-  <button>Add</button>
-</form>
+  <form ng-submit="projectsCtrl.addProject(projectsCtrl.newProject)">
+    <h3>Add Project</h3>
+    <input type="text" placeholder="Project Name" ng-model="projectsCtrl.newProject.name">
+    <button>Add</button>
+  </form>
 
-  <li class="project-box" ng-repeat="project in projectsCtrl.projects" ng-click="projectsCtrl.thisProject(project, $index)">
 
+  <div class="project-box" ng-repeat="project in projectsCtrl.projects">
+    <!-- <table ng-click="projectsCtrl.thisProject(project, $index)"> -->
     <table>
       <tr>
-        <td>{{project.name}}</td>
+        <!-- PROJECT TITLE -->
+        <td>
+          <span ng-if="!showUpdate">{{project.name}} </span>
+          <form ng-if="showUpdate" ng-submit="projectsCtrl.updateProject(project)">
+            <input type="text" ng-model="project.name">
+          </form>
+          <i id="edit-icon" ng-click="showUpdate = !showUpdate">&#xE806;</i>
+        </td>
       </tr>
+      <!-- PROJECT TASKS -->
       <tr ng-repeat="blah in project.tasks">
         <td>{{blah.name}}</td>
       </tr>
     </table>
+    <button ng-click="projectsCtrl.thisProject(project, $index)">View Project</button>
+    <button ng-click="projectsCtrl.deleteProject(project)">Delete Project</button>
+  </div>
 
-    <!-- <h3>{{project.name}}</h3>
-    <p ng-repeat="blah in project.tasks">{{blah.name}}</p> -->
-    <button ng-click="viewProject = !viewProject">View</button>
-    <div ng-show="viewProject">
-      <form ng-submit="projectsCtrl.updateProject(project)">
-        <input type="text" ng-model="project.name"><br>
-        <button>Update</button>
-      </form>
-      <button ng-click="projectsCtrl.deleteProject(project)">Delete</button>
+    <!-- <button ng-click="projectsCtrl.deleteProject(project)">Delete Project</button><br><br> -->
 
-      <tasks-directive></tasks-directive>
+    <!-- <button ng-click="viewProject = !viewProject">View Project</button> -->
 
-    </div>
-  </li>
+  <!-- </li> -->
 
-  <!-- <tasks-directive></tasks-directive> -->
+</div>
 
+<div ng-show="projectsCtrl.hideProjects" ng-include=" 'partials/user_project.html' "></div>
 
 <!-- <button ng-click="addProject = !addProject">Add Project</button>
 

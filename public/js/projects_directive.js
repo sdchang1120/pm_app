@@ -21,6 +21,7 @@ app.controller("ProjectsController", ["$scope", "$http", "updateLog", function($
 
   this.thisProject = function(project) {
     console.log(project);
+    controller.hideProjects = true;
 
     $scope.$broadcast("project-data", project);
   }

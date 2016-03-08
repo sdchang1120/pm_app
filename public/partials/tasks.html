@@ -1,0 +1,48 @@
+<!-- <b ng-click="taskCtrl.getTasks()"> Tasks: </b> -->
+<!-- <ul ng-repeat="task in taskCtrl.project.tasks"> -->
+	<!-- <li>{{task.name}}</li> -->
+
+	<!-- TO-DO LIST -->
+	<table class="todo-list">
+
+		<tr>
+			<td>To Do</td>
+		</tr>
+		<tr ng-repeat="task in taskCtrl.project.tasks">
+			<td>
+				<input type="checkbox" ng-model="task.completed" ng-click="taskCtrl.updateTask(task)">
+				{{task.completed}}
+				<span>{{task.name}}<span>
+				<form ng-submit="taskCtrl.updateTask(task)">
+			  	<input type="text" ng-model="task.name">
+			    <button>Update</button>
+			   </form>
+				 <button ng-click="taskCtrl.deleteTask(task)">Delete</button>
+			</td>
+		</tr>
+
+	</table>
+
+	<table class="completed-list">
+
+		<tr>
+			<td>Completed</td>
+		</tr>
+		<tr>
+			<td>blah</td>
+		</tr>
+		<tr>
+			<td>blah</td>
+		</tr>
+
+	</table>
+
+	 <!-- <h2>Add task</h2> -->
+
+</ul>
+
+
+<!-- <form ng-submit="taskCtrl.addTask()">
+ <input type="text" ng-model="taskCtrl.newTask.name">
+ <button>Add Task</button>
+</form> -->
