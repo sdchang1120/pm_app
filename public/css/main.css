@@ -40,7 +40,7 @@ body {
 .project-box {
   display: inline-block;
   width: 200px;
-  background: #eaeaea;
+  /*background: #eaeaea;*/
   margin: 10px;
   vertical-align: top;
   padding: 10px;
@@ -87,7 +87,6 @@ tr:nth-child(1) {
   color: white;
 }
 
-
 td {
   /*border: 3px solid rgba(0, 0, 0, 0.5);*/
   /*border: solid 15px rgba(255,255,255,0.0);*/
@@ -96,4 +95,13 @@ td {
   width: 100%;
   margin: 0;
   /*width: calc(100%/tr.length);*/
+}
+
+table {
+  display: inline-block;
+}
+
+.todo-list, .completed-list {
+  width: 200px;
+  margin: 0 auto;
 }

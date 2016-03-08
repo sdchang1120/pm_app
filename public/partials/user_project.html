@@ -1,1 +1,11 @@
+<!-- PROJECT NAME // BROADCASTED FROM PROJECTS CONTROLLER -->
+<h2>{{taskCtrl.project.name}}</h2>
+<div ng-click="taskCtrl.getTasks()"></div>
+
 <tasks-directive></tasks-directive>
+
+<!-- ADD TASK -->
+<form ng-submit="taskCtrl.addTask()">
+ <input type="text" ng-model="taskCtrl.newTask.name">
+ <button>Add Task</button>
+</form>

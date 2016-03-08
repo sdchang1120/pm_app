@@ -1,25 +1,46 @@
-<h2>{{taskCtrl.project.name}}</h2>
+<!-- <b ng-click="taskCtrl.getTasks()"> Tasks: </b> -->
+<!-- <ul ng-repeat="task in taskCtrl.project.tasks"> -->
+	<!-- <li>{{task.name}}</li> -->
 
-<b ng-click="taskCtrl.getTasks()"> Tasks: </b>
+	<!-- TO-DO LIST -->
+	<table class="todo-list">
 
-<ul ng-repeat="task in taskCtrl.project.tasks">
-	<li>{{task.name}}</li>
-	<button ng-click="taskCtrl.deleteTask(task)">Delete</button>
+		<tr>
+			<td>To Do</td>
+		</tr>
+		<tr ng-repeat="task in taskCtrl.project.tasks">
+			<td>
+				<p>{{task.name}}<p>
+				<form ng-submit="taskCtrl.updateTask(task)">
+			  	<input type="text" ng-model="task.name">
+			    <button>Update</button>
+			   </form>
+				 <button ng-click="taskCtrl.deleteTask(task)">Delete</button>
+			</td>
+		</tr>
 
+	</table>
 
-	<!-- <b>Update:</b><br> -->
+	<table class="completed-list">
 
+		<tr>
+			<td>Completed</td>
+		</tr>
+		<tr>
+			<td>blah</td>
+		</tr>
+		<tr>
+			<td>blah</td>
+		</tr>
 
-	<form ng-submit="taskCtrl.updateTask(task)">
-  	<input type="text" ng-model="task.name">
-    <button>Update</button>
-   </form>
+	</table>
+
+	 <!-- <h2>Add task</h2> -->
 
 </ul>
 
 
-<!-- <h2>Add task</h2> -->
-<form ng-submit="taskCtrl.addTask()">
-	<input type="text" ng-model="taskCtrl.newTask.name">
-	<button>Add Task</button>
-</form>
+<!-- <form ng-submit="taskCtrl.addTask()">
+ <input type="text" ng-model="taskCtrl.newTask.name">
+ <button>Add Task</button>
+</form> -->

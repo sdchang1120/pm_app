@@ -7,8 +7,9 @@
     <button>Add</button>
   </form>
 
-  <li class="project-box" ng-repeat="project in projectsCtrl.projects" ng-click="projectsCtrl.thisProject(project, $index)">
 
+  <div class="project-box" ng-repeat="project in projectsCtrl.projects">
+    <!-- <table ng-click="projectsCtrl.thisProject(project, $index)"> -->
     <table>
       <tr>
         <!-- PROJECT TITLE -->
@@ -25,16 +26,19 @@
         <td>{{blah.name}}</td>
       </tr>
     </table>
+    <button ng-click="projectsCtrl.thisProject(project, $index)">View Project</button>
+    <button ng-click="projectsCtrl.deleteProject(project)">Delete Project</button>
+  </div>
 
-    <button ng-click="projectsCtrl.deleteProject(project)">Delete Project</button><br><br>
+    <!-- <button ng-click="projectsCtrl.deleteProject(project)">Delete Project</button><br><br> -->
 
     <!-- <button ng-click="viewProject = !viewProject">View Project</button> -->
 
-  </li>
+  <!-- </li> -->
 
 </div>
 
-<div ng-include=" 'partials/user_project.html' "></div>
+<div ng-show="projectsCtrl.hideProjects" ng-include=" 'partials/user_project.html' "></div>
 
 <!-- <button ng-click="addProject = !addProject">Add Project</button>
 
