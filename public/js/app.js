@@ -1,5 +1,29 @@
 var app = angular.module("PMApp", ["projects-directive", "tasks-directive", "stats-directive"]);
 
+// service-- function can be accessed across different controllers
+app.service("updateLog", ["$http", function($http) {
+  var updateLog = {};
+
+  updateLog.method = function(object) {
+
+    console.log(object)
+
+    $http({
+      method: "PUT",
+      url: "/users/userlog",
+      data: object
+      }).then(
+        function(response){
+          console.log(response);
+        }, function(error) {
+          console.log(error);
+    })
+
+  }
+
+  return updateLog;
+
+}]);
 
 // MAIN CONTROLLER
 app.controller("MainController", ["$scope", "$http", function($scope, $http) {
@@ -50,6 +74,16 @@ app.controller("MainController", ["$scope", "$http", function($scope, $http) {
     // event for stats controller to listen for
     $scope.$broadcast("show-stats", {message: "test"});
   };
+
+
+  this.testService = function() {
+    updateLog.method();
+    // console.log("hi")
+  }
+  // update user log
+  // this.updateLog = function() {
+  //   console.log("update log")
+  // }
 
 }]);
 

@@ -11,7 +11,10 @@ var userSchema = mongoose.Schema({
   email: String,
   password: {type: String, required: true},
   projects: [projectSchema],
-  activity: []
+  activity: [{
+    date: {type: Date, default: Date.now},
+    message: {type: String}
+  }]
 })
 
 // hasing password

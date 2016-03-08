@@ -99,6 +99,25 @@ router.post("/login", passport.authenticate("local-login"), function(req, res) {
 }); // end login route
 
 
+// update user log
+router.put("/userlog/", function(req, res) {
+  // // console.log(req.user);
+  // console.log(req.body)
+  // res.send("done")
+  var logMessage = req.body.message;
+
+  User.findById(req.user._id, function(err, user) {
+    // push the message into the user's activity array
+    user.activity.push({message: logMessage});
+    user.save(function(err, data) {
+
+      res.send(user);
+    })
+  })
+
+})
+
+
 
 
 // EXPORT

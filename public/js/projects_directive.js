@@ -12,7 +12,7 @@ app.directive('projectsDirective', function() {
 });
 
 // PROJECTS CONTORLLER
-app.controller("ProjectsController", ["$scope", "$http", function($scope, $http) {
+app.controller("ProjectsController", ["$scope", "$http", "updateLog", function($scope, $http, updateLog) {
 
   this.test = "project controller";
 
@@ -53,18 +53,25 @@ app.controller("ProjectsController", ["$scope", "$http", function($scope, $http)
   // ==============================
 
   // add a new project
-  this.addProject = function(data) {
+  this.addProject = function(project) {
     // console.log('addProject, ', data);
+
+    console.log("data ", project.name);
 
     // post request to server
     $http({
       method: "POST",
       url: "/projects/new",
-      data: data
+      data: project
       }).then(
       function(response){
         console.log(response.data);
 
+        // update the user log
+        var updateData = {message: "user has added a new project: " + project.name};
+        updateLog.method(updateData)
+
+        // refresh projects
         controller.getProjects();
 
       }, function(error) {
@@ -89,6 +96,12 @@ app.controller("ProjectsController", ["$scope", "$http", function($scope, $http)
       }).then(
         function(response) {
           console.log(response);
+
+          // update the user log
+          var updateData = {message: "user has updated a project: " + project.name};
+          updateLog.method(updateData);
+
+          // refresh projects
           controller.getProjects();
 
         }, function(error) {
@@ -113,6 +126,12 @@ app.controller("ProjectsController", ["$scope", "$http", function($scope, $http)
     }).then(
       function(response) {
         console.log(response);
+
+        // update the user log
+        var updateData = {message: "user has deleted a project: " + project.name};
+        updateLog.method(updateData);
+
+        // refresh projects
         controller.getProjects();
 
       }, function(error) {

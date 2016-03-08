@@ -11,7 +11,7 @@ app.directive("tasksDirective", [function() {
 }]);
 
 // TASKS CONTROLLER
-app.controller("TaskController", ["$http", "$scope", function($http, $scope) {
+app.controller("TaskController", ["$http", "$scope", "updateLog", function($http, $scope, updateLog) {
 
   var controller = this;
   this.test = "task controller";
@@ -38,13 +38,14 @@ app.controller("TaskController", ["$http", "$scope", function($http, $scope) {
         console.log("get response, ", response.data.tasks);
         controller.tasks = response.data.tasks;
 
+
       // error function
       }, function(error) {
         console.log(error);
     });
   }
 
-  this.getTasks();
+  // this.getTasks();
 
   // ==============================
   //      CREATE/POST NEW TASK
@@ -65,6 +66,12 @@ app.controller("TaskController", ["$http", "$scope", function($http, $scope) {
       // success function
       function(response) {
         console.log(response);
+
+        // update the user log
+        var updateData = {message: "user has added a new task (" + controller.newTask.name + ") to " + controller.project.name};
+        updateLog.method(updateData);
+
+        // refresh tasks
         controller.getTasks();
 
       // error function
@@ -91,7 +98,14 @@ app.controller("TaskController", ["$http", "$scope", function($http, $scope) {
       url: "/projects/tasks/" + controller.projId + "/" + taskId
     }).then(
       function(response) {
-        console.log(response)
+        console.log(response);
+
+        // update user log
+        var updateData = {message: "user has deleted a task (" + task.name + ") from " + controller.project.name};
+        updateLog.method(updateData);
+
+        // refresh tasks
+        controller.getTasks(); // I dont think this is working
 
       }, function(error) {
         console.log(error)
@@ -126,8 +140,16 @@ app.controller("TaskController", ["$http", "$scope", function($http, $scope) {
       url: "/projects/tasks/" + controller.projId + "/" + taskId,
       data: task
       }).then(
+        // success function
         function(response) {
           console.log(response);
+
+          // update user log
+          var updateData = {message: "user has updated a task in " + controller.project.name};
+          updateLog.method(updateData);
+
+
+        // error function
         }, function(error) {
           console.log(error);
     })
