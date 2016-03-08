@@ -20,7 +20,7 @@ app.controller("ProjectsController", ["$scope", "$http", function($scope, $http)
 
 
   this.thisProject = function(project) {
-    // console.log(project);
+    controller.hideProjects = true;
 
     $scope.$broadcast("project-data", project);
   }

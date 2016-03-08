@@ -1,44 +1,41 @@
 <!-- {{projectsCtrl.test}} -->
+<div ng-if="!projectsCtrl.hideProjects">
 
-<form ng-submit="projectsCtrl.addProject(projectsCtrl.newProject)">
-  <h3>Add Project</h3>
-  <input type="text" placeholder="Project Name" ng-model="projectsCtrl.newProject.name">
-  <button>Add</button>
-</form>
-
-
-
-<div class="">
+  <form ng-submit="projectsCtrl.addProject(projectsCtrl.newProject)">
+    <h3>Add Project</h3>
+    <input type="text" placeholder="Project Name" ng-model="projectsCtrl.newProject.name">
+    <button>Add</button>
+  </form>
 
   <li class="project-box" ng-repeat="project in projectsCtrl.projects" ng-click="projectsCtrl.thisProject(project, $index)">
 
     <table>
       <tr>
-        <td>{{project.name}}</td>
+        <!-- PROJECT TITLE -->
+        <td>
+          <span ng-if="!showUpdate">{{project.name}} </span>
+          <form ng-if="showUpdate" ng-submit="projectsCtrl.updateProject(project)">
+            <input type="text" ng-model="project.name">
+          </form>
+          <i id="edit-icon" ng-click="showUpdate = !showUpdate">&#xE806;</i>
+        </td>
       </tr>
+      <!-- PROJECT TASKS -->
       <tr ng-repeat="blah in project.tasks">
         <td>{{blah.name}}</td>
       </tr>
     </table>
 
-    <form ng-submit="projectsCtrl.updateProject(project)">
-    	<input type="text" ng-model="project.name"><br>
-    	<button>Update</button>
-    </form>
     <button ng-click="projectsCtrl.deleteProject(project)">Delete Project</button><br><br>
 
-    <!-- <h3>{{project.name}}</h3>
-    <p ng-repeat="blah in project.tasks">{{blah.name}}</p> -->
-    <button ng-click="viewProject = !viewProject">View Project</button>
-
-    <!-- <div ng-show="viewProject" ng-include=" 'partials/user_project.html' ">
-    </div> -->
+    <!-- <button ng-click="viewProject = !viewProject">View Project</button> -->
 
   </li>
 
-  <div ng-include=" 'partials/user_project.html' "></div>
-
 </div>
+
+<div ng-include=" 'partials/user_project.html' "></div>
+
 
 <!-- <button ng-click="addProject = !addProject">Add Project</button>
 

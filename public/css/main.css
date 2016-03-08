@@ -3,6 +3,31 @@
   src: url('/font/OpenSans-Light.ttf');
 }
 
+@font-face {
+  font-family: 'Fontello';
+  src: url('/font/cart.ttf');
+}
+
+i {
+  font-family: 'Fontello';
+  font-style: normal;
+}
+
+/*
+800 - black trash
+801 - white trash
+802 - export
+803 - share
+804 - small x
+805 - plus
+806 - edit
+807 - big X
+*/
+
+#edit-icon {
+  cursor: pointer;
+}
+
 body {
   margin: 0;
   padding: 0;
