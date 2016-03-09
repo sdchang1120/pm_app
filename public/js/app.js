@@ -4,10 +4,10 @@ var app = angular.module("PMApp", ["projects-directive", "tasks-directive", "sta
 //        ANGULAR ROUTING
 // ==============================
 
-app.controller('ProfileController', ['$routeParams', function($routeParams) {
-  this.name = 'Profile Controller';
-  this.id = $routeParams.id;
-}]);
+// app.controller('ProfileController', ['$routeParams', function($routeParams) {
+//   this.name = 'Profile Controller';
+//   this.id = $routeParams.id;
+// }]);
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   $locationProvider.html5Mode({enabled: true});
@@ -39,8 +39,8 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     }).
     when('/profile', {
       templateUrl: 'routing/profile.html',
-      controller: 'ProfileController',
-      controllerAs: 'profileCtrl'
+      controller: 'StatsController',
+      controllerAs: 'statsCtrl'
     }).
     otherwise({
       redirectTo: '/'
