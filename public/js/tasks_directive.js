@@ -27,6 +27,8 @@ app.controller("TaskController", ["$http", "$scope", "updateLog", function($http
   //           GET TASKS
   // ==============================
 
+  this.tasks = null;
+
   // fetch and load all the tasks
   this.getTasks = function() {
     $http({
@@ -35,8 +37,9 @@ app.controller("TaskController", ["$http", "$scope", "updateLog", function($http
     }).then(
       // success function
       function(response) {
+        console.log("EXECUTED")
         console.log("get response, ", response.data.tasks);
-        controller.tasks = response.data.tasks;
+        controller.tasks = response.data;
 
 
       // error function
@@ -157,6 +160,8 @@ app.controller("TaskController", ["$http", "$scope", "updateLog", function($http
 
   }
 
+  // mark completed task as incomplete
+    // (separate function because can't listen for a state change on a button/can't assign a model to a button)
   this.undoComplete = function(task) {
     console.log(task); // confirm task
     task.completed = false; // toggle completed value false
