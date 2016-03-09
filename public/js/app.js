@@ -4,53 +4,53 @@ var app = angular.module("PMApp", ["projects-directive", "tasks-directive", "sta
 //        ANGULAR ROUTING
 // ==============================
 
-app.controller('ProfileController', ['$routeParams', function($routeParams) {
-  this.name = 'Profile Controller';
-  this.id = $routeParams.id;
-}]);
-
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   $locationProvider.html5Mode({enabled: true});
-  $routeProvider.
-    when('/signup', {
+  $routeProvider
+    .when('/signup', {
       templateUrl: 'routing/signup.html',
       controller: 'MainController',
       controllerAs: 'mainCtrl'
-    }).
-    when('/login', {
+    })
+    .when('/login', {
       templateUrl: 'routing/login.html',
       controller: 'MainController',
       controllerAs: 'mainCtrl'
-    }).
-    when('/about', {
+    })
+    .when('/about', {
       templateUrl: 'routing/about.html',
       controller: 'MainController',
       controllerAs: 'mainCtrl'
-    }).
-    when('/projects', {
+    })
+    .when('/projects', {
       templateUrl: 'routing/projects.html',
       controller: 'MainController',
       controllerAs: 'mainCtrl'
-    }).
-    when('/stats', {
+    })
+    .when('/stats', {
       templateUrl: 'routing/stats.html',
       controller: 'MainController',
       controllerAs: 'mainCtrl'
-    }).
-    when('/profile', {
+    })
+    .when('/profile', {
       templateUrl: 'routing/profile.html',
       controller: 'ProfileController',
       controllerAs: 'profileCtrl'
-    }).
-    otherwise({
+    })
+    .otherwise({
       redirectTo: '/'
     })
 }])
 
+// ==============================
+//          CONTROLLERS
+// ==============================
 
-// ==============================
-//       END ANGULAR ROUTE
-// ==============================
+// PROFILE CONTROLLER
+app.controller('ProfileController', ['$routeParams', function($routeParams) {
+  this.name = 'Profile Controller';
+  this.id = $routeParams.id;
+}]);
 
 // service-- function can be accessed across different controllers
 app.service("updateLog", ["$http", function($http) {

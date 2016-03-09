@@ -3,9 +3,10 @@
 	<title>angular_passport</title>
 	<!-- CSS -->
 	<!-- bootstrap (bootswatch version), main, dashboard -->
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css"> -->
 	<link rel="stylesheet" href="css/main.css" media="screen" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="css/dashboard.css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="css/angularanimate.css" media="screen" title="no title" charset="utf-8">
 	<!-- JS -->
 	<!-- angular, ngRoute, ngAnimate, chart.js, directives, app.js -->
 	<script type="text/javascript" src="js/angular.min.js"></script>
@@ -75,7 +76,8 @@
 
 	<!-- <button ng-if="mainCtrl.isAuthenticated" ng-click="mainCtrl.logout()">Logout</button> -->
 
-	<div ng-view></div>
+	<!-- injecting angular routes -->
+	<div ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}" ng-view></div>
 
 </body>
 </html>
