@@ -170,6 +170,24 @@ app.controller("TaskController", ["$http", "$scope", "updateLog", function($http
     controller.updateTask(task);
   }
 
+
+  // set deadline
+  this.setDeadline = function(task) {
+    console.log("set deadline ", task);
+
+    // select the button and save to $button variable
+    var $button = $("deadline-" + task._id);
+
+    console.log($button); // confirms correct button selected 
+
+
+    $(function(){
+     $("deadline-" + task._id).appendDtpicker();
+    });
+
+  }
+
+
 }]);
 
 

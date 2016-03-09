@@ -1,6 +1,7 @@
 // REQUIREMENTS
 var express = require('express');
 var bodyParser = require("body-parser");
+var cookieParser = require("cookie-parser");
 var mongoose = require("mongoose");
 var passport = require("passport");
 var session = require("express-session");
@@ -24,10 +25,15 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// configure cookie-parser
+app.use(cookieParser());
+
 // configure passport
 app.use(session({ secret: "secret", resave: true, saveUninitialized: true })); // session secret
 app.use(passport.initialize());
 app.use(passport.session());
+
+
 
 // controller
 var usersController = require("./controllers/usersController.js");
@@ -36,8 +42,6 @@ app.use("/users", usersController);
 var projectsController = require("./controllers/projectsController.js");
 app.use("/projects", projectsController);
 
-// var testController = require("./controllers/testController.js");
-// app.use("/test", testController);
 
 
 // LISTEN

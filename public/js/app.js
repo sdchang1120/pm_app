@@ -19,8 +19,8 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     }).
     when('/login', {
       templateUrl: 'routing/login.html',
-      controller: 'MainController',
-      controllerAs: 'mainCtrl'
+      controller: 'LoginController',
+      controllerAs: 'loginCtrl'
     }).
     when('/about', {
       templateUrl: 'routing/about.html',
@@ -29,13 +29,13 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     }).
     when('/projects', {
       templateUrl: 'routing/projects.html',
-      controller: 'MainController',
-      controllerAs: 'mainCtrl'
+      controller: 'ProjectsController',
+      controllerAs: 'projectsCtrl'
     }).
     when('/stats', {
       templateUrl: 'routing/stats.html',
-      controller: 'MainController',
-      controllerAs: 'mainCtrl'
+      controller: 'StatsController',
+      controllerAs: 'statsCtrl'
     }).
     when('/profile', {
       templateUrl: 'routing/profile.html',
@@ -46,6 +46,8 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       redirectTo: '/'
     })
 }])
+
+
 
 
 // ==============================
@@ -77,24 +79,41 @@ app.service("updateLog", ["$http", function($http) {
 
 }]);
 
+
+
+
 // MAIN CONTROLLER
-app.controller("MainController", ["$scope", "$http", function($scope, $http) {
+app.controller("MainController", ["$rootScope", "$scope", "$http", function($rootScope, $scope, $http) {
   var controller = this;
-  this.user = {};
+  // this.test = "main controller is here";
+  this.user = null;
   this.isAuthenticated = false;
 
   // listen for user-login event. when logged in, save user data to controller
   $scope.$on("user-login", function(eventObject, userData) {
-    // console.log('MAINCTRL USER DATA: ', userData);
+    console.log('MAINCTRL USER DATA: ', userData);
 
     // sets userId as global variable
     $scope.userId = userData._id;
 
+    $rootScope.user = userData;
+    $rootScope.isAuthenticated = true; // save authentication status to true
+
+
     // save user data to controller
     controller.user = userData;
+    
+    // controller.user = "sdkflsfhsf";
     controller.isAuthenticated = true;
 
+    // controller.user = $rootScope.user;
+    // controller.isAuthenticated = $rootScope.isAuthenticated;
+
   });
+
+  // save user information from rootScope
+  this.user = $rootScope.user;
+  this.isAuthenticated = $rootScope.isAuthenticated;
 
   // end passport session
   this.logout = function() {
@@ -118,14 +137,14 @@ app.controller("MainController", ["$scope", "$http", function($scope, $http) {
   this.showStats = false;
 
   // show stats
-  this.showStatsFn = function() {
-    controller.showStats = !controller.showStats;
+  // this.showStatsFn = function() {
+  //   controller.showStats = !controller.showStats;
 
-    // console.log(controller.showStats);
+  //   // console.log(controller.showStats);
 
-    // event for stats controller to listen for
-    $scope.$broadcast("show-stats", {message: "test"});
-  };
+  //   // event for stats controller to listen for
+  //   $scope.$broadcast("show-stats", {message: "test"});
+  // };
 
 
   this.testService = function() {
@@ -140,7 +159,7 @@ app.controller("MainController", ["$scope", "$http", function($scope, $http) {
 }]);
 
 // SIGNUP CONTROLLER
-app.controller("SignupController", ["$scope", "$http", function($scope, $http) {
+app.controller("SignupController", ["$scope", "$http", "$location", function($scope, $http, $loction) {
 
   var controller = this;
 
@@ -165,6 +184,8 @@ app.controller("SignupController", ["$scope", "$http", function($scope, $http) {
             // I don't know if it will be a problem later to use the same event listener for login and signup
             // I think it will be ok because the user is essentially logging in immediately after signing up
 
+          $location.path("/");
+
         // error function
         }, function(error) {
           console.log(error);
@@ -174,8 +195,10 @@ app.controller("SignupController", ["$scope", "$http", function($scope, $http) {
 
 }]);
 
+
+
 // LOGIN CONTROLLER
-app.controller("LoginController", ["$scope", "$http", function($scope, $http){
+app.controller("LoginController", ["$scope", "$http", "$location", function($scope, $http, $location){
 
   var controller = this;
 
@@ -195,17 +218,22 @@ app.controller("LoginController", ["$scope", "$http", function($scope, $http){
       }).then(
         // success function
         function(response) {
-          // console.log(response);
+          console.log(response);
           // console.log('LOGIN USER DATA: ', response.data); // user object
 
           // emit user data to parent controller(s)
+          // $scope.$emit("user-login", response.data);
+
           $scope.$emit("user-login", response.data);
+
+          $location.path("/")
 
         // error function
         }, function(error) {
           console.log("error");
           console.log(error);
     });
+
 
   };
 
