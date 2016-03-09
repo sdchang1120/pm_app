@@ -18,7 +18,7 @@ app.controller("ProjectsController", ["$scope", "$http", "updateLog", function($
 
   var controller = this;
 
-
+  // select project to show
   this.thisProject = function(project) {
     console.log(project);
     controller.hideProjects = true;

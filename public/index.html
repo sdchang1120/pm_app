@@ -20,19 +20,27 @@
 
 <body ng-controller="MainController as mainCtrl">
 
-<div class="container">
+<nav class="dashboard">
 	<section ng-if="mainCtrl.isAuthenticated">
 		<a href="/">Home</a>
 		<a href="/about">About</a>
 		<a href="/projects">Projects</a>
 		<a href="/stats">Stats</a>
 		<a href="/profile">Profile</a>
+		<!-- <div class="right-nav-box" ng-if="mainCtrl.isAuthenticated">
+		    <li>Welcome, <a href="#">{{mainCtrl.user.username}}</a></li>
+		    <li><a id="logout" ng-click="mainCtrl.logout()">Logout</a></li>
+	  	</div> -->
 	</section>
 	<section ng-if="!mainCtrl.isAuthenticated">
 		<a href="/signup"><button>SIGN UP</button></a>
 		<a href="/login"><button>LOG IN</button></a>
 	</section>
-</div>
+	<div class="right-nav-box" ng-if="mainCtrl.isAuthenticated">
+	    <li>Welcome, <a href="#">{{mainCtrl.user.username}}</a></li>
+	    <li><a id="logout" ng-click="mainCtrl.logout()">Logout</a></li>
+  	</div>
+</nav>
 
 
 	<!-- <div ng-if="mainCtrl.isAuthenticated" class="sidebar" ng-include=" 'partials/sidebar.html' "></div> -->
