@@ -29,7 +29,7 @@ router.get("/logout", function(req, res) {
 
 // LOGIN-- access an existing account
 router.post("/login", passport.authenticate("local-login"), function(req, res) {
-  console.log("login ", req.user);
+  // console.log("login ", req.user);
   // req.session.user = req.user
   // res.send(req.user);
   res.redirect("/users/secondpath")

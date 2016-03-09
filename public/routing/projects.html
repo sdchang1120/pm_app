@@ -1,6 +1,6 @@
 <h2>PROJECTS</h2>
 
-<div ng-if="!projectsCtrl.hideProjects">
+<!-- <div ng-if="!projectsCtrl.hideProjects"> -->
 
   <form ng-submit="projectsCtrl.addProject(projectsCtrl.newProject)">
     <h3>Add Project</h3>
@@ -27,7 +27,11 @@
         <td>{{blah.name}}</td>
       </tr>
     </table>
-    <button ng-click="projectsCtrl.thisProject(project, $index)">View Project</button>
+    
+    <a ng-href="projects/{{project._id}}">View Project</a>
+  
+    
+    <!-- <button ng-click="projectsCtrl.thisProject(project, $index)">View Project</button> -->
     <button ng-click="projectsCtrl.deleteProject(project)">Delete Project</button>
   </div>
 

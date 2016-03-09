@@ -104,6 +104,7 @@ router.post("/tasks/:pid", function(req, res) {
 router.get("/tasks/:pid", function(req, res) {
   // console.log("get params, ", req.params.pid)
   Project.findById(req.params.pid, function(err, project) {
+    console.log("project: ", project)
     // console.log(project);
     res.send(project);
   })
