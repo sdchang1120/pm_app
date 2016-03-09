@@ -15,7 +15,7 @@ var app = express();
 mongoose.connect(mongoUri);
 
 // passport requirement
-require("./config/passport")(passport); 
+require("./config/passport")(passport);
 
 // access public directory
 app.use(express.static("public"));
