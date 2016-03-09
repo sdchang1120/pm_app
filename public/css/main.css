@@ -38,6 +38,11 @@ body {
   font-family: 'Open Sans';
 }
 
+.container {
+  padding: 10px;
+  background: #cecece;
+}
+
 .project-box {
   display: inline-block;
   width: 200px;

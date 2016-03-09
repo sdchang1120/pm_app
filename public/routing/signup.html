@@ -1,0 +1,9 @@
+<div ng-if="!mainCtrl.isAuthenticated">
+  <h2>Sign Up</h2>
+  <form ng-controller="SignupController as signupCtrl" ng-submit="signupCtrl.signup()">
+  <input type="text" name="username" placeholder="username" ng-model="signupCtrl.credentials.username">
+  <input type="text" name="email" placeholder="email" ng-model="signupCtrl.credentials.email">
+  <input type="text" name="password" placeholder="password" ng-model="signupCtrl.credentials.password">
+  <input type="submit">
+  </form>
+</div>

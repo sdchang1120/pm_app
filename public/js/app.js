@@ -1,4 +1,56 @@
-var app = angular.module("PMApp", ["projects-directive", "tasks-directive", "stats-directive"]);
+var app = angular.module("PMApp", ["projects-directive", "tasks-directive", "stats-directive", "ngRoute"]);
+
+// ==============================
+//        ANGULAR ROUTING
+// ==============================
+
+app.controller('ProfileController', ['$routeParams', function($routeParams) {
+  this.name = 'Profile Controller';
+  this.id = $routeParams.id;
+}]);
+
+app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+  $locationProvider.html5Mode({enabled: true});
+  $routeProvider.
+    when('/signup', {
+      templateUrl: 'routing/signup.html',
+      controller: 'MainController',
+      controllerAs: 'mainCtrl'
+    }).
+    when('/login', {
+      templateUrl: 'routing/login.html',
+      controller: 'MainController',
+      controllerAs: 'mainCtrl'
+    }).
+    when('/about', {
+      templateUrl: 'routing/about.html',
+      controller: 'MainController',
+      controllerAs: 'mainCtrl'
+    }).
+    when('/projects', {
+      templateUrl: 'routing/projects.html',
+      controller: 'MainController',
+      controllerAs: 'mainCtrl'
+    }).
+    when('/stats', {
+      templateUrl: 'routing/stats.html',
+      controller: 'MainController',
+      controllerAs: 'mainCtrl'
+    }).
+    when('/profile', {
+      templateUrl: 'routing/profile.html',
+      controller: 'ProfileController',
+      controllerAs: 'profileCtrl'
+    }).
+    otherwise({
+      redirectTo: '/'
+    })
+}])
+
+
+// ==============================
+//       END ANGULAR ROUTE
+// ==============================
 
 // service-- function can be accessed across different controllers
 app.service("updateLog", ["$http", function($http) {
@@ -87,10 +139,6 @@ app.controller("MainController", ["$scope", "$http", function($scope, $http) {
 
 }]);
 
-
-
-
-
 // SIGNUP CONTROLLER
 app.controller("SignupController", ["$scope", "$http", function($scope, $http) {
 
@@ -125,7 +173,6 @@ app.controller("SignupController", ["$scope", "$http", function($scope, $http) {
   };
 
 }]);
-
 
 // LOGIN CONTROLLER
 app.controller("LoginController", ["$scope", "$http", function($scope, $http){
