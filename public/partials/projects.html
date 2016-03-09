@@ -29,7 +29,7 @@
       </tr>
 
       <!-- PROJECT TASKS -->
-      <tr ng-repeat="blah in project.tasks | filter: searchTasks | orderBy: 'name'">
+      <tr ng-repeat="blah in project.tasks | filter: searchTasks | orderBy: 'name' | limitTo: 3">
         <td>{{blah.name}}</td>
       </tr>
     </table>
