@@ -1,9 +1,13 @@
 <!-- PROJECT NAME // BROADCASTED FROM PROJECTS CONTROLLER -->
-<h2>{{taskCtrl.project.name}}</h2>
+<h2>{{taskCtrl.project.name}} Tasks</h2>
 <div ng-click="taskCtrl.getTasks()"></div>
 
+<!-- Search Task searchbox -->
+Search: <input type="search" class="search-query" placeholder="Search Tasks" ng-model="searchTask"><br>
+
 <form ng-submit="taskCtrl.addTask()">
- <input type="text" ng-model="taskCtrl.newTask.name">
+  <h3>Add Task</h3>
+ <input type="text" placeholder="Task Name" ng-model="taskCtrl.newTask.name">
  <button>Add Task</button>
 </form>
 

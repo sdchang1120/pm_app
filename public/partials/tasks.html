@@ -2,13 +2,16 @@
 <!-- <ul ng-repeat="task in taskCtrl.project.tasks"> -->
 	<!-- <li>{{task.name}}</li> -->
 
+	<!-- <input type="search" class="search-query" placeholder="Search Tasks" ng-model="search"><br> -->
+
 	<!-- TO-DO LIST -->
 	<table class="todo-list">
 
 		<tr>
 			<td>To Do</td>
 		</tr>
-		<tr ng-repeat="task in taskCtrl.project.tasks">
+		<!-- filter Search Task -->
+		<tr ng-repeat="task in taskCtrl.project.tasks | filter: searchTask">
 			<td>
 				<input type="checkbox" ng-model="task.completed" ng-click="taskCtrl.updateTask(task)">
 				<!-- {{task.completed}} -->

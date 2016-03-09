@@ -1,5 +1,9 @@
-<!-- {{projectsCtrl.test}} -->
 <div ng-if="!projectsCtrl.hideProjects">
+
+  <h2>PROJECTS</h2>
+
+  <!-- Search Project searchbox -->
+  Search: <input type="search" class="search-query" placeholder="Search Projects" ng-model="searchProject"><br>
 
   <form ng-submit="projectsCtrl.addProject(projectsCtrl.newProject)">
     <h3>Add Project</h3>
@@ -7,8 +11,8 @@
     <button>Add</button>
   </form>
 
-
-  <div class="project-box" ng-repeat="project in projectsCtrl.projects">
+  <!-- filter Search Project -->
+  <div class="project-box" ng-repeat="project in projectsCtrl.projects | filter: searchProject | orderBy: -1">
     <!-- <table ng-click="projectsCtrl.thisProject(project, $index)"> -->
     <table>
       <tr>
