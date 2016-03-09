@@ -27,6 +27,8 @@ app.controller("TaskController", ["$http", "$scope", "updateLog", function($http
   //           GET TASKS
   // ==============================
 
+  this.tasks = null;
+
   // fetch and load all the tasks
   this.getTasks = function() {
     $http({
@@ -35,8 +37,9 @@ app.controller("TaskController", ["$http", "$scope", "updateLog", function($http
     }).then(
       // success function
       function(response) {
+        console.log("EXECUTED")
         console.log("get response, ", response.data.tasks);
-        controller.tasks = response.data.tasks;
+        controller.tasks = response.data;
 
 
       // error function
@@ -93,6 +96,7 @@ app.controller("TaskController", ["$http", "$scope", "updateLog", function($http
     var taskId = controller.project.tasks[index]._id;
     // console.log(taskId);
 
+    // delete request to server
     $http({
       method: "DELETE",
       url: "/projects/tasks/" + controller.projId + "/" + taskId
@@ -134,7 +138,7 @@ app.controller("TaskController", ["$http", "$scope", "updateLog", function($http
     // console.log(controller.formData)
     // console.log("task?: ", task.name)
 
-
+    // put request to server
     $http({
       method: "PUT",
       url: "/projects/tasks/" + controller.projId + "/" + taskId,
@@ -154,6 +158,16 @@ app.controller("TaskController", ["$http", "$scope", "updateLog", function($http
           console.log(error);
     });
 
+  }
+
+  // mark completed task as incomplete
+    // (separate function because can't listen for a state change on a button/can't assign a model to a button)
+  this.undoComplete = function(task) {
+    console.log(task); // confirm task
+    task.completed = false; // toggle completed value false
+
+    // save the change to the database
+    controller.updateTask(task);
   }
 
 }]);
