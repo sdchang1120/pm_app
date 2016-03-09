@@ -94,6 +94,14 @@ tr:nth-child(1) {
   text-align: center;
 }
 
+.addProjectForm > h3 {
+  display: inline-block;
+}
+
+.addTaskForm > h3 {
+  display: inline-block;
+}
+
 /* aligns update form with edit icon */
 td > form {
   display: inline-block;

@@ -5,10 +5,13 @@
 <!-- Search Task searchbox -->
 Search: <input type="search" class="search-query" placeholder="Search Tasks" ng-model="searchTask"><br>
 
-<form ng-submit="taskCtrl.addTask()">
-  <h3>Add Task</h3>
- <input type="text" placeholder="Task Name" ng-model="taskCtrl.newTask.name">
- <button>Add Task</button>
-</form>
+<div class="addTaskForm">
+  <h3 ng-if="!addTaskForm">Add Task</h3>
+  <form ng-if="addTaskForm" ng-submit="taskCtrl.addTask()">
+   <input type="text" placeholder="Task Name" ng-model="taskCtrl.newTask.name">
+   <button>Add Task</button>
+  </form>
+  <i id="add-icon" ng-click="addTaskForm = !addTaskForm">&#xE805;</i>
+</div>
 
 <tasks-directive></tasks-directive>
