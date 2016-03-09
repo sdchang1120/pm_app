@@ -1,4 +1,5 @@
-var app = angular.module("PMApp", ["projects-directive", "tasks-directive", "stats-directive", "ngRoute"]);
+// injecting dependencies into app
+var app = angular.module("PMApp", ["projects-directive", "tasks-directive", "stats-directive", "ngRoute", "ngCookies"]);
 
 // ==============================
 //        ANGULAR ROUTING
@@ -50,6 +51,34 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 
 // ==============================
 //       END ANGULAR ROUTE
+// ==============================
+
+// ==============================
+//         COOKIE SERVICE
+// ==============================
+
+app.factory('userPersistenceService', ['$cookies', function($cookies) {
+  '$cookies', function($cookies) {
+    var userName = '';
+    return {
+      setCookieData: function(username) {
+        userName = username;
+        $cookies.put('userName', username);
+      },
+      getCookieData: function() {
+        userName = $cookies.get('userName');
+        return userName;
+      },
+      clearCookieData: function() {
+        userName = '';
+        $cookies.remove('userName');
+      }
+    }
+  }
+}]);
+
+// ==============================
+//       END COOKIE SERVICE
 // ==============================
 
 // service-- function can be accessed across different controllers
