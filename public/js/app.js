@@ -83,7 +83,7 @@ app.service("updateLog", ["$http", function($http) {
 
 
 // MAIN CONTROLLER
-app.controller("MainController", ["$rootScope", "$scope", "$http", function($rootScope, $scope, $http) {
+app.controller("MainController", ["$rootScope", "$scope", "$http", "$location", function($rootScope, $scope, $http, $location) {
   var controller = this;
   // this.test = "main controller is here";
   this.user = null;
@@ -102,7 +102,7 @@ app.controller("MainController", ["$rootScope", "$scope", "$http", function($roo
 
     // save user data to controller
     controller.user = userData;
-    
+
     // controller.user = "sdkflsfhsf";
     controller.isAuthenticated = true;
 
@@ -127,6 +127,7 @@ app.controller("MainController", ["$rootScope", "$scope", "$http", function($roo
 
           // toggle authentication status
           controller.isAuthenticated = false;
+          // $location.path("/");
 
         // error function
         }, function(error) {
@@ -226,7 +227,7 @@ app.controller("LoginController", ["$scope", "$http", "$location", function($sco
 
           $scope.$emit("user-login", response.data);
 
-          $location.path("/")
+          $location.path("/projects")
 
         // error function
         }, function(error) {
