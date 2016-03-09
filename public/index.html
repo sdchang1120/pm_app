@@ -3,36 +3,51 @@
 	<title>angular_passport</title>
 	<link rel="stylesheet" href="css/main.css" media="screen" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="css/dashboard.css" media="screen" title="no title" charset="utf-8">
+	<!-- <link rel="stylesheet" href="css/jquery.simple-dtpicker.css" type="text/css"> -->
 	<script type="text/javascript" src="js/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-cookies.min.js"></script>
+	<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
 	<script type="text/javascript" src="js/Chart.min.js"></script>
+	<!-- <script type="text/javascript" src="js/jquery.simple-dtpicker.js"></script> -->
 	<script type="text/javascript" src="js/stats_directive.js"></script>
 	<script type="text/javascript" src="js/projects_directive.js"></script>
 	<script type="text/javascript" src="js/tasks_directive.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
 	<base href="/">
+
+
 </head>
+
 <body ng-controller="MainController as mainCtrl">
 
-<div class="container">
+<nav class="dashboard">
 	<section ng-if="mainCtrl.isAuthenticated">
 		<a href="/">Home</a>
 		<a href="/about">About</a>
 		<a href="/projects">Projects</a>
 		<a href="/stats">Stats</a>
-		<a href="/profile">Profile</a>
+		<!-- <a href="/profile">Profile</a> -->
+		<!-- <div class="right-nav-box" ng-if="mainCtrl.isAuthenticated">
+		    <li>Welcome, <a href="#">{{mainCtrl.user.username}}</a></li>
+		    <li><a id="logout" ng-click="mainCtrl.logout()">Logout</a></li>
+	  	</div> -->
 	</section>
 	<section ng-if="!mainCtrl.isAuthenticated">
 		<a href="/signup"><button>SIGN UP</button></a>
 		<a href="/login"><button>LOG IN</button></a>
 	</section>
-</div>
+	<div class="right-nav-box" ng-if="mainCtrl.isAuthenticated">
+	    <li>Welcome, <a href="/profile">{{mainCtrl.user.username}}</a></li>
+	    <li><a id="logout" ng-click="mainCtrl.logout()">Logout</a></li>
+  	</div>
+</nav>
+
 
 	<!-- <div ng-if="mainCtrl.isAuthenticated" class="sidebar" ng-include=" 'partials/sidebar.html' "></div> -->
 
 	<!-- include dashboard partial -->
-	<header ng-if="mainCtrl.isAuthenticated" ng-include=" 'partials/dashboard.html' "></header>
+	<!-- <header ng-if="mainCtrl.isAuthenticated" ng-include=" 'partials/dashboard.html' "></header> -->
 
 	<!-- <h2 ng-if="mainCtrl.isAuthenticated">{{mainCtrl.user.username}}</h2> -->
 	<!-- {{mainCtrl.isAuthenticated}} -->
@@ -58,7 +73,14 @@
 
 	<!-- <test-directive ng-if="mainCtrl.isAuthenticated"></test-directive> -->
 
-	<projects-directive ng-if="mainCtrl.isAuthenticated"></projects-directive>
+
+
+	<!-- <projects-directive ng-if="mainCtrl.isAuthenticated"></projects-directive> -->
+
+<!-- {{mainCtrl.isAuthenticated}} -->
+
+<!-- {{mainCtrl.user}} -->
+
 
 	<!-- show this if logged in-->
 	<!-- <div ng-controller="AnotherController as anotherCtrl">

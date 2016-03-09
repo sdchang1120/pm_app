@@ -22,15 +22,25 @@ router.post("/signup", passport.authenticate("local-signup"), function(req, res)
 // LOGOUT-- logout of account
 router.get("/logout", function(req, res) {
   req.logout(); // built in function that will logout user
+  // res.redirect("/");
   res.send("loggedout");
 }); // end logout route
 
 
 // LOGIN-- access an existing account
 router.post("/login", passport.authenticate("local-login"), function(req, res) {
-  res.send(req.user); // send the user object back to angular
+  console.log("login ", req.user);
+  // req.session.user = req.user
+  // res.send(req.user);
+  res.redirect("/users/secondpath")
+  // res.send(req.user); // send the user object back to angular
+  // res.redirect("/cookie")
   // res.send("success!");
 }); // end login route
+
+router.get("/secondpath", isLoggedIn, function(req, res) {
+  res.send(req.user)
+});
 
 
 
@@ -77,6 +87,28 @@ router.put("/userlog/", function(req, res) {
 
 
 
+// MIDDLEWARE
+// -----------------------------------------------------------------
+// ensure a user is loggedin
+function isLoggedIn(req, res, next) {
+
+  // if user is authenticated in the session, continue
+  if (req.isAuthenticated()) {
+    
+    return next();
+  } else {
+
+  // if they aren't redirect them to the homepage
+  res.redirect("/")
+  
+  }; 
+};
+
+
+
 
 // EXPORT
 module.exports = router;
+
+
+
