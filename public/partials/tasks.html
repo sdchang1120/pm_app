@@ -10,8 +10,9 @@
 		<tr>
 			<td>To Do</td>
 		</tr>
+
 		<!-- filter Search Task -->
-		<tr ng-repeat="task in taskCtrl.project.tasks | filter: searchTask">
+		<tr ng-repeat="task in taskCtrl.project.tasks | filter: searchTask | orderBy: 'name'">
 			<td>
 				<input type="checkbox" ng-model="task.completed" ng-click="taskCtrl.updateTask(task)">
 				<!-- {{task.completed}} -->
