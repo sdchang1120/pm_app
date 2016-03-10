@@ -1,0 +1,45 @@
+nav {
+	margin: 0;
+	background-color: blue;
+}
+
+nav ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	position: relative;
+}
+
+nav ul li {
+	margin: 0;
+	display: inline-block;
+	background-color: red;
+}
+
+nav a {
+	display: block;
+	padding: 10px;
+	color: white;
+	line-height: 60px;
+}
+
+nav a:hover {
+	background-color: green;
+}
+
+nav ul ul {
+	display: none;
+	position: absolute;
+	top: 100%;
+}
+
+nav ul li:hover > ul {
+	display: inherit;
+}
+
+nav ul ul li {
+	min-width: 200px;
+	float: none;
+	display: list-item;
+	position: relative;
+}
