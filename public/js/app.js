@@ -141,7 +141,7 @@ app.controller("MainController", ["$rootScope", "$scope", "$http", "$location", 
 
           // toggle authentication status
           controller.isAuthenticated = false;
-          
+
           $location.path("/");
 
         // error function
