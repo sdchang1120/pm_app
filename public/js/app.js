@@ -160,7 +160,7 @@ app.controller("MainController", ["$rootScope", "$scope", "$http", "$location", 
 }]);
 
 // SIGNUP CONTROLLER
-app.controller("SignupController", ["$scope", "$http", "$location", function($scope, $http, $loction) {
+app.controller("SignupController", ["$scope", "$http", "$location", function($scope, $http, $location) {
 
   var controller = this;
 
