@@ -35,3 +35,33 @@ nav li {
 #logout {
   cursor: pointer;
 }
+
+@media (max-width: 710px) {
+
+  .right-nav-box {
+    position: static;
+    display: inline-block;
+    /*background-color: red;*/
+    width: 100%;
+  }
+
+  .dashboard li a:hover {
+  color: white;
+  border-bottom: 0px solid white;
+  }
+
+}
+
+@media (max-width: 290px) {
+
+  .dashboard li a:hover {
+  color: white;
+  border-bottom: 0px solid white;
+  }
+
+  /*canvas {
+    width: 200;
+    height: 200;
+  }*/
+
+}
