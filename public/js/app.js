@@ -51,7 +51,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 //          SERVICES
 // ==============================
 
-// service-- function can be accessed across different controllers
+// service -- function can be accessed across different controllers
 app.service("updateLog", ["$http", function($http) {
 
   var updateLog = {};
@@ -69,7 +69,9 @@ app.service("updateLog", ["$http", function($http) {
           console.log(error);
     })
   }
+
   return updateLog;
+
 }]);
 
 // ==============================
@@ -81,7 +83,6 @@ app.controller("MainController", ["$rootScope", "$scope", "$http", "$location", 
 
   var controller = this;
 
-  // this.test = "main controller is here";
   this.user = null;
   this.isAuthenticated = false;
   this.hideButton = false;
@@ -113,7 +114,7 @@ app.controller("MainController", ["$rootScope", "$scope", "$http", "$location", 
   this.user = $rootScope.user;
   this.isAuthenticated = $rootScope.isAuthenticated;
 
-  // end passport session
+  // logout function -- end passport session
   this.logout = function() {
     $http({
       method:"GET",
@@ -165,6 +166,7 @@ app.controller("SignupController", ["$scope", "$http", "$location", function($sc
     email: null
   };
 
+  // signup function
   this.signup = function() {
     // console.log(this.credentials); // confirms object returns
     $http.post('/users/signup', this.credentials).then(
@@ -195,6 +197,7 @@ app.controller("LoginController", ["$scope", "$http", "$location", function($sco
     password: null
   }
 
+  // login function
   this.login = function() {
     // console.log(this.credentials); // confirms object returns
     $http({
