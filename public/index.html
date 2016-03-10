@@ -1,21 +1,20 @@
 <html ng-app="PMApp">
-<head>
-	<title>Getit DONE - A PM App</title>
-	<link rel="stylesheet" href="css/main.css" media="screen" title="no title" charset="utf-8">
-	<link rel="stylesheet" href="css/landing.css" media="screen" title="no title" charset="utf-8">
-	<link rel="stylesheet" href="css/dashboard.css" media="screen" title="no title" charset="utf-8">
-	<!-- <link rel="stylesheet" href="css/jquery.simple-dtpicker.css" type="text/css"> -->
-	<script type="text/javascript" src="js/angular.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
-	<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
-	<script type="text/javascript" src="js/Chart.min.js"></script>
-	<script type="text/javascript" src="js/stats_directive.js"></script>
-	<script type="text/javascript" src="js/projects_directive.js"></script>
-	<script type="text/javascript" src="js/tasks_directive.js"></script>
-	<script type="text/javascript" src="js/app.js"></script>
-	<base href="/">
-
-</head>
+	<head>
+		<title>Getit DONE - A PM App</title>
+		<!-- CSS -->
+		<link rel="stylesheet" href="css/main.css" media="screen" title="no title" charset="utf-8">
+		<link rel="stylesheet" href="css/landing.css" media="screen" title="no title" charset="utf-8">
+		<link rel="stylesheet" href="css/dashboard.css" media="screen" title="no title" charset="utf-8">
+		<!-- JS -->
+		<script type="text/javascript" src="js/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
+		<script type="text/javascript" src="js/Chart.min.js"></script>
+		<script type="text/javascript" src="js/stats_directive.js"></script>
+		<script type="text/javascript" src="js/projects_directive.js"></script>
+		<script type="text/javascript" src="js/tasks_directive.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+		<base href="/">
+	</head>
 
 <body ng-controller="MainController as mainCtrl">
 
@@ -31,6 +30,7 @@
 <!-- DASHBOARD - IF AUTHENTICATED -->
 <nav ng-if="mainCtrl.isAuthenticated" class="dashboard">
 
+	<!-- main links -->
 	<section>
 		<li><a href="/">Home</a></li>
 		<li><a href="/about">About</a></li>
@@ -38,12 +38,20 @@
 		<li><a href="/stats">Stats</a></li>
 	</section>
 
+	<!-- Welcome & Logout - fixed to right -->
 	<div class="right-nav-box">
     <li>Welcome, <a href="/profile">{{mainCtrl.user.username}}</a></li>
     <li><a id="logout" ng-click="mainCtrl.logout()">Logout</a></li>
 	</div>
 
 </nav>
+
+
+
+
+<!-- SCRAP CODE -->
+
+
 
 
 	<!-- <div ng-if="mainCtrl.isAuthenticated" class="sidebar" ng-include=" 'partials/sidebar.html' "></div> -->
