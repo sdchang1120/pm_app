@@ -226,14 +226,14 @@ h2 {
 
 /* ABOUT CSS */
 #about-info {
-  width: 60%;
+  width: 75%;
   margin: auto;
-  text-align: left;
+  text-align: center;
 }
 
 #about-info ul {
-  width: 60%;
-  margin: auto;
+  width: 50%;
+  /*margin: auto;*/
 }
 
 /* PROJECT CSS */
@@ -244,4 +244,14 @@ h2 {
   border-radius: 3px;
   padding: 0.5em;
   color: #3f3f3f;
+}
+
+.tech-img {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.tech-img > a > img {
+  width: 20%;
+  margin: 50px;
 }
