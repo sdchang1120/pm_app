@@ -9,12 +9,6 @@ var User = require("../models/users.js");
 var Project = require('../models/projects.js');
 var Task = require('../models/tasks.js');
 
-
-// ==============================
-//        PROJECTS ROUTES
-// ==============================
-
-// POST / CREATE
 router.post("/new", function(req, res) {
   // console.log(req.body);
   // console.log(req.user._id);
@@ -26,7 +20,6 @@ router.post("/new", function(req, res) {
   })
 });
 
-// GET / SHOW
 router.get("/get", function(req, res) {
   // console.log('TEST GET REQ.USER', req.user);
   // console.log('TEST GET REQ.USER.ID', req.user._id);
@@ -36,7 +29,6 @@ router.get("/get", function(req, res) {
   })
 })
 
-// PUT / UPDATE
 router.put("/project/:pid", function(req, res) {
   // console.log('project put req.body, ', req.body);
   // console.log('PROJECT PUT REQ.BODY.NAME: ', req.body.name);
@@ -48,7 +40,6 @@ router.put("/project/:pid", function(req, res) {
   })
 });
 
-// DELETE
 router.delete("/project/:pid", function(req, res) {
   // console.log('PROJECT DELETE REQ.BODY');
   Project.findByIdAndRemove(req.params.pid, function(err, data) {
@@ -59,7 +50,7 @@ router.delete("/project/:pid", function(req, res) {
 });
 
 // ==============================
-//          TASKS ROUTES
+//          TASK ROUTES
 // ==============================
 
 // POST / CREATE
@@ -74,7 +65,7 @@ router.post("/tasks/:pid", function(req, res) {
         // console.log("task saved");
         // update the project in user's task array
         User.update({_id: req.user._id, "projects._id": req.params.pid}, {$push: {"projects.$.tasks": task}}, function(err, data) {
-          // console.log("user update data: ", data);
+          console.log("user update data: ", data);
           res.send("created task");
         })
       })
@@ -86,13 +77,13 @@ router.post("/tasks/:pid", function(req, res) {
 router.get("/tasks/:pid", function(req, res) {
   // console.log("get params, ", req.params.pid)
   Project.findById(req.params.pid, function(err, project) {
-    // console.log("project: ", project)
+    console.log("project: ", project)
     // console.log(project);
     res.send(project);
   })
 })
 
-// UPDATE
+// PUT / UPDATE
 router.put("/tasks/:pid/:tid", function(req, res) {
   // console.log("PROJECT ID: ", req.params.pid);
   // console.log("TASK ID: ", req.params.tid);
@@ -123,7 +114,7 @@ router.put("/tasks/:pid/:tid", function(req, res) {
 router.delete("/tasks/:pid/:tid", function(req, res) {
   // console.log("project id, ", req.params.pid);
   // console.log("task id, ", req.params.tid);
-  // Delete task
+  // delete task
   Task.findByIdAndRemove(req.params.tid, function(err, data) {
     // pull the task from the projects model
     Project.update({_id: req.params.pid}, {$pull: {"tasks": {_id: req.params.tid}}}, function(err, data) {
@@ -137,21 +128,20 @@ router.delete("/tasks/:pid/:tid", function(req, res) {
 
 module.exports = router; // export router
 
-// ==============================
-//           SCRAP CODE
-// ==============================
-
-// console.log('PROJECTASDFJKL;', project)
 
 
-// update project in user model
-// User.update({_id: req.user._id, "projects._id": req.params.pid, "projects.tasks._id": req.params.tid}, {$set: {"projects.tasks.$.name": req.body.name}}, function(err, user) {
+// SCRAP
+      // console.log('PROJECTASDFJKL;', project)
 
-// User.update({_id: req.user._id, "projects._id": req.params.pid, "projects.tasks._id": req.params.tid}, {$set: {"projects.tasks.$.name": req.body.name}}, function(err, user) {
-//   console.log("USER ID: ", req.user._id);
-//   console.log("PROJECT ID: ", req.params.pid);
-//   console.log("TASK ID: ", req.params.tid);
-//   console.log(err)
-//   res.send(user);
 
-// });
+      // update project in user model
+      // User.update({_id: req.user._id, "projects._id": req.params.pid, "projects.tasks._id": req.params.tid}, {$set: {"projects.tasks.$.name": req.body.name}}, function(err, user) {
+
+      // User.update({_id: req.user._id, "projects._id": req.params.pid, "projects.tasks._id": req.params.tid}, {$set: {"projects.tasks.$.name": req.body.name}}, function(err, user) {
+      //   console.log("USER ID: ", req.user._id);
+      //   console.log("PROJECT ID: ", req.params.pid);
+      //   console.log("TASK ID: ", req.params.tid);
+      //   console.log(err)
+      //   res.send(user);
+
+      // });
