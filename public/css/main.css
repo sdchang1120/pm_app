@@ -212,3 +212,25 @@ h2 {
 .inputButton:focus {
   outline: none;
 }
+
+/* ABOUT CSS */
+#about-info {
+  width: 60%;
+  margin: auto;
+  text-align: left;
+}
+
+#about-info ul {
+  width: 60%;
+  margin: auto;
+}
+
+/* PROJECT CSS */
+.proj-button {
+  border: 0;
+  background-color: rgba(63, 63, 63, 0.15);
+  /*border: 0.5px solid #3f3f3f;*/
+  border-radius: 3px;
+  padding: 0.5em;
+  color: #3f3f3f;
+}
