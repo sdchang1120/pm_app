@@ -1,6 +1,11 @@
-<h2>STATS</h2>
+<h2>{{mainCtrl.user.username}}'s STATS</h2>
 
-<canvas id="userStats" width="400" height="400"></canvas>
+<canvas id="userStats" width="400" height="400"></canvas><br><br>
+
+Tasks Completed: {{statsCtrl.completed}}<br>
+Tasks Remaining: {{statsCtrl.remaining}}<br>
+
+
 
 
 <!-- <p ng-repeat="activity in statsCtrl.userActivityArray | orderBy: '-date' | limitTo: 5">

@@ -116,8 +116,10 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
         console.log(response);
 
         // update the user log
-        var updateData = {message: "added a new task (" + controller.newTask.name + ") to " + controller.project.name};
+        var updateData = {message: "added " + controller.newTask.name + " to " + controller.project.name};
         updateLog.method(updateData);
+
+        controller.newTask.name = ""; // clears the input field
 
         // refresh tasks
         controller.getTasks();
@@ -150,7 +152,7 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
         console.log(response);
 
         // update user log
-        var updateData = {message: "deleted a task (" + task.name + ") from " + controller.project.name};
+        var updateData = {message: "deleted " + task.name + " from " + controller.project.name};
         updateLog.method(updateData);
 
         // refresh tasks
@@ -194,7 +196,7 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
           console.log(response);
 
           // update user log
-          var updateData = {message: "updated a task in " + controller.project.name};
+          var updateData = {message: "updated " + task.name + " in " + controller.project.name};
           updateLog.method(updateData);
 
           controller.getTasks();
