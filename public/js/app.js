@@ -88,6 +88,15 @@ app.controller("MainController", ["$rootScope", "$scope", "$http", "$location", 
   // this.test = "main controller is here";
   this.user = null;
   this.isAuthenticated = false;
+  this.hideButton = false;
+
+  this.showSignup = function() {
+    controller.hideButton = true;
+  }
+
+  this.showLogin = function() {
+    controller.hideButton = true;
+  }
 
   // listen for user-login event. when logged in, save user data to controller
   $scope.$on("user-login", function(eventObject, userData) {

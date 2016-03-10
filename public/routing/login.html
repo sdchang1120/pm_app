@@ -1,4 +1,4 @@
-<div ng-if="!mainCtrl.isAuthenticated">
+<div ng-if="!mainCtrl.isAuthenticated" ng-if="!hideLogin">
   <h2>Log In</h2>
   <form ng-controller="LoginController as loginCtrl" ng-submit="loginCtrl.login()">
   <input type="text" name="username" placeholder="username" ng-model="loginCtrl.credentials.username">

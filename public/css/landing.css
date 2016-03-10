@@ -1,0 +1,17 @@
+.landing {
+  margin-top: 250px;
+}
+
+.landing h1 {
+  font-size: 50px;
+}
+
+.landing button {
+  text-transform: uppercase;
+  font-size: 18px;
+  padding: 10px;
+  background: #3CC;
+  border: 0;
+  color: white;
+  margin: 10px;
+}
