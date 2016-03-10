@@ -59,7 +59,7 @@ Search: <input type="search" class="search-query" placeholder="Search Tasks" ng-
 
 		<td ng-if="task.completed">
 			<!-- show if the task is completed -->
-			<span>{{task.name}}<span> <button ng-click="taskCtrl.undoComplete(task)">Undo</button>
+			<span>{{task.name}} <span><i id="undo-icon" ng-click="taskCtrl.undoComplete(task)">&#xE808;</i>
 		</td>
 	</tr>
 	<tr>

@@ -8,8 +8,13 @@
   src: url('/font/cart.ttf');
 }
 
+@font-face {
+  font-family: 'new';
+  src: url('/font/fontello.ttf');
+}
+
 i {
-  font-family: 'Fontello';
+  font-family: 'new';
   font-style: normal;
   cursor: pointer;
 }
