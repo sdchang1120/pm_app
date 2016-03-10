@@ -1,3 +1,4 @@
+// REQUIREMENTS
 var express = require("express");
 var router = express.Router();
 var passport = require("passport");
@@ -9,6 +10,9 @@ var Task = require('../models/tasks.js');
 // router.get("/", function(req, res) {
 //   res.send("got here")
 // })
+
+// ROUTES
+
 
 router.post("/new", function(req, res) {
 
