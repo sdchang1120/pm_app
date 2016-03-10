@@ -8,5 +8,4 @@ var taskSchema = mongoose.Schema({
   completed: {type: Boolean, default: false} // default to false
 })
 
-// EXPORT USER
-module.exports = mongoose.model('Task', taskSchema);
+module.exports = mongoose.model('Task', taskSchema); // export Task

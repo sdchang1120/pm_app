@@ -9,5 +9,4 @@ var projectSchema = mongoose.Schema({
   completed: false
 })
 
-// EXPORT USER
-module.exports = mongoose.model('Project', projectSchema);
+module.exports = mongoose.model('Project', projectSchema); // export Project

@@ -1,6 +1,6 @@
-// ====================
-//     REQUIREMENTS
-// ====================
+// ==============================
+//          REQUIREMENTS
+// ==============================
 
 var express = require("express");
 var router = express.Router();
@@ -10,9 +10,9 @@ var Project = require('../models/projects.js');
 var Task = require('../models/tasks.js');
 
 
-// ====================
-//   PROJECTS ROUTES
-// ====================
+// ==============================
+//        PROJECTS ROUTES
+// ==============================
 
 // POST / CREATE
 
@@ -78,9 +78,9 @@ router.delete("/project/:pid", function(req, res) {
 });
 
 
-// ====================
-//     TASKS ROUTES
-// ====================
+// ==============================
+//          TASKS ROUTES
+// ==============================
 
 // POST / CREATE
 
@@ -161,7 +161,6 @@ router.put("/tasks/:pid/:tid", function(req, res) {
 });
 
 // DELETE
-
 router.delete("/tasks/:pid/:tid", function(req, res) {
   // console.log("project id, ", req.params.pid);
   // console.log("task id, ", req.params.tid);
@@ -184,9 +183,9 @@ router.delete("/tasks/:pid/:tid", function(req, res) {
 
 module.exports = router; // export router
 
-// ====================
-//      SCRAP CODE
-// ====================
+// ==============================
+//           SCRAP CODE
+// ==============================
 
 // console.log('PROJECTASDFJKL;', project)
 

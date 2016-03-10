@@ -1,3 +1,7 @@
+// ==============================
+//          REQUIREMENTS
+// ==============================
+
 var express = require("express");
 var router = express.Router();
 var passport = require("passport");
@@ -10,9 +14,11 @@ router.get('/json', function(req, res) {
   })
 })
 
-// AUTHENTICATION ROUTES
+// ==============================
+//     AUTHENTICATION ROUTES
+// ==============================
 
-// SIGNUP-- create a new account
+// SIGNUP -- Create new user
 router.post("/signup", passport.authenticate("local-signup"), function(req, res) {
   console.log('REQ.BODY: ', req.body);
   var hashedPw = req.body.password; // hashed pw
@@ -34,7 +40,7 @@ router.post("/signup", passport.authenticate("local-signup"), function(req, res)
 }); // end signup route
 
 
-// LOGOUT-- logout of account
+// LOGOUT
 router.get("/logout", function(req, res) {
   req.logout(); // built in function that will logout user
   // res.redirect("/");
@@ -42,7 +48,7 @@ router.get("/logout", function(req, res) {
 }); // end logout route
 
 
-// LOGIN-- access an existing account
+// LOGIN -- access an existing user
 router.post("/login", passport.authenticate("local-login"), function(req, res) {
   // console.log("login ", req.user);
   // req.session.user = req.user
@@ -57,12 +63,11 @@ router.get("/secondpath", isLoggedIn, function(req, res) {
   res.send(req.user)
 });
 
+// ==============================
+//      ACTIVITY LOG ROUTES
+// ==============================
 
-
-
-// ACTIVITY LOG ROUTES
-
-// GET-- send all info related to the logged in user to angular
+// GET -- send all info related to the logged in user to angular
 router.get("/getuserlog", function(req, res) {
 
   // find the logged in user
@@ -74,8 +79,7 @@ router.get("/getuserlog", function(req, res) {
   });
 });
 
-
-// UPDATE-- updates the user log
+// UPDATE -- updates the user log
 router.put("/userlog/", function(req, res) {
   // // console.log(req.user);
   // console.log(req.body);
@@ -100,10 +104,8 @@ router.put("/userlog/", function(req, res) {
   });
 });
 
-
-
 // MIDDLEWARE
-// -----------------------------------------------------------------
+// ------------------------------
 // ensure a user is loggedin
 function isLoggedIn(req, res, next) {
 
@@ -119,8 +121,4 @@ function isLoggedIn(req, res, next) {
   };
 };
 
-
-
-
-// EXPORT
-module.exports = router;
+module.exports = router; // export router
