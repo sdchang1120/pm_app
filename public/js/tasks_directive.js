@@ -197,6 +197,8 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
           var updateData = {message: "updated a task in " + controller.project.name};
           updateLog.method(updateData);
 
+          controller.getTasks();
+
 
         // error function
         }, function(error) {

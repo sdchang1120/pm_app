@@ -3,6 +3,7 @@
 	<title>angular_passport</title>
 	<link rel="stylesheet" href="css/main.css" media="screen" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="css/dashboard.css" media="screen" title="no title" charset="utf-8">
+	<!-- <link rel="stylesheet" type="text/css" href="css/dropdown.css"> -->
 	<!-- <link rel="stylesheet" href="css/jquery.simple-dtpicker.css" type="text/css"> -->
 	<script type="text/javascript" src="js/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
@@ -20,6 +21,8 @@
 
 <body ng-controller="MainController as mainCtrl">
 
+
+
 <nav class="dashboard">
 	<section ng-if="mainCtrl.isAuthenticated">
 		<a href="/">Home</a>
@@ -32,6 +35,8 @@
 		    <li><a id="logout" ng-click="mainCtrl.logout()">Logout</a></li>
 	  	</div> -->
 	</section>
+
+
 	<section ng-if="!mainCtrl.isAuthenticated">
 		<a href="/signup"><button>SIGN UP</button></a>
 		<a href="/login"><button>LOG IN</button></a>
@@ -41,6 +46,12 @@
 	    <li><a id="logout" ng-click="mainCtrl.logout()">Logout</a></li>
   	</div>
 </nav>
+
+<!-- {{mainCtrl.user.projects}} -->
+
+
+
+<!-- {{mainCtrl.user}} -->
 
 
 	<!-- <div ng-if="mainCtrl.isAuthenticated" class="sidebar" ng-include=" 'partials/sidebar.html' "></div> -->
