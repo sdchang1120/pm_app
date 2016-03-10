@@ -5,16 +5,11 @@
 
 @font-face {
   font-family: 'Fontello';
-  src: url('/font/cart.ttf');
-}
-
-@font-face {
-  font-family: 'new';
   src: url('/font/fontello.ttf');
 }
 
 i {
-  font-family: 'new';
+  font-family: 'Fontello';
   font-style: normal;
   cursor: pointer;
 }
@@ -28,6 +23,7 @@ i {
 805 - plus
 806 - edit
 807 - big X
+808 - undo
 */
 
 #edit-icon, #delete-icon, #add-icon {
@@ -119,18 +115,10 @@ td > form {
 }
 
 td {
-  /*border: 3px solid rgba(0, 0, 0, 0.5);*/
-  /*border: solid 15px rgba(255,255,255,0.0);*/
-  /*background: rgba(255, 255, 255, 1);*/
   padding: 10px;
   width: 100%;
   margin: 0;
-  /*width: calc(100%/tr.length);*/
 }
-/*
-table {
-  display: inline-block;
-}*/
 
 .todo-list, .completed-list {
   width: 40%;
