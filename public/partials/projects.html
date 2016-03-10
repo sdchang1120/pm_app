@@ -17,7 +17,7 @@
 
   <!-- filter Search Project -->
   <div class="project-box" ng-repeat="project in projectsCtrl.projects | filter: searchProject | orderBy: 'name'">
-    <!-- <table ng-click="projectsCtrl.thisProject(project, $index)"> -->
+
     <table>
       <tr>
         <!-- PROJECT TITLE -->
@@ -39,15 +39,32 @@
     <button ng-click="projectsCtrl.deleteProject(project)">Delete Project</button>
   </div>
 
-    <!-- <button ng-click="projectsCtrl.deleteProject(project)">Delete Project</button><br><br> -->
-
-    <!-- <button ng-click="viewProject = !viewProject">View Project</button> -->
-
-  <!-- </li> -->
 
 </div>
 
 <div ng-show="projectsCtrl.hideProjects" ng-include=" 'partials/user_project.html' "></div>
+
+<!-- SCRAP CODE -->
+
+
+
+
+
+<!-- <table ng-click="projectsCtrl.thisProject(project, $index)"> -->
+
+
+
+
+
+<!-- <button ng-click="projectsCtrl.deleteProject(project)">Delete Project</button><br><br> -->
+
+<!-- <button ng-click="viewProject = !viewProject">View Project</button> -->
+
+<!-- </li> -->
+
+
+
+
 
 <!-- <button ng-click="addProject = !addProject">Add Project</button>
 
