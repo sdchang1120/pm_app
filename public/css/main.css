@@ -120,6 +120,12 @@ td {
   margin: 0;
 }
 
+td em {
+  display: block;
+  text-align: center;
+  font-size: 0.8em;
+}
+
 .todo-list, .completed-list {
   width: 40%;
   margin: auto;
