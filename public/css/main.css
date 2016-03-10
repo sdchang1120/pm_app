@@ -25,8 +25,17 @@ i {
 807 - big X
 */
 
-#edit-icon {
+#edit-icon, #delete-icon, #add-icon {
+  opacity: .75;
+}
 
+a {
+  color: #999;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
 }
 
 body {
@@ -40,7 +49,7 @@ body {
 
 .container {
   padding: 10px;
-  background: #cecece;
+  /*background: #cecece;*/
 }
 
 .project-box {
@@ -50,11 +59,6 @@ body {
   margin: 10px;
   vertical-align: top;
   padding: 10px;
-}
-
-a {
-  color: white;
-  text-decoration: none;
 }
 
 .sidebar {
@@ -69,6 +73,7 @@ table {
   width: 100%;
   padding: 0;
   margin: 0;
+  display: inline-block;
 }
 
 tr:nth-child(even) {
@@ -86,12 +91,20 @@ tr:nth-child(odd) {
 }
 
 tr:nth-child(1) {
-  background: #68E5EF;
+  background: #3CC;
   width: 100%;
   padding: 0;
   margin: 0;
   color: white;
   text-align: center;
+}
+
+.addProjectForm > h3 {
+  display: inline-block;
+}
+
+.addTaskForm > h3 {
+  display: inline-block;
 }
 
 /* aligns update form with edit icon */
@@ -109,13 +122,96 @@ td {
   margin: 0;
   /*width: calc(100%/tr.length);*/
 }
-
+/*
 table {
   display: inline-block;
-}
+}*/
 
 .todo-list, .completed-list {
   width: 40%;
   margin: auto;
   margin: 20px;
+}
+
+/* BOOTSTRAP STUFF */
+/* http://bootsnipp.com/snippets/VERA8 */
+
+::selection {
+  background-color: #b5e2e7;
+}
+
+::-moz-selection {
+  background-color: #8ac7d8;
+}
+
+#logbox {
+  padding: 10px;
+  margin: 50px auto;
+  width: 340px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+}
+
+h1 {
+  text-align: center;
+  font-size: 175%;
+  color: #757575;
+  font-weight: 300;
+}
+
+h1, input {
+  font-family: "Open Sans", Helvetica, sans-serif;
+}
+
+.input {
+  width: 75%;
+  height: 50px;
+  display: block;
+  margin: 0 auto 15px;
+  padding: 0 15px;
+  border: none;
+  border-bottom: 2px solid #ebebeb;
+}
+.input:focus {
+  outline: none;
+  border-bottom-color: #3CC !important;
+}
+.input:hover {
+  border-bottom-color: #dcdcdc;
+}
+.input:invalid {
+  box-shadow: none;
+}
+
+.pass:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+
+.inputButton {
+  position: relative;
+  width: 85%;
+  height: 50px;
+  display: block;
+  margin: 30px auto 30px;
+  color: white;
+  background-color: #3CC;
+  border: none;
+  -webkit-box-shadow: 0 5px 0 #2CADAD;
+  -moz-box-shadow: 0 5px 0 #2CADAD;
+  box-shadow: 0 5px 0 #2CADAD;
+}
+.inputButton:hover {
+  top: 2px;
+  -webkit-box-shadow: 0 3px 0 #2CADAD;
+  -moz-box-shadow: 0 3px 0 #2CADAD;
+  box-shadow: 0 3px 0 #2CADAD;
+}
+.inputButton:active {
+  top: 5px;
+  box-shadow: none;
+}
+.inputButton:focus {
+  outline: none;
 }

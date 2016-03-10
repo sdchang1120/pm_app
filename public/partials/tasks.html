@@ -7,14 +7,18 @@
 	<!-- TO-DO LIST -->
 	<table class="todo-list">
 
+
+
 		<tr>
 			<td>To Do</td>
 		</tr>
 
 		<!-- filter Search Task -->
-		<tr ng-repeat="task in taskCtrl.project.tasks | filter: searchTask | orderBy: 'name'">
-			<td>
-				<input type="checkbox" ng-model="task.completed" ng-click="taskCtrl.updateTask(task)">
+		<tr ng-repeat="task in taskCtrl.project.tasks | filter: searchTask | orderBy: 'name'"> <!-- not updating because bound to projects rather than tasks -->
+			<!-- show if the task is NOT completed -->
+			<!-- condition must be on input AND task span because both are created for every task object in the array -->
+			<td ng-if="!task.completed">
+				<input type="checkbox" ng-model="task.completed" ng-change="taskCtrl.updateTask(task)">
 				<!-- {{task.completed}} -->
 				<span ng-if="!updateTask">{{task.name}}</span>
 				<form ng-if="updateTask" ng-submit="taskCtrl.updateTask(task)">
@@ -23,6 +27,8 @@
 				</form>
 				<i id="edit-icon" ng-click="updateTask = !updateTask">&#xE806;</i>
 					<i ng-if="updateTask" ng-click="taskCtrl.deleteTask(task)">&#xE800;</i>
+
+
 			</td>
 		</tr>
 
@@ -33,11 +39,15 @@
 		<tr>
 			<td>Completed</td>
 		</tr>
-		<tr>
-			<td>blah</td>
+
+		<tr ng-repeat="task in taskCtrl.project.tasks | orderBy: 'name'">
+			<td ng-if="task.completed">
+				<!-- show if the task is completed -->
+				<span>{{task.name}}<span> <button ng-click="taskCtrl.undoComplete(task)">Undo</button>
+			</td>
 		</tr>
 		<tr>
-			<td>blah</td>
+			<!-- <td>blah</td> -->
 		</tr>
 
 	</table>

@@ -1,8 +1,19 @@
+<link rel="stylesheet" href="/css/animations.css" media="screen" title="no title" charset="utf-8">
+
 <div ng-if="!mainCtrl.isAuthenticated">
-  <h2>Log In</h2>
-  <form ng-controller="LoginController as loginCtrl" ng-submit="loginCtrl.login()">
-  <input type="text" name="username" placeholder="username" ng-model="loginCtrl.credentials.username">
-  <input type="text" name="password" placeholder="password" ng-model="loginCtrl.credentials.password">
-  <input type="submit">
-  </form>
+
+  <div class="auth-page col-md-6">
+    <div id="logbox">
+      <form id="signup" ng-controller="LoginController as loginCtrl" ng-submit="loginCtrl.login()">
+      <h1>account login</h1>
+      <input name="username" type="text" placeholder="enter your username" class="input pass" ng-model="loginCtrl.credentials.username"/>
+      <input name="password" type="password" placeholder="enter your password" required="required" class="input pass" ng-model="loginCtrl.credentials.password"/>
+      <input type="submit" value="Sign me in!" class="inputButton"/>
+      <div class="text-center">
+        new? <a href="/signup" id="">create an account</a>
+        <!-- - <a href="#" id="">forgot password</a> -->
+      </div>
+      </form>
+  </div>
+
 </div>

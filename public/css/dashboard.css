@@ -4,8 +4,9 @@ body {
 }
 
 nav {
-  background: #28D0DC;
+  background: #3CC;
   padding: 10px;
+  box-shadow: 0 5px 50px 5px rgba(200, 200, 200, 0.75);;
 }
 
 nav li {
@@ -13,7 +14,7 @@ nav li {
   margin: 5px;
 }
 
-.dashboard nav li a {
+.dashboard li a {
   text-transform: uppercase;
   text-decoration: none;
   color: #eaeaea;
@@ -28,7 +29,7 @@ nav li {
 .right-nav-box {
   position: absolute;
   right: 10px;
-  top: 10px;
+  top: 11px;
 }
 
 #logout {

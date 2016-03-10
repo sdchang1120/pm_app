@@ -4,15 +4,22 @@
   <li><a href="#">About</a></li>
   <li><a href="#">Projects</a></li>
   <li><a href="#">People</a></li>
-  <li><a href="#" ng-click="mainCtrl.showStatsFn()">Stats</a></li>
+  <!-- showStatsFn toggles showStats variable -->
+  <!-- <li><a href="#" ng-click="mainCtrl.showStatsFn()">Stats</a></li>  -->
+  <li><a href="#">Stats</a></li>
   <div class="right-nav-box" ng-if="mainCtrl.isAuthenticated">
     <li>Welcome, <a href="#">{{mainCtrl.user.username}}</a></li>
     <li><a id="logout" ng-click="mainCtrl.logout()">Logout</a></li>
   </div>
 </nav>
 
+
+
+
+
+
 <div ng-repeat="">
 </div>
 
-<!-- show stats -->
-<stats-directive ng-if="mainCtrl.showStats"></stats-directive>
+<!-- display chart and log from stats.html if showStats variable is true -->
+<!-- <stats-directive ng-if="mainCtrl.showStats"></stats-directive> -->

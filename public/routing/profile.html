@@ -1,1 +1,10 @@
 <h2>PROFILE</h2>
+
+<p>Username: {{mainCtrl.user.username}}</p>
+<p>Name: {{mainCtrl.user.first_name}} {{mainCtrl.user.last_name}}</p>
+<p>Email: {{mainCtrl.user.email}}</p>
+
+<p>Latest Activity:</p>
+<p ng-repeat="activity in statsCtrl.userActivityArray | orderBy: '-date' | limitTo: 5">
+{{mainCtrl.user.username}} {{activity.message}} on {{activity.date | date: 'short' : timezone}}
+</p>

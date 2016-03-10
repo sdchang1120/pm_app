@@ -1,9 +1,40 @@
+<link rel="stylesheet" href="/css/animations.css" media="screen" title="no title" charset="utf-8">
+
 <div ng-if="!mainCtrl.isAuthenticated">
-  <h2>Sign Up</h2>
-  <form ng-controller="SignupController as signupCtrl" ng-submit="signupCtrl.signup()">
-  <input type="text" name="username" placeholder="username" ng-model="signupCtrl.credentials.username">
-  <input type="text" name="email" placeholder="email" ng-model="signupCtrl.credentials.email">
-  <input type="text" name="password" placeholder="password" ng-model="signupCtrl.credentials.password">
-  <input type="submit">
-  </form>
+
+  <div class="auth-page">
+    <div class="col-md-6">
+    <div id="logbox">
+      <form id="signup" ng-controller="SignupController as signupCtrl" ng-submit="signupCtrl.signup()">
+        <h1>create an account</h1>
+        <input name="username" type="text" placeholder="What's your username?" pattern="^[\w]{3,16}$" autofocus="autofocus" required="required" class="input pass" ng-model="signupCtrl.credentials.username"/>
+        <input name="first_name" type="text" placeholder="First name" class="input pass" ng-model="signupCtrl.credentials.first_name"/>
+        <input name="last_name" type="text" placeholder="Last name" class="input pass" ng-model="signupCtrl.credentials.last_name"/>
+        <input name="password" type="password" placeholder="Choose a password" required="required" class="input pass" ng-model="signupCtrl.credentials.password"/>
+        <!-- <input name="password2" type="password" placeholder="Confirm password" required="required" ng-model="signupCtrl.credentials.password"/> -->
+        <input name="email" type="email" placeholder="Email address" class="input pass" ng-model="signupCtrl.credentials.email"/>
+        <input type="submit" value="Sign me up!" class="inputButton"/>
+        <div class="text-center">
+            already have an account? <a href="/login" id="login_id">login</a>
+        </div>
+      </form>
+    </div>
+   </div>
+
 </div>
+  <!--col-md-6-->
+
+ <!-- <div class="col-md-6">
+  <div id="logbox">
+    <form id="signup" method="post" action="/signup">
+      <h1>account login</h1>
+      <input name="user[email]" type="email" placeholder="enter your email" class="input pass"/>
+      <input name="user[password]" type="password" placeholder="enter your password" required="required" class="input pass"/>
+      <input type="submit" value="Sign me in!" class="inputButton"/>
+      <div class="text-center">
+                  <a href="#" id="">create an account</a> - <a href="#" id="">forgot password</a>
+              </div>
+    </form>
+  </div>
+  </div>
+</div> -->
