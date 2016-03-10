@@ -1,7 +1,8 @@
 <html ng-app="PMApp">
 <head>
-	<title>angular_passport</title>
+	<title>Getit DONE - A PM App</title>
 	<link rel="stylesheet" href="css/main.css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="css/landing.css" media="screen" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="css/dashboard.css" media="screen" title="no title" charset="utf-8">
 	<!-- <link rel="stylesheet" href="css/jquery.simple-dtpicker.css" type="text/css"> -->
 	<script type="text/javascript" src="js/angular.min.js"></script>
@@ -15,31 +16,34 @@
 	<script type="text/javascript" src="js/app.js"></script>
 	<base href="/">
 
-
 </head>
 
 <body ng-controller="MainController as mainCtrl">
 
-<nav class="dashboard">
-	<section ng-if="mainCtrl.isAuthenticated">
+<!-- LANDING PAGE - IF NOT AUTHENTICATED -->
+<section ng-if="!mainCtrl.isAuthenticated" class="landing">
+	<h1>☑ DONE</h1>
+	<div class="auth-buttons" ng-if="!mainCtrl.hideButton">
+		<a href="/signup" ng-click="mainCtrl.showSignup()"><button ng-click="mainCtrl.showSignup()">SIGN UP</button></a><br>
+		<a href="/login" ng-click="mainCtrl.showLogin()"><button ng-click="mainCtrl.showLogin()">LOG IN</button></a>
+	</div>
+</section>
+
+<!-- DASHBOARD - IF AUTHENTICATED -->
+<nav ng-if="mainCtrl.isAuthenticated" class="dashboard">
+
+	<section>
 		<li><a href="/">Home</a></li>
 		<li><a href="/about">About</a></li>
 		<li><a href="/projects">Projects</a></li>
 		<li><a href="/stats">Stats</a></li>
-		<!-- <a href="/profile">Profile</a> -->
-		<!-- <div class="right-nav-box" ng-if="mainCtrl.isAuthenticated">
-		    <li>Welcome, <a href="#">{{mainCtrl.user.username}}</a></li>
-		    <li><a id="logout" ng-click="mainCtrl.logout()">Logout</a></li>
-	  	</div> -->
 	</section>
-	<section ng-if="!mainCtrl.isAuthenticated">
-		<a href="/signup"><button>SIGN UP</button></a>
-		<a href="/login"><button>LOG IN</button></a>
-	</section>
-	<div class="right-nav-box" ng-if="mainCtrl.isAuthenticated">
-	    <li>Welcome, <a href="/profile">{{mainCtrl.user.username}}</a></li>
-	    <li><a id="logout" ng-click="mainCtrl.logout()">Logout</a></li>
-  	</div>
+
+	<div class="right-nav-box">
+    <li>Welcome, <a href="/profile">{{mainCtrl.user.username}}</a></li>
+    <li><a id="logout" ng-click="mainCtrl.logout()">Logout</a></li>
+	</div>
+
 </nav>
 
 
