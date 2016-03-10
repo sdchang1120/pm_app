@@ -14,6 +14,8 @@ app.directive("statsDirective", [function() {
 // STATS CONTROLLER
 app.controller("StatsController", ["$http", "$scope", function($http, $scope) {
 
+  var test = "testing"
+
   // console.log($scope)
   
   this.test = "stats"
@@ -23,15 +25,23 @@ app.controller("StatsController", ["$http", "$scope", function($http, $scope) {
   var userProjects = null;
 
   // global variables for parseUserStats
-  var totalTasks = 0;
-  var completed = 0;
-  var remaining = 0;
+  // var totalTasks = 0;
+  // var completed = 0;
+  // var remaining = 0;
+
+  this.totalTasks = 0;
+  this.completed = 0;
+  this.remaining = 0;
+  // this.projectCount = 0;
 
   // function to parse through the users stats and render the chart
   this.parseUserStats = function(userProjects) {
 
+
     // iterate through each project in the array
     // console.log(userProjects.length);
+
+    // controller.projectCount = userProjects.length;
 
     // for loop for each project in the array
     for (var i = 0; i < userProjects.length; i++) {
@@ -42,30 +52,30 @@ app.controller("StatsController", ["$http", "$scope", function($http, $scope) {
 
         // if the task is completed, add to completed counter
         if (userProjects[i].tasks[j].completed === true) {
-          completed +=1;
+          controller.completed +=1;
 
         // if the task is null or incomplete, add to remaining counter
         } else {
-          remaining +=1;
+          controller.remaining +=1;
         }
       } // closes j loop 
 
     } // closes i loop 
 
     // confirming variables
-    console.log("completed: ", completed);
-    console.log("remaining: ", remaining);
+    console.log("completed: ", controller.completed);
+    console.log("remaining: ", controller.remaining);
 
     // data for the chart-- uses the parsed info
     var data = [
       {
-        value: completed,
-        color: "blue",
+        value: controller.completed,
+        color: "#23cfe6",
         label: "completed"
       },
       {
-        value: remaining,
-        color: "red",
+        value: controller.remaining,
+        color: "#fe585a",
         label: "remaining"
       }
     ]
@@ -75,6 +85,8 @@ app.controller("StatsController", ["$http", "$scope", function($http, $scope) {
     var userChart = new Chart(context).Doughnut(data);
 
   }; // closes parseUserStats function
+
+  console.log(controller.completed)
 
 
   // get the user's project info

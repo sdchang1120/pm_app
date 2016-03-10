@@ -1,0 +1,69 @@
+<!-- TO-DO LIST -->
+
+<h2>{{taskCtrl.project.name}} Tasks</h2>
+
+Search: <input type="search" class="search-query" placeholder="Search Tasks" ng-model="searchTask"><br>
+
+<div class="addTaskForm">
+  <h3 ng-if="!addTaskForm">Add Task</h3>
+  <form ng-if="addTaskForm" ng-submit="taskCtrl.addTask()">
+   <input type="text" placeholder="Task Name" ng-model="taskCtrl.newTask.name">
+   <button>Add Task</button>
+  </form>
+  <i id="add-icon" ng-click="addTaskForm = !addTaskForm">&#xE805;</i>
+</div>
+
+<table class="todo-list">
+	<tr>
+		<td>To Do</td>
+	</tr>
+
+	<!-- {{taskCtrl.projTasks}} -->
+
+	<!-- filter Search Task -->
+
+
+	<!-- <tr ng-repeat="task in taskCtrl.projTasks | filter: searchTask | orderBy: 'name'"> -->
+	<tr ng-repeat="task in taskCtrl.projTasks | filter: searchTask | orderBy: 'name'">
+
+		<td ng-if="!task.completed">
+			<input type="checkbox" ng-model="task.completed" ng-change="taskCtrl.updateTask(task)">
+			<!-- {{task.completed}} -->
+			<span ng-if="!updateTask">{{task.name}}</span>
+			<form ng-if="updateTask" ng-submit="taskCtrl.updateTask(task)">
+				<input type="text" ng-model="task.name">
+				<!-- <button>Update</button> -->
+			</form>
+			<i id="edit-icon" ng-click="updateTask = !updateTask">&#xE806;</i>
+			<i ng-if="updateTask" ng-click="taskCtrl.deleteTask(task)">&#xE800;</i>
+
+
+		</td>
+	</tr>
+
+		<!-- <td>{{task.name}}</td> -->
+
+	<!-- not updating because bound to projects rather than tasks -->
+		<!-- show if the task is NOT completed -->
+		<!-- condition must be on input AND task span because both are created for every task object in the array -->
+
+</table>
+
+<table class="completed-list">
+
+	<tr>
+		<td>Completed</td>
+	</tr>
+
+	<tr ng-repeat="task in taskCtrl.projTasks | orderBy: 'name'">
+
+		<td ng-if="task.completed">
+			<!-- show if the task is completed -->
+			<span>{{task.name}}<span> <button ng-click="taskCtrl.undoComplete(task)">Undo</button>
+		</td>
+	</tr>
+	<tr>
+		<!-- <td>blah</td> -->
+	</tr>
+
+</table>

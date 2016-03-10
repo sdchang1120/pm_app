@@ -11,7 +11,11 @@ app.directive("tasksDirective", [function() {
 }]);
 
 // TASKS CONTROLLER
-app.controller("TaskController", ["$http", "$scope", "updateLog", function($http, $scope, updateLog) {
+app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams", "updateLog", function($http, $scope, $rootScope, $routeParams, updateLog) {
+
+  // console.log($routeParams)
+  // console.log($route)
+  // console.log($route.current.params.projectId)
 
   var controller = this;
   this.test = "task controller";
@@ -23,23 +27,44 @@ app.controller("TaskController", ["$http", "$scope", "updateLog", function($http
     controller.projId = project._id;
   });
 
+
+  $rootScope.$on("$routeChangeSuccess", function() {
+    console.log($routeParams.projId); // this is the project id
+
+    $rootScope.currentProjId = $routeParams.projId; // save project id to root scope
+
+    controller.projId = $rootScope.currentProjId;
+
+  })
+
+  var projId = $routeParams.projId;
+
+  console.log(projId)
+
+  this.projId = $rootScope.currentProjId;
+
+  console.log(controller.projId)
+
   // ==============================
   //           GET TASKS
   // ==============================
 
-  this.tasks = null;
+  this.projTasks = null;
+  this.project = null;
 
   // fetch and load all the tasks
   this.getTasks = function() {
     $http({
     method: "GET",
-    url: "/projects/tasks/" + controller.projId  // this path will change
+    url: "/projects/tasks/" + $routeParams.projId  // this path will change
     }).then(
       // success function
       function(response) {
         console.log("EXECUTED")
         console.log("get response, ", response.data.tasks);
-        controller.tasks = response.data;
+
+        controller.project = response.data;
+        controller.projTasks = response.data.tasks;
 
 
       // error function
@@ -47,6 +72,26 @@ app.controller("TaskController", ["$http", "$scope", "updateLog", function($http
         console.log(error);
     });
   }
+
+  this.getTasks();
+
+  // this.getTasks = function() {
+  //   $http({
+  //   method: "GET",
+  //   url: "/projects/tasks/" + controller.projId  // this path will change
+  //   }).then(
+  //     // success function
+  //     function(response) {
+  //       console.log("EXECUTED")
+  //       console.log("get response, ", response.data.tasks);
+  //       controller.tasks = response.data;
+
+
+  //     // error function
+  //     }, function(error) {
+  //       console.log(error);
+  //   });
+  // }
 
   // this.getTasks();
 
@@ -71,8 +116,10 @@ app.controller("TaskController", ["$http", "$scope", "updateLog", function($http
         console.log(response);
 
         // update the user log
-        var updateData = {message: "added a new task (" + controller.newTask.name + ") to " + controller.project.name};
+        var updateData = {message: "added " + controller.newTask.name + " to " + controller.project.name};
         updateLog.method(updateData);
+
+        controller.newTask.name = ""; // clears the input field
 
         // refresh tasks
         controller.getTasks();
@@ -105,7 +152,7 @@ app.controller("TaskController", ["$http", "$scope", "updateLog", function($http
         console.log(response);
 
         // update user log
-        var updateData = {message: "deleted a task (" + task.name + ") from " + controller.project.name};
+        var updateData = {message: "deleted " + task.name + " from " + controller.project.name};
         updateLog.method(updateData);
 
         // refresh tasks
@@ -131,9 +178,9 @@ app.controller("TaskController", ["$http", "$scope", "updateLog", function($http
   this.updateTask = function(task) {
     // console.log(task);
 
-    var index = controller.project.tasks.indexOf(task);
+    var index = controller.projTasks.indexOf(task);
     // console.log("index: ", index);
-    var taskId = controller.project.tasks[index]._id;
+    var taskId = controller.projTasks[index]._id;
     // console.log("taskId: ", taskId);
     // console.log(controller.formData)
     // console.log("task?: ", task.name)
@@ -149,8 +196,10 @@ app.controller("TaskController", ["$http", "$scope", "updateLog", function($http
           console.log(response);
 
           // update user log
-          var updateData = {message: "updated a task in " + controller.project.name};
+          var updateData = {message: "updated " + task.name + " in " + controller.project.name};
           updateLog.method(updateData);
+
+          controller.getTasks();
 
 
         // error function
@@ -186,6 +235,7 @@ app.controller("TaskController", ["$http", "$scope", "updateLog", function($http
     });
 
   }
+
 
 
 }]);

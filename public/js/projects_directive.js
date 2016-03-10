@@ -69,8 +69,10 @@ app.controller("ProjectsController", ["$scope", "$http", "updateLog", function($
         console.log(response.data);
 
         // update the user log
-        var updateData = {message: "added a new project: " + project.name};
-        updateLog.method(updateData)
+        var updateData = {message: "added " + project.name};
+        updateLog.method(updateData);
+
+        controller.newProject.name = ""; // clears the input field
 
         // refresh projects
         controller.getProjects();
@@ -99,7 +101,7 @@ app.controller("ProjectsController", ["$scope", "$http", "updateLog", function($
           console.log(response);
 
           // update the user log
-          var updateData = {message: "updated a project: " + project.name};
+          var updateData = {message: "updated " + project.name};
           updateLog.method(updateData);
 
           // refresh projects
@@ -129,7 +131,7 @@ app.controller("ProjectsController", ["$scope", "$http", "updateLog", function($
         console.log(response);
 
         // update the user log
-        var updateData = {message: "deleted a project: " + project.name};
+        var updateData = {message: "deleted " + project.name};
         updateLog.method(updateData);
 
         // refresh projects

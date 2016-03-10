@@ -32,6 +32,11 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       controller: 'ProjectsController',
       controllerAs: 'projectsCtrl'
     }).
+    when('/projects/:projId', {
+      templateUrl: 'routing/tasks.html',
+      controller: 'TaskController',
+      controllerAs: 'taskCtrl'
+    }).
     when('/stats', {
       templateUrl: 'routing/stats.html',
       controller: 'StatsController',
@@ -136,7 +141,8 @@ app.controller("MainController", ["$rootScope", "$scope", "$http", "$location", 
 
           // toggle authentication status
           controller.isAuthenticated = false;
-          // $location.path("/");
+          
+          $location.path("/");
 
         // error function
         }, function(error) {

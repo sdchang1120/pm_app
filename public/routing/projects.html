@@ -1,6 +1,6 @@
 <div ng-if="!projectsCtrl.hideProjects">
 
-  <h2>PROJECTS</h2>
+  <h2>{{mainCtrl.user.username}}'s PROJECTS</h2>
 
   <!-- Search Project searchbox -->
   Search: <input type="search" class="search-query" placeholder="Search Projects" ng-model="searchProject"><br>
@@ -35,7 +35,11 @@
         <td>{{blah.name}}</td>
       </tr>
     </table>
-    <button ng-click="projectsCtrl.thisProject(project, $index)">View Project</button>
+
+    <a ng-href="projects/{{project._id}}"><button>View Project</button></a>
+
+
+    <!-- <button ng-click="projectsCtrl.thisProject(project, $index)">View Project</button> -->
     <button ng-click="projectsCtrl.deleteProject(project)">Delete Project</button>
   </div>
 

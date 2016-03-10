@@ -9,7 +9,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
 	<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
 	<script type="text/javascript" src="js/Chart.min.js"></script>
-	<!-- <script type="text/javascript" src="js/jquery.simple-dtpicker.js"></script> -->
 	<script type="text/javascript" src="js/stats_directive.js"></script>
 	<script type="text/javascript" src="js/projects_directive.js"></script>
 	<script type="text/javascript" src="js/tasks_directive.js"></script>
@@ -64,7 +63,6 @@
 		<input type="text" name="password" placeholder="password" ng-model="signupCtrl.credentials.password">
 		<input type="submit">
 		</form>
-
 		<h2>LogIn</h2>
 		<form ng-controller="LoginController as loginCtrl" ng-submit="loginCtrl.login()">
 		<input type="text" name="username" placeholder="username" ng-model="loginCtrl.credentials.username">
@@ -89,7 +87,6 @@
 	<!-- <div ng-controller="AnotherController as anotherCtrl">
 		{{anotherCtrl.test}}
 		<p ng-if="mainCtrl.isAuthenticated"> User stuff</p>
-
 	</div> -->
 
 	<!-- <button ng-if="mainCtrl.isAuthenticated" ng-click="mainCtrl.logout()">Logout</button> -->
