@@ -35,7 +35,7 @@ app.use(passport.session());
 
 
 
-// controller
+// CONTROLLERS
 var usersController = require("./controllers/usersController.js");
 app.use("/users", usersController);
 
