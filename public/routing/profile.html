@@ -1,31 +1,7 @@
 <h2>{{mainCtrl.user.username}}'s PROFILE</h2>
 
-<!-- <section id="user-info">
-
-	<table id="info-table">
-		<tr class="top">
-			<td colspan="2">{{mainCtrl.user.username}}'s INFO</td>
-		</tr>
-
-		<tr>
-			<td class="label"><b>Username:</b></td>
-			<td class="data">{{mainCtrl.user.username}}</td>
-		</tr>
-
-		<tr>
-			<td class="label"><b>Name:</b></td>
-			<td class="data">{{mainCtrl.user.first_name}} {{mainCtrl.user.last_name}}</td>
-		</tr>
-
-		<tr>
-			<td class="label"><b>E-mail:</b></td>
-			<td class="data">{{mainCtrl.user.email}}</td>
-		</tr>
-
-	</table>
-</section> -->
-
 <table id="user-info">
+
 	<tr>
 		<td colspan="2">{{mainCtrl.user.username}}'s INFO</td>
 	</tr>
@@ -51,31 +27,64 @@
 			<span ng-repeat="project in mainCtrl.user.projects">
 				{{project.name}}{{$last ? '' : ', '}}
 			</span>
-
 		</td>
 	</tr>
 
 </table>
 
-
-	<!-- <p>Username: {{mainCtrl.user.username}}</p>
-	<p>Name: {{mainCtrl.user.first_name}} {{mainCtrl.user.last_name}}</p>
-	<p>Email: {{mainCtrl.user.email}}</p> -->
-
-
-
 <table id="activity-log">
+
 	<tr>
 		<td>Latest Activity</td>
 	</tr>
 
 	<tr ng-repeat="activity in statsCtrl.userActivityArray | orderBy: '-date' | limitTo: 5">
-
 		<td>{{mainCtrl.user.username}} {{activity.message}} on {{activity.date | date: 'M/dd/yy' : timezone}} at {{activity.date | date: 'h:mm a' : timezone}} </td>
-
 	</tr>
 
 </table>
+
+
+
+
+<!-- SCRAP CODE -->
+
+
+
+<!-- <section id="user-info">
+
+	<table id="info-table">
+		<tr class="top">
+			<td colspan="2">{{mainCtrl.user.username}}'s INFO</td>
+		</tr>
+
+		<tr>
+			<td class="label"><b>Username:</b></td>
+			<td class="data">{{mainCtrl.user.username}}</td>
+		</tr>
+
+		<tr>
+			<td class="label"><b>Name:</b></td>
+			<td class="data">{{mainCtrl.user.first_name}} {{mainCtrl.user.last_name}}</td>
+		</tr>
+
+		<tr>
+			<td class="label"><b>E-mail:</b></td>
+			<td class="data">{{mainCtrl.user.email}}</td>
+		</tr>
+
+	</table>
+</section> -->
+
+
+
+
+<!-- <p>Username: {{mainCtrl.user.username}}</p>
+<p>Name: {{mainCtrl.user.first_name}} {{mainCtrl.user.last_name}}</p>
+<p>Email: {{mainCtrl.user.email}}</p> -->
+
+
+
 
 
 <!-- 	<p>Latest Activity:</p>
@@ -83,7 +92,7 @@
 	{{mainCtrl.user.username}} {{activity.message}} on {{activity.date | date: 'short' : timezone}}
 	</p> -->
 
-	
+
 
 <!-- <section id="activity-log">
 	<p>Latest Activity:</p>

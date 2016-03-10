@@ -36,22 +36,22 @@
       </tr>
     </table>
 
+    <!-- View/Delete Project -->
     <a ng-href="projects/{{project._id}}"><button>View Project</button></a>
-
-
-    <!-- <button ng-click="projectsCtrl.thisProject(project, $index)">View Project</button> -->
     <button ng-click="projectsCtrl.deleteProject(project)">Delete Project</button>
+
   </div>
-
-    <!-- <button ng-click="projectsCtrl.deleteProject(project)">Delete Project</button><br><br> -->
-
-    <!-- <button ng-click="viewProject = !viewProject">View Project</button> -->
-
-  <!-- </li> -->
 
 </div>
 
 <div ng-show="projectsCtrl.hideProjects" ng-include=" 'partials/user_project.html' "></div>
+
+
+
+<!-- SCRAP CODE -->
+
+
+
 
 <!-- <button ng-click="addProject = !addProject">Add Project</button>
 
@@ -60,3 +60,18 @@
   <input type="text" placeholder="Project Name" ng-model="projectsCtrl.newProject.name">
   <button>Add</button>
 </form> -->
+
+
+
+
+    <!-- <button ng-click="projectsCtrl.thisProject(project, $index)">View Project</button> -->
+
+
+
+
+
+<!-- <button ng-click="projectsCtrl.deleteProject(project)">Delete Project</button><br><br> -->
+
+<!-- <button ng-click="viewProject = !viewProject">View Project</button> -->
+
+<!-- </li> -->

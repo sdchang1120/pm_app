@@ -1,9 +1,9 @@
 <link rel="stylesheet" href="/css/animations.css" media="screen" title="no title" charset="utf-8">
 
+<!-- Hide sign-up when authenticated -->
 <div ng-if="!mainCtrl.isAuthenticated">
-
-  <div class="auth-page">
-    <div class="col-md-6">
+  <!-- <div class="auth-page"> -->
+    <div class="auth-page col-md-6">
     <div id="logbox">
       <form id="signup" ng-controller="SignupController as signupCtrl" ng-submit="signupCtrl.signup()">
         <h1>create an account</h1>
@@ -15,13 +15,18 @@
         <input name="email" type="email" placeholder="Email address" class="input pass" ng-model="signupCtrl.credentials.email"/>
         <input type="submit" value="Sign me up!" class="inputButton"/>
         <div class="text-center">
-            already have an account? <a href="/login" id="login_id">login</a>
+          already have an account? <a href="/login" id="login_id">login</a>
         </div>
       </form>
-    </div>
    </div>
 
 </div>
+
+
+
+<!-- SCRAP CODE -->
+
+
   <!--col-md-6-->
 
  <!-- <div class="col-md-6">
