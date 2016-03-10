@@ -1,15 +1,15 @@
 // PROJECTS DIRECTIVE
-var app = angular.module("projects-directive", ["tasks-directive"]);
+var app = angular.module("ProjectsController", []);
 
 // PROJECTS DIRECTIVE
-app.directive('projectsDirective', function() {
-  return {
-    restrict: 'E',
-    templateUrl: 'partials/projects.html',
-    controller: 'ProjectsController',
-    controllerAs: 'projectsCtrl'
-  }
-});
+// app.directive('projectsDirective', function() {
+//   return {
+//     restrict: 'E',
+//     templateUrl: 'partials/projects.html',
+//     controller: 'ProjectsController',
+//     controllerAs: 'projectsCtrl'
+//   }
+// });
 
 // PROJECTS CONTORLLER
 app.controller("ProjectsController", ["$scope", "$http", "updateLog", function($scope, $http, updateLog) {
