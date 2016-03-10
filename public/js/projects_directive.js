@@ -1,4 +1,3 @@
-// PROJECTS DIRECTIVE
 var app = angular.module("projects-directive", ["tasks-directive"]);
 
 // PROJECTS DIRECTIVE
@@ -28,11 +27,7 @@ app.controller("ProjectsController", ["$scope", "$http", "updateLog", function($
 
   // console.log($scope.mainCtrl.user.projects);
 
-  // ==============================
-  //      GET UERS'S PROJECTS
-  // ==============================
-
-  // get all of user's projects
+  // GET/SHOW -- all of user's projects
   this.getProjects = function() {
     $http({
     method: "GET",
@@ -41,24 +36,16 @@ app.controller("ProjectsController", ["$scope", "$http", "updateLog", function($
       function(response) {
         // console.log(response.data);
         controller.projects = response.data;
-
       }, function(error) {
-
     })
   };
 
-  this.getProjects();
+  this.getProjects(); // invoke function
 
-  // ==============================
-  //    CREATE/POST NEW PROJECT
-  // ==============================
-
-  // add a new project
+  // POST/CREATE -- add a new project
   this.addProject = function(project) {
     // console.log('addProject, ', data);
-
     console.log("data ", project.name);
-
     // post request to server
     $http({
       method: "POST",
@@ -67,30 +54,21 @@ app.controller("ProjectsController", ["$scope", "$http", "updateLog", function($
       }).then(
       function(response){
         console.log(response.data);
-
         // update the user log
         var updateData = {message: "added " + project.name};
         updateLog.method(updateData);
-
         controller.newProject.name = ""; // clears the input field
-
         // refresh projects
         controller.getProjects();
-
       }, function(error) {
         console.log(error)
     });
   };
 
-  // ==============================
-  //         UPDATE PROJECT
-  // ==============================
-
-  // update project
+  // PUT/UPDATE - update project
   this.updateProject = function(project) {
     // console.log(project);
     // var projectId = project._id;
-
     // put request to server
     $http({
       method: "PUT",
@@ -99,29 +77,19 @@ app.controller("ProjectsController", ["$scope", "$http", "updateLog", function($
       }).then(
         function(response) {
           console.log(response);
-
           // update the user log
           var updateData = {message: "updated " + project.name};
           updateLog.method(updateData);
-
           // refresh projects
           controller.getProjects();
-
         }, function(error) {
           console.log(error)
-
       })
-
   }
 
-  // ==============================
-  //         DELETE PROJECT
-  // ==============================
-
-  // delete project
+  // DELETE - delete project
   this.deleteProject = function(project) {
     // console.log(project);
-
     // delete request to server
     $http({
       method: "DELETE",
@@ -129,20 +97,14 @@ app.controller("ProjectsController", ["$scope", "$http", "updateLog", function($
     }).then(
       function(response) {
         console.log(response);
-
         // update the user log
         var updateData = {message: "deleted " + project.name};
         updateLog.method(updateData);
-
         // refresh projects
         controller.getProjects();
-
       }, function(error) {
         console.log(error)
-      })
-  }
+      });
+  };
 
-
-
-
-}]);
+}]); // end of ProjectsController
