@@ -14,6 +14,21 @@ router.get('/json', function(req, res) {
 
 // SIGNUP-- create a new account
 router.post("/signup", passport.authenticate("local-signup"), function(req, res) {
+  console.log('REQ.BODY: ', req.body);
+  var hashedPw = req.body.password; // hashed pw
+  console.log(hashedPw);
+  // var newUser = new User({
+  //   hashedPw: hashedPw,
+  //   username: username
+  // });
+  // User.findOne({'username': username}).exec(function(err, user) {
+  //   console.log(newUser);
+  //   if (user != null && user.username === username) {
+  //     res.statusCode = 409;
+  //     res.send(res.statusCode);
+  //     console.log(res.statusCode);
+  //   }
+  // })
   res.send(req.body);
   // res.send(req.user); // send the user object back to angular
 }); // end signup route
@@ -94,14 +109,14 @@ function isLoggedIn(req, res, next) {
 
   // if user is authenticated in the session, continue
   if (req.isAuthenticated()) {
-    
+
     return next();
   } else {
 
   // if they aren't redirect them to the homepage
   res.redirect("/")
-  
-  }; 
+
+  };
 };
 
 
@@ -109,6 +124,3 @@ function isLoggedIn(req, res, next) {
 
 // EXPORT
 module.exports = router;
-
-
-
