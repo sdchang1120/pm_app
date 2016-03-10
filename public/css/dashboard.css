@@ -14,7 +14,7 @@ nav li {
   margin: 5px;
 }
 
-.dashboard > a {
+.dashboard li a {
   text-transform: uppercase;
   text-decoration: none;
   color: #eaeaea;
@@ -29,7 +29,7 @@ nav li {
 .right-nav-box {
   position: absolute;
   right: 10px;
-  top: 4px;
+  top: 11px;
 }
 
 #logout {

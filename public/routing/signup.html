@@ -14,6 +14,8 @@
       <form id="signup" ng-controller="SignupController as signupCtrl" ng-submit="signupCtrl.signup()">
         <h1>create an account</h1>
         <input name="username" type="text" placeholder="What's your username?" pattern="^[\w]{3,16}$" autofocus="autofocus" required="required" class="input pass" ng-model="signupCtrl.credentials.username"/>
+        <input name="first_name" type="text" placeholder="First name" class="input pass" ng-model="signupCtrl.credentials.first_name"/>
+        <input name="last_name" type="text" placeholder="Last name" class="input pass" ng-model="signupCtrl.credentials.last_name"/>
         <input name="password" type="password" placeholder="Choose a password" required="required" class="input pass" ng-model="signupCtrl.credentials.password"/>
         <!-- <input name="password2" type="password" placeholder="Confirm password" required="required" ng-model="signupCtrl.credentials.password"/> -->
         <input name="email" type="email" placeholder="Email address" class="input pass" ng-model="signupCtrl.credentials.email"/>
