@@ -35,7 +35,7 @@ Search: <input type="search" class="search-query" placeholder="Search Tasks" ng-
 		</td>
 	</tr>
 
-	<tr ng-repeat="task in taskCtrl.projTasks | filter: {completed: 'false'} | orderBy: 'name'">
+	<tr ng-repeat="task in taskCtrl.projTasks | filter: {completed: 'false', name: searchTask} | orderBy: 'name'">
 
 		<td>
 
@@ -74,7 +74,7 @@ Search: <input type="search" class="search-query" placeholder="Search Tasks" ng-
 	</tr>
 
 	<!-- display completed tasks -->
-	<tr ng-repeat="task in taskCtrl.projTasks | filter: {completed: 'true'} | orderBy: 'name'">
+	<tr ng-repeat="task in taskCtrl.projTasks | filter: {completed: 'true', name: searchTask} | orderBy: 'name'">
 
 		<!-- show task -->
 		<td>
