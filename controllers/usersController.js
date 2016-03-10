@@ -1,16 +1,23 @@
+// REQUIREMENTS
 var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 var User = require("../models/users.js");
 var Project = require('../models/projects.js');
 
-router.get('/json', function(req, res) {
-  User.find({}, function(err, users) {
-    res.json(users);
-  })
-})
+// router.get('/json', function(req, res) {
+//   User.find({}, function(err, users) {
+//     res.json(users);
+//   })
+// })
 
-// AUTHENTICATION ROUTES
+// ROUTES
+
+// ==============================
+//     AUTHENTICATION ROUTES
+// ==============================
+
+
 
 // SIGNUP-- create a new account
 router.post("/signup", passport.authenticate("local-signup"), function(req, res) {
@@ -29,8 +36,8 @@ router.post("/signup", passport.authenticate("local-signup"), function(req, res)
   //     console.log(res.statusCode);
   //   }
   // })
-  res.send(req.body);
-  // res.send(req.user); // send the user object back to angular
+  // res.send(req.body);
+  res.send(req.user); // send the user object back to angular
 }); // end signup route
 
 
@@ -38,6 +45,8 @@ router.post("/signup", passport.authenticate("local-signup"), function(req, res)
 router.get("/logout", function(req, res) {
   req.logout(); // built in function that will logout user
   // res.redirect("/");
+
+  // send confirmation back to angular
   res.send("loggedout");
 }); // end logout route
 
@@ -47,20 +56,22 @@ router.post("/login", passport.authenticate("local-login"), function(req, res) {
   // console.log("login ", req.user);
   // req.session.user = req.user
   // res.send(req.user);
-  res.redirect("/users/secondpath")
-  // res.send(req.user); // send the user object back to angular
+  // res.redirect("/users/secondpath"); // redirect to /secondPath
+  res.send(req.user); // send the user object back to angular
   // res.redirect("/cookie")
   // res.send("success!");
 }); // end login route
 
-router.get("/secondpath", isLoggedIn, function(req, res) {
-  res.send(req.user)
-});
+// router.get("/secondpath", isLoggedIn, function(req, res) {
+//   res.send(req.user)
+// });
 
 
 
+// ==============================
+//     ACTIVITY LOG ROUTES
+// ==============================
 
-// ACTIVITY LOG ROUTES
 
 // GET-- send all info related to the logged in user to angular
 router.get("/getuserlog", function(req, res) {
@@ -83,18 +94,17 @@ router.put("/userlog/", function(req, res) {
   // save the incoming message value to logMessage variable
   var logMessage = req.body.message;
 
-  // find the logged in user
+  // find active user
   User.findById(req.user._id, function(err, user) {
 
-    // push the message into the user's activity array
+    // push message into the user's activity array
     user.activity.push({message: logMessage});
 
-    // save the change
+    // save change
     user.save(function(err, updatedUser) {
-
       // console.log("updated user: ", updatedUser);
 
-      // send the updated user back to angular
+      // send updated user back to angular
       res.send(updatedUser);
     });
   });
