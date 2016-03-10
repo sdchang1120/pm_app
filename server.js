@@ -45,6 +45,8 @@ app.use("/projects", projectsController);
 
 
 // LISTEN
-app.listen(port, function() {
-  console.log('LISTENING ON PORT: ', port);
+mongoose.connection.once('open', function() {
+  app.listen(port, function() {
+    console.log('LISTENING ON PORT: ', port);
+  })
 })
