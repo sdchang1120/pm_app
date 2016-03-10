@@ -29,9 +29,9 @@ module.exports = function(passport) {
   function(req, username, password, done) {
 
     // User.findOne wont fire unless data is sent back
-    process.nextTick(function() { 
+    process.nextTick(function() {
 
-      // find a user whose username is the same as the forms username 
+      // find a user whose username is the same as the forms username
       // (checking to see if user trying to log in exists)
       User.findOne({"username": username}, function(err, user) {
 
@@ -78,8 +78,8 @@ module.exports = function(passport) {
 
   function(req, username, password, done) {
 
-    // console.log("req.body:"); 
-    console.log('PASSPORT REQ.BODY', req.body); // confirming that info is being grabbed
+    // console.log("req.body:");
+    // console.log('PASSPORT REQ.BODY', req.body); // confirming that info is being grabbed
 
     // find user with username that matches the username in form
     // checking if user trying to login already exists
