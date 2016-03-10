@@ -1,3 +1,7 @@
+// ====================
+//     REQUIREMENTS
+// ====================
+
 var express = require("express");
 var router = express.Router();
 var passport = require("passport");
@@ -6,9 +10,11 @@ var Project = require('../models/projects.js');
 var Task = require('../models/tasks.js');
 
 
-// router.get("/", function(req, res) {
-//   res.send("got here")
-// })
+// ====================
+//   PROJECTS ROUTES
+// ====================
+
+// POST / CREATE
 
 router.post("/new", function(req, res) {
 
@@ -26,8 +32,7 @@ router.post("/new", function(req, res) {
   })
 });
 
-
-
+// GET / SHOW
 
 router.get("/get", function(req, res) {
   // console.log('TEST GET REQ.USER', req.user);
@@ -40,6 +45,7 @@ router.get("/get", function(req, res) {
   })
 })
 
+// PUT / UPDATE
 
 router.put("/project/:pid", function(req, res) {
   // console.log('project put req.body, ', req.body);
@@ -55,6 +61,7 @@ router.put("/project/:pid", function(req, res) {
   })
 });
 
+// DELETE
 
 router.delete("/project/:pid", function(req, res) {
   // console.log('PROJECT DELETE REQ.BODY');
@@ -71,13 +78,15 @@ router.delete("/project/:pid", function(req, res) {
 });
 
 
-// TASKS ROUTES
+// ====================
+//     TASKS ROUTES
+// ====================
 
+// POST / CREATE
 
-// create
 router.post("/tasks/:pid", function(req, res) {
-  // console.log(req.body);
 
+  // console.log(req.body);
 
   // create new task
   Task.create(req.body, function(err, task) {
@@ -99,8 +108,8 @@ router.post("/tasks/:pid", function(req, res) {
   })
 })
 
+// GET / SHOW
 
-// get
 router.get("/tasks/:pid", function(req, res) {
   // console.log("get params, ", req.params.pid)
   Project.findById(req.params.pid, function(err, project) {
@@ -112,7 +121,8 @@ router.get("/tasks/:pid", function(req, res) {
 
 
 
-// update
+// UPDATE
+
 router.put("/tasks/:pid/:tid", function(req, res) {
   // console.log("PROJECT ID: ", req.params.pid);
   // console.log("TASK ID: ", req.params.tid);
@@ -150,10 +160,8 @@ router.put("/tasks/:pid/:tid", function(req, res) {
 
 });
 
+// DELETE
 
-
-
-// delete
 router.delete("/tasks/:pid/:tid", function(req, res) {
   // console.log("project id, ", req.params.pid);
   // console.log("task id, ", req.params.tid);
@@ -174,24 +182,23 @@ router.delete("/tasks/:pid/:tid", function(req, res) {
   })
 })
 
+module.exports = router; // export router
+
+// ====================
+//      SCRAP CODE
+// ====================
+
+// console.log('PROJECTASDFJKL;', project)
 
 
-module.exports = router;
+// update project in user model
+// User.update({_id: req.user._id, "projects._id": req.params.pid, "projects.tasks._id": req.params.tid}, {$set: {"projects.tasks.$.name": req.body.name}}, function(err, user) {
 
+// User.update({_id: req.user._id, "projects._id": req.params.pid, "projects.tasks._id": req.params.tid}, {$set: {"projects.tasks.$.name": req.body.name}}, function(err, user) {
+//   console.log("USER ID: ", req.user._id);
+//   console.log("PROJECT ID: ", req.params.pid);
+//   console.log("TASK ID: ", req.params.tid);
+//   console.log(err)
+//   res.send(user);
 
-
-// SCRAP
-      // console.log('PROJECTASDFJKL;', project)
-
-
-      // update project in user model
-      // User.update({_id: req.user._id, "projects._id": req.params.pid, "projects.tasks._id": req.params.tid}, {$set: {"projects.tasks.$.name": req.body.name}}, function(err, user) {
-
-      // User.update({_id: req.user._id, "projects._id": req.params.pid, "projects.tasks._id": req.params.tid}, {$set: {"projects.tasks.$.name": req.body.name}}, function(err, user) {
-      //   console.log("USER ID: ", req.user._id);
-      //   console.log("PROJECT ID: ", req.params.pid);
-      //   console.log("TASK ID: ", req.params.tid);
-      //   console.log(err)
-      //   res.send(user);
-
-      // });
+// });
