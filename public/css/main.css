@@ -126,6 +126,11 @@ td {
   margin: 20px;
 }
 
+.todo-list em, .completed-list em {
+  display: block;
+  text-align: center;
+}
+
 /* BOOTSTRAP STUFF */
 /* http://bootsnipp.com/snippets/VERA8 */
 
