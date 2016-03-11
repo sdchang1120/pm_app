@@ -45,53 +45,54 @@
 
 </nav>
 
+	<div ng-view></div>
 
-	<!-- <div ng-if="mainCtrl.isAuthenticated" class="sidebar" ng-include=" 'partials/sidebar.html' "></div> -->
+</body>
+</html>
 
-	<!-- include dashboard partial -->
-	<!-- <header ng-if="mainCtrl.isAuthenticated" ng-include=" 'partials/dashboard.html' "></header> -->
+<!-- SCRAP CODE -->
 
-	<!-- <h2 ng-if="mainCtrl.isAuthenticated">{{mainCtrl.user.username}}</h2> -->
-	<!-- {{mainCtrl.isAuthenticated}} -->
+<!-- <div ng-if="mainCtrl.isAuthenticated" class="sidebar" ng-include=" 'partials/sidebar.html' "></div> -->
 
+<!-- include dashboard partial -->
+<!-- <header ng-if="mainCtrl.isAuthenticated" ng-include=" 'partials/dashboard.html' "></header> -->
 
-	<!-- <div ng-if="!mainCtrl.isAuthenticated">
-		<h2>SignUp</h2>
-		<form ng-controller="SignupController as signupCtrl" ng-submit="signupCtrl.signup()">
-		<input type="text" name="username" placeholder="username" ng-model="signupCtrl.credentials.username">
-		<input type="text" name="email" placeholder="email" ng-model="signupCtrl.credentials.email">
-		<input type="text" name="password" placeholder="password" ng-model="signupCtrl.credentials.password">
-		<input type="submit">
-		</form>
-		<h2>LogIn</h2>
-		<form ng-controller="LoginController as loginCtrl" ng-submit="loginCtrl.login()">
-		<input type="text" name="username" placeholder="username" ng-model="loginCtrl.credentials.username">
-		<input type="text" name="password" placeholder="password" ng-model="loginCtrl.credentials.password">
-		<input type="submit">
-		</form>
-	</div> -->
+<!-- <h2 ng-if="mainCtrl.isAuthenticated">{{mainCtrl.user.username}}</h2> -->
+<!-- {{mainCtrl.isAuthenticated}} -->
 
 
-	<!-- <test-directive ng-if="mainCtrl.isAuthenticated"></test-directive> -->
+<!-- <div ng-if="!mainCtrl.isAuthenticated">
+	<h2>SignUp</h2>
+	<form ng-controller="SignupController as signupCtrl" ng-submit="signupCtrl.signup()">
+	<input type="text" name="username" placeholder="username" ng-model="signupCtrl.credentials.username">
+	<input type="text" name="email" placeholder="email" ng-model="signupCtrl.credentials.email">
+	<input type="text" name="password" placeholder="password" ng-model="signupCtrl.credentials.password">
+	<input type="submit">
+	</form>
+	<h2>LogIn</h2>
+	<form ng-controller="LoginController as loginCtrl" ng-submit="loginCtrl.login()">
+	<input type="text" name="username" placeholder="username" ng-model="loginCtrl.credentials.username">
+	<input type="text" name="password" placeholder="password" ng-model="loginCtrl.credentials.password">
+	<input type="submit">
+	</form>
+</div> -->
+
+
+<!-- <test-directive ng-if="mainCtrl.isAuthenticated"></test-directive> -->
 
 
 
-	<!-- <projects-directive ng-if="mainCtrl.isAuthenticated"></projects-directive> -->
+<!-- <projects-directive ng-if="mainCtrl.isAuthenticated"></projects-directive> -->
 
 <!-- {{mainCtrl.isAuthenticated}} -->
 
 <!-- {{mainCtrl.user}} -->
 
 
-	<!-- show this if logged in-->
-	<!-- <div ng-controller="AnotherController as anotherCtrl">
-		{{anotherCtrl.test}}
-		<p ng-if="mainCtrl.isAuthenticated"> User stuff</p>
-	</div> -->
+<!-- show this if logged in-->
+<!-- <div ng-controller="AnotherController as anotherCtrl">
+	{{anotherCtrl.test}}
+	<p ng-if="mainCtrl.isAuthenticated"> User stuff</p>
+</div> -->
 
-	<!-- <button ng-if="mainCtrl.isAuthenticated" ng-click="mainCtrl.logout()">Logout</button> -->
-
-	<div ng-view></div>
-
-</body>
-</html>
+<!-- <button ng-if="mainCtrl.isAuthenticated" ng-click="mainCtrl.logout()">Logout</button> -->

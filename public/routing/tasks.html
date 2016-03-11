@@ -15,8 +15,8 @@ Search: <input type="search" class="search-query" placeholder="Search Tasks" ng-
 
 
 <!-- REMAINING TASKS -->
-
 <table class="todo-list">
+
 	<tr>
 		<td>To Do</td>
 	</tr>
@@ -37,28 +37,18 @@ Search: <input type="search" class="search-query" placeholder="Search Tasks" ng-
 
 	<!-- show pending tasks -->
 	<tr ng-repeat="task in taskCtrl.projTasks | filter: {completed: 'false', name: searchTask} | orderBy: 'name'">
-
 		<td>
-
 			<input type="checkbox" ng-model="task.completed" ng-change="taskCtrl.updateTask(task)">
 			<span ng-if="!updateTask">{{task.name}}</span>
-
 			<form ng-if="updateTask" ng-submit="taskCtrl.updateTask(task)">
 				<input type="text" ng-model="task.name">
 			</form>
-
 			<i id="edit-icon" ng-click="updateTask = !updateTask">&#xE806;</i>
 			<i ng-if="updateTask" ng-click="taskCtrl.deleteTask(task)">&#xE800;</i>
-
 		</td>
-
 	</tr>
 
 </table>
-
-
-
-
 
 <!-- COMPLETED TASKS -->
 <table class="completed-list">
@@ -76,12 +66,10 @@ Search: <input type="search" class="search-query" placeholder="Search Tasks" ng-
 
 	<!-- display completed tasks -->
 	<tr ng-repeat="task in taskCtrl.projTasks | filter: {completed: 'true', name: searchTask} | orderBy: 'name'">
-
 		<!-- show completed tasks -->
 		<td>
 			<span>{{task.name}} <span><i id="undo-icon" ng-click="taskCtrl.undoComplete(task)">&#xE808;</i>
 		</td>
-
 	</tr>
 
 </table>

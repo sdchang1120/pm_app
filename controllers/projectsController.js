@@ -1,4 +1,7 @@
-// REQUIREMENTS
+// ==============================
+//          REQUIREMENTS
+// ==============================
+
 var express = require("express");
 var router = express.Router();
 var passport = require("passport");
@@ -6,17 +9,9 @@ var User = require("../models/users.js");
 var Project = require('../models/projects.js');
 var Task = require('../models/tasks.js');
 
-
-// router.get("/", function(req, res) {
-//   res.send("got here")
-// })
-
-// ROUTES
-
 // ==============================
 //        PROJECT ROUTES
 // ==============================
-
 
 router.post("/new", function(req, res) {
 
@@ -36,7 +31,6 @@ router.post("/new", function(req, res) {
   });
 });
 
-
 // GET-- get all projects in active user's projects array (for stats directive)
 router.get("/get", function(req, res) {
   // console.log('TEST GET REQ.USER', req.user);
@@ -51,8 +45,7 @@ router.get("/get", function(req, res) {
   });
 });
 
-
-// UPDATE-- update an existing project 
+// UPDATE-- update an existing project
 router.put("/project/:pid", function(req, res) {
   // console.log('project put req.body, ', req.body);
   // console.log('PROJECT PUT REQ.BODY.NAME: ', req.body.name);
@@ -70,7 +63,6 @@ router.put("/project/:pid", function(req, res) {
   });
 });
 
-
 // DELETE-- remove an existing project
 router.delete("/project/:pid", function(req, res) {
   // console.log('PROJECT DELETE REQ.BODY');
@@ -86,17 +78,13 @@ router.delete("/project/:pid", function(req, res) {
   });
 });
 
-
-
 // ==============================
 //          TASK ROUTES
 // ==============================
 
-
 // NEW-- create a new task
 router.post("/tasks/:pid", function(req, res) {
   // console.log(req.body);
-
 
   // create new task using incoming data and task model
   Task.create(req.body, function(err, task) {
@@ -120,7 +108,6 @@ router.post("/tasks/:pid", function(req, res) {
   });
 });
 
-
 // GET-- get all tasks in selected project
 router.get("/tasks/:pid", function(req, res) {
   // console.log("get params, ", req.params.pid)
@@ -134,7 +121,6 @@ router.get("/tasks/:pid", function(req, res) {
     res.send(project);
   });
 });
-
 
 // UPDATE-- update an existing task
 router.put("/tasks/:pid/:tid", function(req, res) {
@@ -162,7 +148,7 @@ router.put("/tasks/:pid/:tid", function(req, res) {
 
         // find selected project in active user's project array and overwrite existing data using updatedProject
         User.update({_id: req.user._id, 'projects._id': updatedProject._id}, {$set: {'projects.$': updatedProject}}, {new: true}, function(err, user) {
-          
+
           // send the user object back to angular
           res.send(user);
         });
@@ -170,7 +156,6 @@ router.put("/tasks/:pid/:tid", function(req, res) {
     });
   });
 });
-
 
 // DELETE-- remove an existing task
 router.delete("/tasks/:pid/:tid", function(req, res) {
@@ -193,24 +178,27 @@ router.delete("/tasks/:pid/:tid", function(req, res) {
   });
 });
 
+module.exports = router; // export router
+
+// ==============================
+//          SCRAP CODE
+// ==============================
+
+// router.get("/", function(req, res) {
+//   res.send("got here")
+// })
+
+// console.log('PROJECTASDFJKL;', project)
 
 
-module.exports = router;
+// update project in user model
+// User.update({_id: req.user._id, "projects._id": req.params.pid, "projects.tasks._id": req.params.tid}, {$set: {"projects.tasks.$.name": req.body.name}}, function(err, user) {
 
+// User.update({_id: req.user._id, "projects._id": req.params.pid, "projects.tasks._id": req.params.tid}, {$set: {"projects.tasks.$.name": req.body.name}}, function(err, user) {
+//   console.log("USER ID: ", req.user._id);
+//   console.log("PROJECT ID: ", req.params.pid);
+//   console.log("TASK ID: ", req.params.tid);
+//   console.log(err)
+//   res.send(user);
 
-
-// SCRAP
-      // console.log('PROJECTASDFJKL;', project)
-
-
-      // update project in user model
-      // User.update({_id: req.user._id, "projects._id": req.params.pid, "projects.tasks._id": req.params.tid}, {$set: {"projects.tasks.$.name": req.body.name}}, function(err, user) {
-
-      // User.update({_id: req.user._id, "projects._id": req.params.pid, "projects.tasks._id": req.params.tid}, {$set: {"projects.tasks.$.name": req.body.name}}, function(err, user) {
-      //   console.log("USER ID: ", req.user._id);
-      //   console.log("PROJECT ID: ", req.params.pid);
-      //   console.log("TASK ID: ", req.params.tid);
-      //   console.log(err)
-      //   res.send(user);
-
-      // });
+// });

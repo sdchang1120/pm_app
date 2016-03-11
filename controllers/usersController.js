@@ -1,4 +1,7 @@
-// REQUIREMENTS
+// ==============================
+//          REQUIREMENTS
+// ==============================
+
 var express = require("express");
 var router = express.Router();
 var passport = require("passport");
@@ -11,13 +14,9 @@ var Project = require('../models/projects.js');
 //   })
 // })
 
-// ROUTES
-
 // ==============================
 //     AUTHENTICATION ROUTES
 // ==============================
-
-
 
 // SIGNUP-- create a new account
 router.post("/signup", passport.authenticate("local-signup"), function(req, res) {
@@ -66,12 +65,9 @@ router.post("/login", passport.authenticate("local-login"), function(req, res) {
 //   res.send(req.user)
 // });
 
-
-
 // ==============================
 //     ACTIVITY LOG ROUTES
 // ==============================
-
 
 // GET-- send all info related to the logged in user to angular
 router.get("/getuserlog", function(req, res) {
@@ -84,7 +80,6 @@ router.get("/getuserlog", function(req, res) {
     res.send(user);
   });
 });
-
 
 // UPDATE-- updates the user log
 router.put("/userlog/", function(req, res) {
@@ -110,8 +105,6 @@ router.put("/userlog/", function(req, res) {
   });
 });
 
-
-
 // MIDDLEWARE
 // -----------------------------------------------------------------
 // ensure a user is loggedin
@@ -129,8 +122,4 @@ function isLoggedIn(req, res, next) {
   };
 };
 
-
-
-
-// EXPORT
-module.exports = router;
+module.exports = router; // export router

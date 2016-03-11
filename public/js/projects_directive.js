@@ -1,15 +1,4 @@
-// PROJECTS DIRECTIVE
 var app = angular.module("ProjectsController", []);
-
-// PROJECTS DIRECTIVE
-// app.directive('projectsDirective', function() {
-//   return {
-//     restrict: 'E',
-//     templateUrl: 'partials/projects.html',
-//     controller: 'ProjectsController',
-//     controllerAs: 'projectsCtrl'
-//   }
-// });
 
 // PROJECTS CONTORLLER
 app.controller("ProjectsController", ["$scope", "$http", "updateLog", function($scope, $http, updateLog) {
@@ -87,7 +76,6 @@ app.controller("ProjectsController", ["$scope", "$http", "updateLog", function($
     });
   };
 
-
   // ==============================
   //         UPDATE PROJECT
   // ==============================
@@ -119,7 +107,6 @@ app.controller("ProjectsController", ["$scope", "$http", "updateLog", function($
           console.log(error)
       });
   };
-
 
   // ==============================
   //         DELETE PROJECT
@@ -155,3 +142,17 @@ app.controller("ProjectsController", ["$scope", "$http", "updateLog", function($
 
 
 }]);
+
+// ==============================
+//          SCRAP CODE
+// ==============================
+
+// PROJECTS DIRECTIVE
+// app.directive('projectsDirective', function() {
+//   return {
+//     restrict: 'E',
+//     templateUrl: 'partials/projects.html',
+//     controller: 'ProjectsController',
+//     controllerAs: 'projectsCtrl'
+//   }
+// });

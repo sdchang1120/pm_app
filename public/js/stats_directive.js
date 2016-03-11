@@ -10,14 +10,13 @@ app.directive("statsDirective", [function() {
   }
 }]);
 
-
 // STATS CONTROLLER
 app.controller("StatsController", ["$http", "$scope", function($http, $scope) {
 
   var test = "testing"
 
   // console.log($scope)
-  
+
   this.test = "stats"
 
   var controller = this;
@@ -57,9 +56,9 @@ app.controller("StatsController", ["$http", "$scope", function($http, $scope) {
         } else {
           controller.remaining +=1;
         }
-      } // closes j loop 
+      } // closes j loop
 
-    } // closes i loop 
+    } // closes i loop
 
     // confirming variables
     console.log("completed: ", controller.completed);
@@ -82,7 +81,6 @@ app.controller("StatsController", ["$http", "$scope", function($http, $scope) {
     var userStats = document.getElementById("userStats");
     console.log(userStats);
 
-
     // only attempt to render graph if user has already created projects
     if (userProjects.length != 0) {
 
@@ -95,7 +93,6 @@ app.controller("StatsController", ["$http", "$scope", function($http, $scope) {
   }; // closes parseUserStats function
 
   console.log(controller.completed);
-
 
   // get the user's project info
   $http({
@@ -138,10 +135,7 @@ app.controller("StatsController", ["$http", "$scope", function($http, $scope) {
           console.log(error);
     });
 
-    
-
   // }
-
 
   // $scope.$on("show-stats", function(eventObject, data) {
   //   console.log(eventObject);
@@ -150,7 +144,5 @@ app.controller("StatsController", ["$http", "$scope", function($http, $scope) {
   //   controller.data = "hi"
 
   // });
-
-
 
 }]);

@@ -27,7 +27,6 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
     controller.projId = project._id;
   });
 
-
   // save project id to controller based on route parameter
   $rootScope.$on("$routeChangeSuccess", function() {
     // console.log($routeParams.projId); // this is the project id
@@ -44,7 +43,6 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
   this.projId = $rootScope.currentProjId; // save project id to controller
 
   // console.log(controller.projId);
-
 
   // ==============================
   //           GET TASKS
@@ -87,7 +85,6 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
   //       console.log("get response, ", response.data.tasks);
   //       controller.tasks = response.data;
 
-
   //     // error function
   //     }, function(error) {
   //       console.log(error);
@@ -95,7 +92,6 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
   // }
 
   // this.getTasks();
-
 
   // ==============================
   //      CREATE/POST NEW TASK
@@ -125,7 +121,7 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
         updateLog.method(updateData); // updates user document in database
 
         // clears input field
-        controller.newTask.name = ""; 
+        controller.newTask.name = "";
 
         // refresh tasks
         controller.getTasks();
@@ -169,7 +165,6 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
           console.log(error);
     });
   };
-
 
   // ==============================
   //          UPDATE TASK
@@ -228,7 +223,6 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
     controller.updateTask(task);
   };
 
-
   // set deadline
   // this.setDeadline = function(task) {
   //   console.log("set deadline ", task);
@@ -236,7 +230,7 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
   //   // select the button and save to $button variable
   //   var $button = $("deadline-" + task._id);
 
-  //   console.log($button); // confirms correct button selected 
+  //   console.log($button); // confirms correct button selected
 
 
   //   $(function(){
@@ -245,14 +239,11 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
 
   // }
 
-
-
 }]);
 
-
-
-
-// SCRAP
+// ==============================
+//           SCRAP CODE
+// ==============================
 
   // this.updateFormData = null;
 
