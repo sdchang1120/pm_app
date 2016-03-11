@@ -56,6 +56,7 @@ module.exports = function(passport) {
           newUser.email = req.body.email; // call upon req.body to set email
           newUser.first_name = req.body.first_name; // call upon req.body to set first_name
           newUser.last_name = req.body.last_name; // call upon req.body to set last_name
+          newUser.activity.push({message: "created an account"}); // push first action into activity array
 
           // save user
           newUser.save(function(err) {
