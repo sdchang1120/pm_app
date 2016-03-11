@@ -79,6 +79,10 @@ app.controller("StatsController", ["$http", "$scope", function($http, $scope) {
       }
     ];
 
+    var userStats = document.getElementById("userStats");
+    console.log(userStats);
+
+
     // only attempt to render graph if user has already created projects
     if (userProjects.length != 0) {
 
