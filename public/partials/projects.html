@@ -2,16 +2,18 @@
 
   <h2>PROJECTS</h2>
 
-  <!-- Search Project searchbox -->
+  <!-- searchboxes to search projects & tasks -->
   Search: <input type="search" class="search-query" placeholder="Search Projects" ng-model="searchProject"><br>
   Search: <input type="search" class="search-query" placeholder="Search Tasks" ng-model="searchTasks"><br>
 
+  <!-- add project form -->
   <div class="addProjectForm">
     <h3 ng-if="!addProjectForm">Add Project</h3>
     <form ng-if="addProjectForm" ng-submit="projectsCtrl.addProject(projectsCtrl.newProject)">
       <input type="text" placeholder="Project Name" ng-model="projectsCtrl.newProject.name">
       <button>Add</button>
     </form>
+    <!-- add icon that will toggle add project form -->
     <i id="add-icon" ng-click="addProjectForm = !addProjectForm">&#xE805;</i><br>
   </div>
 
@@ -19,6 +21,7 @@
   <div class="project-box" ng-repeat="project in projectsCtrl.projects | filter: searchProject | orderBy: 'name'">
     <!-- <table ng-click="projectsCtrl.thisProject(project, $index)"> -->
     <table>
+
       <tr>
         <!-- PROJECT TITLE -->
         <td id="project-title">
@@ -26,6 +29,7 @@
           <form ng-if="showUpdate" ng-submit="projectsCtrl.updateProject(project)">
             <input type="text" ng-model="project.name">
           </form>
+          <!-- edit icon that will toggle update form -->
           <i id="edit-icon" ng-click="showUpdate = !showUpdate">&#xE806;</i>
         </td>
       </tr>
@@ -34,18 +38,18 @@
       <tr ng-repeat="blah in project.tasks | filter: searchTasks | orderBy: 'name' | limitTo: 3">
         <td>{{blah.name}}</td>
       </tr>
+
     </table>
+
+    <!-- view / delete project -->
     <button ng-click="projectsCtrl.thisProject(project, $index)">View Project</button>
     <button ng-click="projectsCtrl.deleteProject(project)">Delete Project</button>
+
   </div>
 
-    <!-- <button ng-click="projectsCtrl.deleteProject(project)">Delete Project</button><br><br> -->
-
-    <!-- <button ng-click="viewProject = !viewProject">View Project</button> -->
-
-  <!-- </li> -->
-
 </div>
+
+<!-- SCRAP CODE -->
 
 <!-- <div ng-show="projectsCtrl.hideProjects" ng-include=" 'partials/user_project.html' "></div> -->
 
@@ -56,3 +60,9 @@
   <input type="text" placeholder="Project Name" ng-model="projectsCtrl.newProject.name">
   <button>Add</button>
 </form> -->
+
+<!-- <button ng-click="projectsCtrl.deleteProject(project)">Delete Project</button><br><br> -->
+
+<!-- <button ng-click="viewProject = !viewProject">View Project</button> -->
+
+<!-- </li> -->
