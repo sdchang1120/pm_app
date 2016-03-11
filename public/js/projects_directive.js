@@ -15,6 +15,7 @@ app.controller("ProjectsController", ["$scope", "$http", "updateLog", function($
 
   // console.log($scope.mainCtrl.user.projects);
 
+
   // ==============================
   //      GET UERS'S PROJECTS
   // ==============================
@@ -40,6 +41,7 @@ app.controller("ProjectsController", ["$scope", "$http", "updateLog", function($
 
   // execute getProjects() on page load
   this.getProjects();
+
 
   // ==============================
   //    CREATE/POST NEW PROJECT
@@ -76,6 +78,7 @@ app.controller("ProjectsController", ["$scope", "$http", "updateLog", function($
     });
   };
 
+
   // ==============================
   //         UPDATE PROJECT
   // ==============================
@@ -108,6 +111,7 @@ app.controller("ProjectsController", ["$scope", "$http", "updateLog", function($
       });
   };
 
+
   // ==============================
   //         DELETE PROJECT
   // ==============================
@@ -139,6 +143,7 @@ app.controller("ProjectsController", ["$scope", "$http", "updateLog", function($
   };
 
 }]);
+
 
 // ==============================
 //          SCRAP CODE

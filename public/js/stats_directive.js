@@ -14,13 +14,9 @@ app.directive("statsDirective", [function() {
 app.controller("StatsController", ["$http", "$scope", function($http, $scope) {
 
   var test = "testing"
-
   // console.log($scope)
-
   this.test = "stats"
-
   var controller = this;
-
   var userProjects = null;
 
   // global variables for parseUserStats
@@ -113,7 +109,9 @@ app.controller("StatsController", ["$http", "$scope", function($http, $scope) {
         console.log(error);
   });
 
-  // USER LOG
+  // ==============================
+  //           USER LOG
+  // ==============================
 
   // store user activities
   this.userActivityArray = null;

@@ -14,6 +14,7 @@ var Project = require('../models/projects.js');
 //   })
 // })
 
+
 // ==============================
 //     AUTHENTICATION ROUTES
 // ==============================
@@ -62,6 +63,7 @@ router.post("/login", passport.authenticate("local-login"), function(req, res) {
 // router.get("/secondpath", isLoggedIn, function(req, res) {
 //   res.send(req.user)
 // });
+
 
 // ==============================
 //     ACTIVITY LOG ROUTES

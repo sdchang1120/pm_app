@@ -44,6 +44,7 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
 
   // console.log(controller.projId);
 
+
   // ==============================
   //           GET TASKS
   // ==============================
@@ -74,24 +75,6 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
   // execute getTasks function
   this.getTasks();
 
-  // this.getTasks = function() {
-  //   $http({
-  //   method: "GET",
-  //   url: "/projects/tasks/" + controller.projId  // this path will change
-  //   }).then(
-  //     // success function
-  //     function(response) {
-  //       console.log("EXECUTED")
-  //       console.log("get response, ", response.data.tasks);
-  //       controller.tasks = response.data;
-
-  //     // error function
-  //     }, function(error) {
-  //       console.log(error);
-  //   });
-  // }
-
-  // this.getTasks();
 
   // ==============================
   //      CREATE/POST NEW TASK
@@ -132,6 +115,7 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
     });
   };
 
+
   // ==============================
   //          DELETE TASK
   // ==============================
@@ -165,6 +149,7 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
           console.log(error);
     });
   };
+
 
   // ==============================
   //          UPDATE TASK
@@ -290,3 +275,23 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
   //   console.log(controller.project)
 
   // }
+
+
+  // this.getTasks = function() {
+  //   $http({
+  //   method: "GET",
+  //   url: "/projects/tasks/" + controller.projId  // this path will change
+  //   }).then(
+  //     // success function
+  //     function(response) {
+  //       console.log("EXECUTED")
+  //       console.log("get response, ", response.data.tasks);
+  //       controller.tasks = response.data;
+
+  //     // error function
+  //     }, function(error) {
+  //       console.log(error);
+  //   });
+  // }
+
+  // this.getTasks();

@@ -9,6 +9,7 @@ var User = require("../models/users.js");
 var Project = require('../models/projects.js');
 var Task = require('../models/tasks.js');
 
+
 // ==============================
 //        PROJECT ROUTES
 // ==============================
@@ -77,6 +78,7 @@ router.delete("/project/:pid", function(req, res) {
     });
   });
 });
+
 
 // ==============================
 //          TASK ROUTES
@@ -179,6 +181,7 @@ router.delete("/tasks/:pid/:tid", function(req, res) {
 });
 
 module.exports = router; // export router
+
 
 // ==============================
 //          SCRAP CODE

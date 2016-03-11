@@ -4,11 +4,6 @@ var app = angular.module("PMApp", ["ProjectsController", "tasks-directive", "sta
 //        ANGULAR ROUTING
 // ==============================
 
-// app.controller('ProfileController', ['$routeParams', function($routeParams) {
-//   this.name = 'Profile Controller';
-//   this.id = $routeParams.id;
-// }]);
-
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   $locationProvider.html5Mode({enabled: true});
   $routeProvider.
@@ -52,6 +47,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     })
 }])
 
+
 // ==============================
 //           SERVICES
 // ==============================
@@ -78,6 +74,7 @@ app.service("updateLog", ["$http", function($http) {
   return updateLog;
 
 }]);
+
 
 // ==============================
 //      ANGULAR CONTROLLERS
@@ -250,14 +247,19 @@ app.controller("LoginController", ["$scope", "$http", "$location", function($sco
 
 }]);
 
+
 // ==============================
 //           SCRAP CODE
 // ==============================
+
+// app.controller('ProfileController', ['$routeParams', function($routeParams) {
+//   this.name = 'Profile Controller';
+//   this.id = $routeParams.id;
+// }]);
 
 // // ANOTHER CONTROLLER
 // app.controller("AnotherController", ["$scope", "$http", function($scope, $http) {
 //   this.test = "another controller";
 // }]);
-
 
 // 200 is authorized, 401 is error
