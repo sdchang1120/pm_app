@@ -39,7 +39,6 @@ router.post("/signup", passport.authenticate("local-signup"), function(req, res)
   res.send(req.user); // send the user object back to angular
 }); // end signup route
 
-
 // LOGOUT-- logout of account
 router.get("/logout", function(req, res) {
   req.logout(); // built in function that will logout user
@@ -48,7 +47,6 @@ router.get("/logout", function(req, res) {
   // send confirmation back to angular
   res.send("loggedout");
 }); // end logout route
-
 
 // LOGIN-- access an existing account
 router.post("/login", passport.authenticate("local-login"), function(req, res) {
@@ -112,7 +110,6 @@ function isLoggedIn(req, res, next) {
 
   // if user is authenticated in the session, continue
   if (req.isAuthenticated()) {
-
     return next();
   } else {
 
