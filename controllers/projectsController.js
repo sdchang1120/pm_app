@@ -13,8 +13,8 @@ var Task = require('../models/tasks.js');
 //        PROJECT ROUTES
 // ==============================
 
+// POST / CREATE -- new project
 router.post("/new", function(req, res) {
-
   // console.log(req.body);
   // console.log(req.user._id);
 
@@ -31,7 +31,7 @@ router.post("/new", function(req, res) {
   });
 });
 
-// GET-- get all projects in active user's projects array (for stats directive)
+// GET / SHOW -- all projects in active user's projects array (for stats directive)
 router.get("/get", function(req, res) {
   // console.log('TEST GET REQ.USER', req.user);
   // console.log('TEST GET REQ.USER.ID', req.user._id);
@@ -45,7 +45,7 @@ router.get("/get", function(req, res) {
   });
 });
 
-// UPDATE-- update an existing project
+// UPDATE -- update existing project name
 router.put("/project/:pid", function(req, res) {
   // console.log('project put req.body, ', req.body);
   // console.log('PROJECT PUT REQ.BODY.NAME: ', req.body.name);
@@ -63,7 +63,7 @@ router.put("/project/:pid", function(req, res) {
   });
 });
 
-// DELETE-- remove an existing project
+// DELETE -- remove an existing project (with all associated tasks)
 router.delete("/project/:pid", function(req, res) {
   // console.log('PROJECT DELETE REQ.BODY');
 
@@ -82,7 +82,7 @@ router.delete("/project/:pid", function(req, res) {
 //          TASK ROUTES
 // ==============================
 
-// NEW-- create a new task
+// NEW -- create new task
 router.post("/tasks/:pid", function(req, res) {
   // console.log(req.body);
 
@@ -91,7 +91,7 @@ router.post("/tasks/:pid", function(req, res) {
 
     // create new task using incoming data and task model
     Project.findById(req.params.pid, function(err, project) {
-      project.tasks.push(task);
+      project.tasks.push(task); // error here when you remove tasks & user_project html files from partials
       project.save(function(err, data) {
         // console.log("task saved");
 
@@ -108,7 +108,7 @@ router.post("/tasks/:pid", function(req, res) {
   });
 });
 
-// GET-- get all tasks in selected project
+// GET / SHOW -- get all tasks in selected project
 router.get("/tasks/:pid", function(req, res) {
   // console.log("get params, ", req.params.pid)
 
