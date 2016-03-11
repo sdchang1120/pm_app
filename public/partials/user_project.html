@@ -5,12 +5,14 @@
 <!-- Search Task searchbox -->
 Search: <input type="search" class="search-query" placeholder="Search Tasks" ng-model="searchTask"><br>
 
+<!-- add task form -->
 <div class="addTaskForm">
   <h3 ng-if="!addTaskForm">Add Task</h3>
   <form ng-if="addTaskForm" ng-submit="taskCtrl.addTask()">
    <input type="text" placeholder="Task Name" ng-model="taskCtrl.newTask.name">
    <button>Add Task</button>
   </form>
+  <!-- add icon to toggle add task form -->
   <i id="add-icon" ng-click="addTaskForm = !addTaskForm">&#xE805;</i>
 </div>
 
