@@ -23,7 +23,7 @@ Search: <input type="search" class="search-query" placeholder="Search Tasks" ng-
 	<!-- show placeholder if filtered length is equal to 0 AND there are no tasks in the project -->
 	<tr ng-if="(taskCtrl.projTasks | filter: {completed: 'false'}).length === 0 && taskCtrl.projTasks.length === 0">
 		<td>
-			<em>Create a task.</em>
+			<em>Create a task</em>
 		</td>
 	</tr>
 

@@ -41,7 +41,7 @@
 
       <!-- if no taks have been created-->
       <tr ng-if="(project.tasks | filter: {completed: false, name: searchTasks}).length ===0 && project.tasks.length === 0 ">
-        <td><em>No tasks have been added yet.</em></td>
+        <td><em>No task has been added yet.</em></td>
       </tr>
 
       <!-- show first three remaining tasks -->
@@ -62,7 +62,7 @@
     </table>
 
   </div>
-  
+
 </div>
 
 <div ng-show="projectsCtrl.hideProjects" ng-include=" 'partials/user_project.html' "></div>
