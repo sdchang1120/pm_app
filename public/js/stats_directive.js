@@ -37,7 +37,6 @@ app.controller("StatsController", ["$http", "$scope", function($http, $scope) {
   // function to parse through the users stats and render the chart
   this.parseUserStats = function(userProjects) {
 
-
     // iterate through each project in the array
     // console.log(userProjects.length);
 
@@ -78,15 +77,20 @@ app.controller("StatsController", ["$http", "$scope", function($http, $scope) {
         color: "#fe585a",
         label: "remaining"
       }
-    ]
+    ];
 
-    // grab and fill the chart
-    var context = document.getElementById("userStats").getContext("2d");
-    var userChart = new Chart(context).Doughnut(data);
+    // only attempt to render graph if user has already created projects
+    if (userProjects.length != 0) {
+
+      // grab and fill the chart
+      var context = document.getElementById("userStats").getContext("2d");
+      var userChart = new Chart(context).Doughnut(data);
+
+    };
 
   }; // closes parseUserStats function
 
-  console.log(controller.completed)
+  console.log(controller.completed);
 
 
   // get the user's project info
@@ -97,18 +101,18 @@ app.controller("StatsController", ["$http", "$scope", function($http, $scope) {
       // success function
       function(response) {
         // console.log(response.data);
-        userProjects = response.data;
+        userProjects = response.data; // save projects array to userProjects variable
         // console.log(userProjects); // confirm variable
 
         // parse user stats with the received data
-        controller.parseUserStats(userProjects)
-
+        controller.parseUserStats(userProjects);
 
       // error function
       }, function(error) {
         console.log(error);
-
   });
+
+  // USER LOG
 
   // store user activities
   this.userActivityArray = null;
@@ -122,7 +126,7 @@ app.controller("StatsController", ["$http", "$scope", function($http, $scope) {
         // success function
         function(response) {
           // console.log(response.data);
-          controller.userActivityArray = response.data.activity;
+          controller.userActivityArray = response.data.activity; // save activity array to userActivityArray variable
           // console.log(controller.userActivityArray)
 
         // error function

@@ -6,7 +6,7 @@ var taskSchema = mongoose.Schema({
   name: String,
   deadline: {type: Date},
   completed: {type: Boolean, default: false} // default to false
-})
+});
 
 // EXPORT USER
 module.exports = mongoose.model('Task', taskSchema);

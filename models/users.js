@@ -15,7 +15,7 @@ var userSchema = mongoose.Schema({
     date: {type: Date, default: Date.now},
     message: {type: String}
   }]
-})
+});
 
 // hasing password
 userSchema.methods.generateHash = function(password) {

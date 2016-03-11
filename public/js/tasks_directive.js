@@ -18,7 +18,7 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
   // console.log($route.current.params.projectId)
 
   var controller = this;
-  this.test = "task controller";
+  // this.test = "task controller";
 
   // get project object
   $scope.$on("project-data", function(eventObject, project) {
@@ -28,22 +28,23 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
   });
 
 
+  // save project id to controller based on route parameter
   $rootScope.$on("$routeChangeSuccess", function() {
-    console.log($routeParams.projId); // this is the project id
+    // console.log($routeParams.projId); // this is the project id
 
     $rootScope.currentProjId = $routeParams.projId; // save project id to root scope
+    controller.projId = $rootScope.currentProjId; // save project id to controller
 
-    controller.projId = $rootScope.currentProjId;
+  });
 
-  })
+  // var projId = $routeParams.projId;
 
-  var projId = $routeParams.projId;
+  // console.log(projId);
 
-  console.log(projId)
+  this.projId = $rootScope.currentProjId; // save project id to controller
 
-  this.projId = $rootScope.currentProjId;
+  // console.log(controller.projId);
 
-  console.log(controller.projId)
 
   // ==============================
   //           GET TASKS
@@ -60,12 +61,11 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
     }).then(
       // success function
       function(response) {
-        console.log("EXECUTED")
+        // console.log("EXECUTED");
         console.log("get response, ", response.data.tasks);
 
-        controller.project = response.data;
-        controller.projTasks = response.data.tasks;
-
+        controller.project = response.data; // save project object to controller
+        controller.projTasks = response.data.tasks; // save tasks array to controller
 
       // error function
       }, function(error) {
@@ -73,6 +73,7 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
     });
   }
 
+  // execute getTasks function
   this.getTasks();
 
   // this.getTasks = function() {
@@ -95,6 +96,7 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
 
   // this.getTasks();
 
+
   // ==============================
   //      CREATE/POST NEW TASK
   // ==============================
@@ -104,8 +106,11 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
     name: null
   }
 
+  // add a task to project
   this.addTask = function() {
-    // console.log("PROJECT ID", controller.projId)
+    // console.log("PROJECT ID", controller.projId);
+
+    // post request to server
     $http({
     method: "POST",
     url: "/projects/tasks/" + controller.projId,
@@ -115,19 +120,19 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
       function(response) {
         console.log(response);
 
-        // update the user log
-        var updateData = {message: "added " + controller.newTask.name + " to " + controller.project.name};
-        updateLog.method(updateData);
+        // update user log
+        var updateData = {message: "added " + controller.newTask.name + " to " + controller.project.name}; // creates message to push to user activity
+        updateLog.method(updateData); // updates user document in database
 
-        controller.newTask.name = ""; // clears the input field
+        // clears input field
+        controller.newTask.name = ""; 
 
         // refresh tasks
         controller.getTasks();
 
       // error function
       }, function(error) {
-        console.log(error)
-
+        console.log(error);
     });
   };
 
@@ -147,21 +152,24 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
     $http({
       method: "DELETE",
       url: "/projects/tasks/" + controller.projId + "/" + taskId
-    }).then(
-      function(response) {
-        console.log(response);
+      }).then(
+        // success function
+        function(response) {
+          console.log(response);
 
-        // update user log
-        var updateData = {message: "deleted " + task.name + " from " + controller.project.name};
-        updateLog.method(updateData);
+          // update user log
+          var updateData = {message: "deleted " + task.name + " from " + controller.project.name}; // creates message to push to user activity
+          updateLog.method(updateData); // updates user document in database
 
-        // refresh tasks
-        controller.getTasks(); // I dont think this is working
+          // refresh tasks
+          controller.getTasks(); // I dont think this is working
 
-      }, function(error) {
-        console.log(error)
+        // error function
+        }, function(error) {
+          console.log(error);
     });
-  }
+  };
+
 
   // ==============================
   //          UPDATE TASK
@@ -196,9 +204,10 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
           console.log(response);
 
           // update user log
-          var updateData = {message: "updated " + task.name + " in " + controller.project.name};
-          updateLog.method(updateData);
+          var updateData = {message: "updated " + task.name + " in " + controller.project.name}; // creates message to push to user activity
+          updateLog.method(updateData); // updates user document in database
 
+          // refresh tasks
           controller.getTasks();
 
 
@@ -217,24 +226,24 @@ app.controller("TaskController", ["$http", "$scope", "$rootScope", "$routeParams
 
     // save the change to the database
     controller.updateTask(task);
-  }
+  };
 
 
   // set deadline
-  this.setDeadline = function(task) {
-    console.log("set deadline ", task);
+  // this.setDeadline = function(task) {
+  //   console.log("set deadline ", task);
 
-    // select the button and save to $button variable
-    var $button = $("deadline-" + task._id);
+  //   // select the button and save to $button variable
+  //   var $button = $("deadline-" + task._id);
 
-    console.log($button); // confirms correct button selected 
+  //   console.log($button); // confirms correct button selected 
 
 
-    $(function(){
-     $("deadline-" + task._id).appendDtpicker();
-    });
+  //   $(function(){
+  //    $("deadline-" + task._id).appendDtpicker();
+  //   });
 
-  }
+  // }
 
 
 

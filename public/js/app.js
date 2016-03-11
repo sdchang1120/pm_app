@@ -1,4 +1,4 @@
-var app = angular.module("PMApp", ["projects-directive", "tasks-directive", "stats-directive", "ngRoute"]);
+var app = angular.module("PMApp", ["ProjectsController", "tasks-directive", "stats-directive", "ngRoute"]);
 
 // ==============================
 //        ANGULAR ROUTING

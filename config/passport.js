@@ -1,6 +1,7 @@
 var LocalStrategy = require("passport-local").Strategy;
 var User = require("../models/users.js");
 
+
 // module.export the passport functionality
 module.exports = function(passport) {
 
@@ -44,15 +45,17 @@ module.exports = function(passport) {
           return done(null, false);
         } else {
 
-          // if there is no user with the email, create the user
+          // if there is no existing user with the email, create the user
           var newUser = new User();
 
-          // set user's local credentials
           // console.log(req.body); // confirms req.body is accessible
 
+          // set user's local credentials
           newUser.username = username;
           newUser.password = newUser.generateHash(password); // calls method inside users model
           newUser.email = req.body.email; // call upon req.body to set email
+          newUser.first_name = req.body.first_name; // call upon req.body to set first_name
+          newUser.last_name = req.body.last_name; // call upon req.body to set last_name
 
           // save user
           newUser.save(function(err) {
@@ -79,7 +82,7 @@ module.exports = function(passport) {
   function(req, username, password, done) {
 
     // console.log("req.body:"); 
-    console.log('PASSPORT REQ.BODY', req.body); // confirming that info is being grabbed
+    // console.log('PASSPORT REQ.BODY', req.body); // confirming that info is being grabbed
 
     // find user with username that matches the username in form
     // checking if user trying to login already exists
