@@ -52,21 +52,17 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     })
 }])
 
-
-
-
 // ==============================
-//       END ANGULAR ROUTE
+//           SERVICES
 // ==============================
 
 // service-- function can be accessed across different controllers
 app.service("updateLog", ["$http", function($http) {
+
   var updateLog = {};
 
   updateLog.method = function(object) {
-
-    console.log(object)
-
+    // console.log(object);
     $http({
       method: "PUT",
       url: "/users/userlog",
@@ -77,29 +73,30 @@ app.service("updateLog", ["$http", function($http) {
         }, function(error) {
           console.log(error);
     })
-
   }
 
   return updateLog;
 
 }]);
 
-
-
+// ==============================
+//      ANGULAR CONTROLLERS
+// ==============================
 
 // MAIN CONTROLLER
+
 app.controller("MainController", ["$rootScope", "$scope", "$http", "$location", function($rootScope, $scope, $http, $location) {
   var controller = this;
   // this.test = "main controller is here";
   this.user = null;
   this.isAuthenticated = false;
-  this.hideButton = false;
+  this.hideButton = false; // signup/login buttons hide set to false
 
-  this.showSignup = function() {
-    controller.hideButton = true;
+  this.showSignup = function() { // when you click on signup button
+    controller.hideButton = true; // signup/login buttons hide set to true
   }
 
-  this.showLogin = function() {
+  this.showLogin = function() { // when you click on login button
     controller.hideButton = true;
   }
 
@@ -112,7 +109,6 @@ app.controller("MainController", ["$rootScope", "$scope", "$http", "$location", 
 
     $rootScope.user = userData;
     $rootScope.isAuthenticated = true; // save authentication status to true
-
 
     // save user data to controller
     controller.user = userData;
@@ -162,7 +158,6 @@ app.controller("MainController", ["$rootScope", "$scope", "$http", "$location", 
   //   $scope.$broadcast("show-stats", {message: "test"});
   // };
 
-
   this.testService = function() {
     updateLog.method();
     // console.log("hi")
@@ -175,6 +170,7 @@ app.controller("MainController", ["$rootScope", "$scope", "$http", "$location", 
 }]);
 
 // SIGNUP CONTROLLER
+
 app.controller("SignupController", ["$scope", "$http", "$location", function($scope, $http, $location) {
 
   var controller = this;
@@ -211,9 +207,8 @@ app.controller("SignupController", ["$scope", "$http", "$location", function($sc
 
 }]);
 
-
-
 // LOGIN CONTROLLER
+
 app.controller("LoginController", ["$scope", "$http", "$location", function($scope, $http, $location){
 
   var controller = this;
@@ -255,6 +250,9 @@ app.controller("LoginController", ["$scope", "$http", "$location", function($sco
 
 }]);
 
+// ==============================
+//           SCRAP CODE
+// ==============================
 
 // // ANOTHER CONTROLLER
 // app.controller("AnotherController", ["$scope", "$http", function($scope, $http) {
