@@ -20,6 +20,7 @@
 
     <!-- <table ng-click="projectsCtrl.thisProject(project, $index)"> -->
     <table>
+
       <tr>
         <!-- PROJECT TITLE -->
         <td id="project-title">
@@ -31,36 +32,25 @@
         </td>
       </tr>
 
-
-
       <!-- PROJECT TASKS -->
 
       <!-- if all tasks have been completed-->
       <tr ng-if="(project.tasks | filter: {completed: false, name: searchTasks}).length ===0 && project.tasks.length > 0">
-        
         <td><em>All tasks completed!</em></td>
-
       </tr>
 
       <!-- if no taks have been created-->
       <tr ng-if="(project.tasks | filter: {completed: false, name: searchTasks}).length ===0 && project.tasks.length === 0 ">
-        
         <td><em>No tasks have been added yet.</em></td>
-
       </tr>
-
-
 
       <!-- show first three remaining tasks -->
       <tr ng-repeat="blah in project.tasks | filter: {completed: false, name: searchTasks} | orderBy: 'name' | limitTo: 3">
-
         <td>{{blah.name}}</td>
-
       </tr>
 
       <tr>
         <td>
-
           <!-- PROJECT VIEW AND DELETE BUTTONS -->
           <center>
             <a ng-href="projects/{{project._id}}"><button class="proj-button">View Project</button></a>
@@ -68,25 +58,16 @@
           </center>
         </td>
       </tr>
-      
+
     </table>
 
-    <!-- <a ng-href="projects/{{project._id}}"><button class="proj-button">View Project</button></a> -->
-
-
-    <!-- <button ng-click="projectsCtrl.thisProject(project, $index)">View Project</button> -->
-    <!-- <button ng-click="projectsCtrl.deleteProject(project)" class="proj-button">Delete Project</button> -->
   </div>
-
-    <!-- <button ng-click="projectsCtrl.deleteProject(project)">Delete Project</button><br><br> -->
-
-    <!-- <button ng-click="viewProject = !viewProject">View Project</button> -->
-
-  <!-- </li> -->
-
+  
 </div>
 
 <div ng-show="projectsCtrl.hideProjects" ng-include=" 'partials/user_project.html' "></div>
+
+<!-- SCRAP CODE -->
 
 <!-- <button ng-click="addProject = !addProject">Add Project</button>
 
