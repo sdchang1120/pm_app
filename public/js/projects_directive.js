@@ -138,9 +138,6 @@ app.controller("ProjectsController", ["$scope", "$http", "updateLog", function($
     });
   };
 
-
-
-
 }]);
 
 // ==============================
